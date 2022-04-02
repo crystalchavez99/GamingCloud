@@ -1,0 +1,16 @@
+ul{
+    flex: 100%;
+    color: #999;
+    text-decoration: none;
+    display: flex;
+}li{
+    list-style-type: none;
+}
+a{
+    color: #999;
+
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
