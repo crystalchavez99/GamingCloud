@@ -1,0 +1,27 @@
+body{
+    background-color: #000;
+}
+form{
+    border: 1px solid #44D62C;
+    box-sizing:content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: min-content;
+    width: min-content;
+    position: absolute;
+    bottom: 55%;
+    right: 55%;
+    margin-left: -45%;
+    padding: 5%;
+    color:#888;
+}
+button{
+    background-color: #44d62c;
+    color: #000;
+    outline: 0;
+    appearance: none;
+    line-height: 16px;
+}
