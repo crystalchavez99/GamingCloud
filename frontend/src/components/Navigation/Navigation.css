@@ -17,6 +17,16 @@ a{
     padding: 1rem;
     text-decoration: none;
 }
-a:hover{
+.fa-user-circle{
+    color: #999;
+}
+a:hover, .fas:hover{
     color: white;
+}
+
+.userprofile {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
 }
