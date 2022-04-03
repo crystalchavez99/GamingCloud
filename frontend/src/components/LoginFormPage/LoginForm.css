@@ -1,19 +1,11 @@
-.form{
+.login{
     display: block;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    left: 55%;
-    /* margin-left: 5%; */
-    bottom: 45%;
-    /* margin-bottom: -5%;
-    margin-top: -5%; */
 }
 
-form{
+.login > form{
+    display: inline-block;
     border: 1px solid #44D62C;
-    color:#888;
 }
 form > ul{
     border-bottom: 0in;

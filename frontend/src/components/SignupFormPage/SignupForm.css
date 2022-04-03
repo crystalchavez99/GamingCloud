@@ -1,7 +1,16 @@
-body{
-    background-color: #000;
+/* .form{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 55%;
+     margin-left: 5%; 
+    bottom: 45%;
+     margin-bottom: -5%;
+    margin-top: -5%;
 }
-form{
+.form > form{
     border: 1px solid #44D62C;
     box-sizing:content-box;
     display: flex;
@@ -15,7 +24,7 @@ form{
     bottom: 55%;
     right: 55%;
     margin-left: -45%;
-    padding: 5%;
+    padding: 10%;
     color:#888;
 }
 button{
@@ -25,3 +34,4 @@ button{
     appearance: none;
     line-height: 16px;
 }
+*/
