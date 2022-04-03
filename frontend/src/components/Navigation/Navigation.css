@@ -1,5 +1,4 @@
 ul{
-    flex: 100%;
     color: #999;
     text-decoration: none;
     display: flex;
@@ -7,11 +6,13 @@ ul{
     border-bottom: 1px solid #44D62C;
     font-family:Arial, Helvetica, sans-serif;
     list-style-type: none;
+    padding-bottom: 1rem;
 }
 a{
     color: #999;
-
+    padding: 2rem;
     text-decoration: none;
+
 }
 a:hover{
     color: white;
