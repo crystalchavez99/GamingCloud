@@ -3,6 +3,8 @@ ul{
     color: #999;
     text-decoration: none;
     display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #44D62C;
 }li{
     list-style-type: none;
 }
