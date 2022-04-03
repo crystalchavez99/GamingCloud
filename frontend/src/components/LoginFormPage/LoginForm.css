@@ -1,20 +1,19 @@
+.form{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 55%;
+    /* margin-left: 5%; */
+    bottom: 45%;
+    /* margin-bottom: -5%;
+    margin-top: -5%; */
+}
+
 form{
     border: 1px solid #44D62C;
-    box-sizing:content-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: min-content;
-    width: min-content;
-    position: absolute;
-    bottom: 55%;
-    right: 55%;
-    margin-left: -45%;
-    padding: 5%;
     color:#888;
-
 }
 form > ul{
     border-bottom: 0in;
