@@ -18,10 +18,15 @@ form{
     padding: 5%;
     color:#888;
 }
-button{
+.loginbutton{
     background-color: #44d62c;
     color: #000;
-    outline: 0;
-    appearance: none;
     line-height: 16px;
+    border: 0;
+    box-shadow: none;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 15px;
 }
