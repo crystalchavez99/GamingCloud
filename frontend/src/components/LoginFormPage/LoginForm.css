@@ -1,32 +1,27 @@
-.login{
-    display: block;
-    text-align: center;
+body{
+    background-color: #000;
 }
-
-.login > form{
-    display: inline-block;
+form{
     border: 1px solid #44D62C;
-}
-form > ul{
-    border-bottom: 0in;
-}
-label, input{
-    margin-bottom: .5rem;
+    box-sizing:content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: min-content;
+    width: min-content;
+    position: absolute;
+    bottom: 55%;
+    right: 55%;
+    margin-left: -45%;
+    padding: 5%;
+    color:#888;
 }
 button{
     background-color: #44d62c;
     color: #000;
+    outline: 0;
     appearance: none;
-    font-weight: 700;
-    border-radius: 4px;
-    box-shadow: none;
-    background: none;
-    border: 0;
-    height: 40px;
-    padding: 0 15px;
-    font-size: 15px;
-    margin-top: 1rem;
-}
-button:hover{
-    color: white;
+    line-height: 16px;
 }
