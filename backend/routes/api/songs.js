@@ -7,7 +7,7 @@ const { requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/upload',requireAuth,asyncHandler(async(req,res)=>{
-    const song = await db.Song.build();
+    console.log(res.locals)
     if(!res.locals.authenticared){
         return res.redirect(`/login`);
     }
