@@ -29,4 +29,19 @@ const csrfProtection = csrf({ cookie: true });
      return res.json(song)
  }))
 
+ router.put(`/:songId`, asyncHandler(async(req,res)=>{
+    const id = parseInt(req.params.songId, 10);
+    const song = await db.Song.findByPk(id, {
+      include: [{ model: db.User},]
+    });
+    const {title, url, genre} = req.body;
+    song.update({
+        title,
+        url,
+        genre
+    });
+    await song.save();
+    return res.json(song);
+ }))
+
 module.exports =router;
