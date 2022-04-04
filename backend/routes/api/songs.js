@@ -10,7 +10,6 @@ const csrfProtection = csrf({ cookie: true });
 
  router.get('/',asyncHandler(async(req,res)=>{
      const songs = await db.Song.findAll();
-     console.log(songs);
      return res.json({songs});
  }));
  router.post(`/`,asyncHandler(async (req,res)=>{
