@@ -7,21 +7,23 @@ const addSongs = songs =>{
 }
 export const getAllSongs = () =>async(dispatch) =>{
     const response = await fetch('/api/songs')
-    const data = await response.json();
+
     if(response.ok){
-        dispatch(addSongs(data.songs))
+        const data = await response.json();
+        console.log(data);
+        dispatch(addSongs(data.songs));
     }
 }
-
-const songReducer = (state ={}, action)=>{
+const initialState = {songs: []}
+const songReducer = (state =initialState, action)=>{
     let newState;
     switch(action.type){
         case ADDSONGS: {
-            const songs = {...state.songs};
+            const listSongs = {};
             action.songs.forEach(song=>{
-                songs[song.id] = song;
+                listSongs[song.id] = song;
             })
-            return {...state,songs};
+            return {...listSongs,...state.songs};
         }
         default:
             return state;
