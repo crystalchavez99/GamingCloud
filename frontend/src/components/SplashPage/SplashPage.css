@@ -8,6 +8,7 @@
 .banner{
     border-bottom: 1px solid #44d62c;
     text-align: center;
+    background-image: url('../../images/crowd.jpg');
 }
 span{
     transition: color 2s;
