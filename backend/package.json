@@ -30,6 +30,8 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.7.3",
+    "react-audio-player": "^0.17.0",
+    "react-player": "^2.10.0",
     "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1"
   },
@@ -37,5 +39,4 @@
     "dotenv-cli": "^5.1.0",
     "nodemon": "^2.0.15"
   }
-
 }

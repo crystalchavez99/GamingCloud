@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/crystalchavez99/GamingCloud/issues"
   },
-  "homepage": "https://github.com/crystalchavez99/GamingCloud#readme"
+  "homepage": "https://github.com/crystalchavez99/GamingCloud#readme",
+  "dependencies": {
+    "react-jinke-music-player": "^4.24.2"
+  }
 }
