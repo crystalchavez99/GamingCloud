@@ -13,10 +13,10 @@ module.exports = {
         allowNull: false,
         references: {model: 'Users'}
       },
-      albumId: {
-        type: Sequelize.INTEGER,
-        references:{model: 'Albums'}
-      },
+      // albumId: {
+      //   type: Sequelize.INTEGER,
+      //   references:{model: 'Albums'}
+      // },
       url: {
         type: Sequelize.STRING
       },
