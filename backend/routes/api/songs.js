@@ -13,15 +13,13 @@ const csrfProtection = csrf({ cookie: true });
      console.log(songs);
      return res.json({songs});
  }));
- router.post(`/`,requireAuth,asyncHandler(async (req,res)=>{
-     const {title,url,genre} = req.body;
-     const {userId} = req.user.id;
+ router.post(`/`,asyncHandler(async (req,res)=>{
+    const {title, url, genre, userId} = req.body;
      const song = await db.Song.create({
          title,
          url,
          genre,
-         userId,
-         csrfToken: req.csrfToken(),
+         userId
      })
      return res.json({song})
  }))
