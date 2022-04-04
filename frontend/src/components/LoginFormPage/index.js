@@ -51,6 +51,7 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit" className='loginbutton'>Log In</button>
+        <button type="submit" className="demouserbutton">Demo Login</button>
       </form>
     </div>
   );

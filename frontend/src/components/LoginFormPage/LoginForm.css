@@ -22,7 +22,7 @@
 
 }
 
-.loginbutton{
+.loginbutton, .demouserbutton{
     background-color: #44d62c;
     color: #000;
     line-height: 16px;
@@ -34,6 +34,6 @@
     margin: 5px;
     padding: 5px 15px;
 }
-.loginbutton:hover{
+.loginbutton:hover, .demouserbutton:hover{
     color: white;
 }
