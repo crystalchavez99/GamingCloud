@@ -2,9 +2,9 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-// const songRouter = require('./songs.js');
+const songRouter = require('./songs.js');
 
-// router.use('/songs',songRouter);
+router.use('/songs',songRouter);
 
 router.use('/session', sessionRouter);
 

@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from "./components/SplashPage";
 import UploadPage from "./components/UploadPage";
+import ListSongPage from "./components/ListSongPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/upload">
             <UploadPage />
+          </Route>
+          <Route path="/songs">
+            <ListSongPage />
           </Route>
         </Switch>
       )}
