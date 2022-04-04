@@ -1,14 +1,30 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Songs = sequelize.define('Songs', {
-    userId: DataTypes.INTEGER,
-    albumId: DataTypes.INTEGER,
+  const Song = sequelize.define('Song', {
+    userId: {
+      validate: {
+        notEmpty: true
+      },
+      type: DataTypes.INTEGER
+    },
+    // albumId: DataTypes.INTEGER,
     url: DataTypes.STRING,
-    title: DataTypes.STRING,
-    genre: DataTypes.STRING
+    title: {
+      validate: {
+        notEmpty: true
+      },
+      type: DataTypes.STRING(50)
+    },
+    genre: {
+      validate: {
+        notEmpty: true
+    },
+      type: DataTypes.STRING(50)
+    },
   }, {});
-  Songs.associate = function(models) {
+  Song.associate = function(models) {
     // associations can be defined here
+    Song.belongsTo(models.User,{foreignKey: 'userId'});
   };
   return Songs;
 };
