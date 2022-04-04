@@ -1,14 +1,14 @@
 // backend/routes/api/songs.js
 const express = require('express');
 const db = require('../../db/models');
-const { check, validationResult } = require('express-validator');
-const { asyncHandler, csrfProtection, isAuthorized } = require("../utils");
-const { requireAuth } = require('../auth');
+const asyncHandler = require('express-async-handler');
 const router = express.Router();
 
-router.get('/upload',requireAuth,asyncHandler(async(req,res)=>{
-    console.log(res.locals)
-    if(!res.locals.authenticared){
-        return res.redirect(`/login`);
-    }
+
+router.get('/',asyncHandler(async(req,res)=>{
+    const songs = await db.Song.findAll();
+    console.log(songs);
+    return res.json({songs});
 }));
+
+module.exports =router;
