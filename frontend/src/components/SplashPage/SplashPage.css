@@ -1,3 +1,9 @@
 .splash{
     color: #999;
 }
+span{
+    transition: color 2s;
+}
+span:hover{
+    color: #44d62c;
+}

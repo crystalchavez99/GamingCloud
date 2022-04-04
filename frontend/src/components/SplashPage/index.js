@@ -7,7 +7,11 @@ import './SplashPage.css';
 function SplashPage() {
     return(
         <div className='splash'>
-            <h1>GamingCloud</h1>
+            <div className='banner'>
+                <h1><span>GamingCloud</span></h1>
+                <p>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
+            </div>
+
         </div>
     )
 }
