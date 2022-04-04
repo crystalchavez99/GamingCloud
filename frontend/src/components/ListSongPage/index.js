@@ -1,24 +1,36 @@
-import useParams from 'react-router-dom';
+//import useParams from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { loadASong } from '../../store/song';
+import React, { useEffect } from 'react';
+import { getAllSongs } from '../../store/song.js';
 import './ListSongPage.css';
-function ListSongPage(){
-    // const {songId} = useParams();
-    // const dispatch = useDispatch();
-    // const song = useSelector(state => state.songs[songId]);
+import SongDetail from '../SongDetail';
+function ListSongPage() {
+    const dispatch = useDispatch();
+    const songs = useSelector((state) => Object.values(state.song));
+    useEffect(() => {
+        dispatch(getAllSongs());
+    }, [dispatch])
+    if (!songs) {
+        return null;
+    }
+    console.log(songs)
 
-    // useEffect(()=>{
-    //     dispatch(loadASong(songId))
-    // },[dispatch,songId])
-    // return(
-    //     <div>
-    //         <h2>{song.title}</h2>
-    //     </div>
-    // )
-    return(
+    return (
         <div>
             <h1>SONG LIST</h1>
+            <div className='songList'>
+                {songs.map((song, index) => {
+                    return (
+                        <div className='song'>
+                            <a href={`/songs/${song.id}`} key={index}>
+                                <p>{`${song.title}`}</p>
+                                <p>{`${song.genre}`}</p>
+                            </a>
+                        </div>
+                    )
+                })}
+            </div>
+
         </div>
     )
 }

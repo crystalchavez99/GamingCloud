@@ -43,5 +43,12 @@ const csrfProtection = csrf({ cookie: true });
     await song.save();
     return res.json(song);
  }))
-
+ router.delete(`/:songId`, asyncHandler(async(req,res)=>{
+    const id = parseInt(req.params.songId, 10);
+    const song = await db.Song.findByPk(id, {
+      include: [{ model: db.User},]
+    });
+   await song.destroy();
+   res.redirect("/");
+ }))
 module.exports =router;
