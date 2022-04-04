@@ -26,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Song.belongsTo(models.User,{foreignKey: 'userId'});
   };
-  return Songs;
+  return Song;
 };
