@@ -9,7 +9,9 @@ const csrf = require("csurf");
 const csrfProtection = csrf({ cookie: true });
 
  router.get('/',asyncHandler(async(req,res)=>{
-     const songs = await db.Song.findAll();
+     const songs = await db.Song.findAll({
+       include: [db.User]
+     });
      return res.json({songs});
  }));
  router.post(`/`,asyncHandler(async (req,res)=>{

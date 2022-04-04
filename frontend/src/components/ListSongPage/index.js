@@ -20,11 +20,13 @@ function ListSongPage() {
             <h1>SONG LIST</h1>
             <div className='songList'>
                 {songs.map((song, index) => {
+                    console.log(song)
                     return (
                         <div className='song'>
                             <a href={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
+                                { <p>{`${song.User.username}`}</p>}
                             </a>
                         </div>
                     )
