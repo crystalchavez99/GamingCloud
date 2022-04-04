@@ -1,5 +1,7 @@
 .login{
     display: flex;
+    margin-top: 15%;
+    margin-left: 5%;
     justify-content: center;
     align-items: center;
     color: #999;
@@ -8,6 +10,8 @@
     border: 1px solid #44d62c;
     box-sizing: border-box;
     width:250px;
+    text-align: center;
+    padding: 1rem;
 }
 .login input{
     padding: 5px;
@@ -29,4 +33,7 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px 15px;
+}
+.loginbutton:hover{
+    color: white;
 }
