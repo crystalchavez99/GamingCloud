@@ -24,8 +24,6 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='navbar'>
-
-
             <ul>
                 <li>
                     <NavLink exact to="/"><i class="fa-solid fa-headphones"></i></NavLink>
