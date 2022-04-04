@@ -1,3 +1,14 @@
 h1{
     color:#999;
+    text-align: center;
+}
+.songList{
+    display: flex;
+    justify-content: center;
+}
+.song{
+    border: 1px solid #44d62c;
+    margin: 10px;
+    width: 170px;
+    text-align: center;
 }
