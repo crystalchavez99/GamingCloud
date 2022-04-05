@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-// import ReactPlayer from 'react-player'
 import ReactAudioPlayer from 'react-audio-player';
-import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
 import './SplashPage.css';
-import banner from '../../images/banner.jpg';
 
 function SplashPage() {
     return (
@@ -26,5 +21,4 @@ function SplashPage() {
         </div>
     )
 }
-
 export default SplashPage;

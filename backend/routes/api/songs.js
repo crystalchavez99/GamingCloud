@@ -4,13 +4,11 @@ const db = require('../../db/models');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const {requireAuth} = require("../../utils/auth");
-const csrf = require("csurf");
-
-const csrfProtection = csrf({ cookie: true });
 
  router.get('/',asyncHandler(async(req,res)=>{
-     const songs = await db.Song.findAll();
-     console.log(songs);
+     const songs = await db.Song.findAll({
+       include: [db.User]
+     });
      return res.json({songs});
  }));
  router.post(`/`,asyncHandler(async (req,res)=>{

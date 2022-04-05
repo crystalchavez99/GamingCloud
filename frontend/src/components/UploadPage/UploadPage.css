@@ -1,3 +1,38 @@
 .upload{
+    display: flex;
+    margin-top: 15%;
+    margin-left: 0%;
+    justify-content: center;
+    align-items: center;
     color: #999;
+}
+.upload > form{
+    border: 1px solid #44d62c;
+    box-sizing: border-box;
+    width:250px;
+    text-align: center;
+    padding: 1rem;
+}
+.upload input{
+    padding: 5px;
+    margin:10px 0;
+    border:0;
+    border-bottom:1px solid #eee;
+    border-radius:10px;
+
+}
+.uploadbutton{
+    background-color: #44d62c;
+    color: #000;
+    line-height: 16px;
+    border: 0;
+    box-shadow: none;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 15px;
+}
+.submit-button:hover{
+    color: white;
 }

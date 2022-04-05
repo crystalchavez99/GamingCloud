@@ -25,6 +25,7 @@ function ListSongPage() {
                             <a href={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
+                                {/* <p>{`${song.User.username}`}</p> */}
                             </a>
                         </div>
                     )
