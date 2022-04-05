@@ -9,7 +9,7 @@ import UploadPage from "./components/UploadPage";
 import ListSongPage from "./components/ListSongPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-// import SongDetail from "./components/SongDetail";
+import SongDetail from "./components/SongDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,9 +38,6 @@ function App() {
           <Route exact path="/songs">
             <ListSongPage />
           </Route>
-          {/* <Route  path="/songs/:songId">
-            <SongDetail />
-          </Route> */}
         </Switch>
       )}
     </>
