@@ -28,8 +28,8 @@ body{
     padding-left: 30px;
 }
 .tracks{
-    display: inline-block;
     border-bottom: 5px solid #44d62c;
+    padding: 4px;
 }
 span{
     transition: color 2s;
@@ -38,5 +38,13 @@ span:hover{
     color: #44d62c;
 }
 .trackList{
-    border: 1px solid grey;
+    overflow: hidden;
+}
+.songList{
+    padding-left: 30px;
+    float: left;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
 }
