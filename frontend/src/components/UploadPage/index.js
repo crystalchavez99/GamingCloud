@@ -10,6 +10,7 @@ function UploadPage({ user }) {
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
     const [url, setUrl] = useState('');
+    const [songCover, setSongCover] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -17,15 +18,16 @@ function UploadPage({ user }) {
         return null;
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const payload = {
             title,
             genre,
             url,
+            songCover,
             userId: sessionUser.id
         }
-        dispatch(addSong(payload));
+        await dispatch(addSong(payload));
         history.push("/songs");
     }
     return (
@@ -47,6 +49,13 @@ function UploadPage({ user }) {
                             onChange={e => setGenre(e.target.value)}
                             value={genre}
                             placeholder="Genre" />
+                    </label>
+                    <label>
+                        Song Cover
+                        <input
+                            onChange={e => setSongCover(e.target.value)}
+                            value={songCover}
+                            placeholder="Song Cover" />
                     </label>
                     <label>
                         Url

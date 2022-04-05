@@ -12,9 +12,12 @@ function ListSongPage() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
+    console.log(songs)
+
     useEffect(() => {
         dispatch(getAllSongs());
-    }, [dispatch])
+    }, [dispatch]);
+
     if (!songs) {
         return null;
     }
@@ -23,11 +26,13 @@ function ListSongPage() {
         <div className='trackList'>
             <div className='songList'>
                 {songs.map((song, index) => {
+                    const user = song.User;
+                    //console.log(user.username)
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
-                            <button
+                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                            <button className='delete'
                             onClick={(e)=>{
                                 dispatch(deleteSong(song.id))
                                 return history.push("/")
@@ -40,8 +45,8 @@ function ListSongPage() {
                         <div className='song'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
-                                <p>{`${song.genre}`}</p>
-                                {/* <p>{`${sessionUser.username}`}</p> */}
+                                <img className="songCover"src={song.songCover}/>
+                                <p>Genre: {`${song.genre}`}</p>
                                 <ReactAudioPlayer
                                     src={song.url}
                                     controls
