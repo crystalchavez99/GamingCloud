@@ -20,8 +20,7 @@ function ListSongPage() {
     }
 
     return (
-        <div>
-            <h1>SONG LIST</h1>
+        <div className='trackList'>
             <div className='songList'>
                 {songs.map((song, index) => {
                     let sessionLinks;

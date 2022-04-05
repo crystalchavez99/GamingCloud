@@ -1,18 +1,42 @@
+body{
+    display: flex;
+}
 .splash{
-    color: #999;
+    border-left: 1px solid #44d62c;
+    border-right: 1px solid #44d62c;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    color: #999;
+    width: 1250px;
+    height: 100%;
+    margin: 0 330px;
 }
-.banner{
-    border-bottom: 1px solid #44d62c;
+.splash > .banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 330px;
+    color: white;
+    border-bottom: 5px solid #44d62c;
     text-align: center;
     background-image: url('../../images/crowd.jpg');
+}
+.splash  .tracks p{
+    text-align: left;
+    padding-left: 30px;
+}
+.tracks{
+    display: inline-block;
+    border-bottom: 5px solid #44d62c;
 }
 span{
     transition: color 2s;
 }
 span:hover{
     color: #44d62c;
+}
+.trackList{
+    border: 1px solid grey;
 }
