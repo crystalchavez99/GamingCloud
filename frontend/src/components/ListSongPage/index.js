@@ -20,21 +20,20 @@ function ListSongPage() {
     }
 
     return (
-        <div>
-            <h1>SONG LIST</h1>
+        <div className='trackList'>
             <div className='songList'>
                 {songs.map((song, index) => {
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
+                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
                             <button
                             onClick={(e)=>{
                                 dispatch(deleteSong(song.id))
                                 return history.push("/")
                             }
                             }
-                            >Delete</button></>)
+                            >Delete</button></div>)
                         }
                     }
                     return (

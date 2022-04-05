@@ -5,7 +5,6 @@ h1{
 .songList{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 .react-audio-player{
     width: 200px;

@@ -13,7 +13,7 @@ function SongDetail() {
     const songs = useSelector((state) => state.song);
     //console.log(songs[songId])
     const song = songs[songId];
-    //console.log(song)
+    console.log(song)
     useEffect(() => {
         dispatch(getAllSongs());
     }, [dispatch])
