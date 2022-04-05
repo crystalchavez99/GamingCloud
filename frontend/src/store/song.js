@@ -51,6 +51,16 @@ export const editSong = song => async dispatch =>{
         dispatch(addOneSong(data.song));
     }
 }
+
+export const getSong = songId => async dispatch =>{
+    const response = await fetch(`/api/songs/${songId}`);
+
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addOneSong(data.song))
+        return data.song;
+    }
+}
 const initialState = {songs: []}
 const songReducer = (state =initialState, action)=>{
     let newState;

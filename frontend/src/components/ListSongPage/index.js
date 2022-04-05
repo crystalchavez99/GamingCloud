@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import { getAllSongs } from '../../store/song.js';
 import './ListSongPage.css';
-import SongDetail from '../SongDetail';
+import { NavLink } from 'react-router-dom';
 function ListSongPage() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
     useEffect(() => {
         dispatch(getAllSongs());
@@ -23,10 +23,10 @@ function ListSongPage() {
                 {songs.map((song, index) => {
                     return (
                         <div className='song'>
-                            <a href={`/songs/${song.id}`} key={index}>
+                            <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
-                            </a>
+                            </NavLink>
                             <button>Edit</button>
                             <button>Delete</button>
                         </div>
