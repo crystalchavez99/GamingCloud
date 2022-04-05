@@ -12,9 +12,10 @@ const {requireAuth} = require("../../utils/auth");
      return res.json({songs});
  }));
  router.post(`/`,asyncHandler(async (req,res)=>{
-    const {title, url, genre, userId} = req.body;
+    const {title, url, genre, songCover,userId} = req.body;
      const song = await db.Song.create({
          title,
+         songCover,
          url,
          genre,
          userId
@@ -23,7 +24,9 @@ const {requireAuth} = require("../../utils/auth");
  }))
  router.get(`/:songId`,asyncHandler(async(req,res)=>{
      const id = parseInt(req.params.songId);
-     const song = await db.Song.findByPk(id);
+     const song = await db.Song.findByPk(id, {
+      include: [{ model: db.User},]
+    });
      return res.json(song)
  }))
 

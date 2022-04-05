@@ -25,6 +25,7 @@ function SongDetail() {
     return (
         <div className={`songdetail ${song.id}`}>
             <h1>{song.title}</h1>
+            <img src={song.songCover}/>
             <p>{song.genre}</p>
             <ReactAudioPlayer
                 src={song.url}

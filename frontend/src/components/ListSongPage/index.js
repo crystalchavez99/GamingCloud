@@ -23,6 +23,8 @@ function ListSongPage() {
         <div className='trackList'>
             <div className='songList'>
                 {songs.map((song, index) => {
+                    const user = song.User;
+                    console.log(user.username)
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
@@ -40,8 +42,9 @@ function ListSongPage() {
                         <div className='song'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
-                                <p>{`${song.genre}`}</p>
-                                {/* <p>{`${sessionUser.username}`}</p> */}
+                                <img className="songCover"src={song.songCover}/>
+                                <p>Genre: {`${song.genre}`}</p>
+                                <p>Artist: {`${user.username}`}</p>
                                 <ReactAudioPlayer
                                     src={song.url}
                                     controls
