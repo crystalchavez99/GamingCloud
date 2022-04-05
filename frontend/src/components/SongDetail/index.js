@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllSongs, getSong } from "../../store/song";
 import ReactAudioPlayer from 'react-audio-player';
+import './SongDetail.css';
 
 
 function SongDetail() {
@@ -10,28 +11,28 @@ function SongDetail() {
     const { songId } = useParams();
     // console.log(songId)
     const dispatch = useDispatch();
-    const songs = useSelector((state) => state.song);
-    //console.log(songs[songId])
-    const song = songs[songId];
-    console.log(song)
+    const songs = useSelector((state) => Object.values(state.song));    console.log('songs',songs)
     useEffect(() => {
         dispatch(getAllSongs());
     }, [dispatch])
     if (!songs) {
         return null;
     }
-    //const soloSong = songs.find((song,index)=> song.id === songId)
-    //console.log(soloSong)
-    return (
-        <div className={`songdetail ${song.id}`}>
-            <h1>{song.title}</h1>
-            <img src={song.songCover}/>
-            <p>{song.genre}</p>
-            <ReactAudioPlayer
-                src={song.url}
-                controls
-            />
-
+    return(
+        <div  className="songdetail">
+            {songs.map(song =>{
+                //console.log(song)
+                if(parseInt(songId) === song.id){
+                    //console.log("MATCH")
+                    return(
+                        <div>
+                            <h1>{song.title}</h1>
+                            <img src={song.songCover}/>
+                            <p>{song.genre}</p>
+                        </div>
+                    )
+                }
+            })}
         </div>
     )
 }
