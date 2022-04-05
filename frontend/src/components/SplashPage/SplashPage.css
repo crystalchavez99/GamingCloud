@@ -34,21 +34,21 @@ span{
 span:hover{
     color: #44d62c;
 }
-.trackList{
+.splash .trackList{
     overflow: hidden;
     overflow-x: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    border: 1px solid grey;
 }
-.songList{
+.splash .songList{
     padding-left: 30px;
     float: left;
+    flex-wrap: nowrap;
 }
 .splash .song{
     width: 200px;
 }
-.splash audio{
+.splash .song audio{
     margin: 0;
     display: inline;
     text-align: center;

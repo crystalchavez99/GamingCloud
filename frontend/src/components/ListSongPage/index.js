@@ -29,11 +29,10 @@ function ListSongPage() {
                     const user = song.User;
                     //console.log(user.username)
                     let sessionLinks;
-                    console.log(sessionUser.id,song.userId)
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
-                            <button
+                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                            <button className='delete'
                             onClick={(e)=>{
                                 dispatch(deleteSong(song.id))
                                 return history.push("/")

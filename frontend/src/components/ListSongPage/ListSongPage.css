@@ -5,10 +5,30 @@ h1{
 .songList{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .song{
     border: 1px solid #44d62c;
     margin: 10px;
-    width: 170px;
+    width: 300px;
     text-align: center;
+}
+.song img, .song audio{
+    width: 200px;
+}
+
+.edit, .delete{
+    background-color: #44d62c;
+    color: #000;
+    line-height: 16px;
+    border: 0;
+    box-shadow: none;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 15px;
+}
+.edit:hover, .delete:hover{
+    color: white;
 }
