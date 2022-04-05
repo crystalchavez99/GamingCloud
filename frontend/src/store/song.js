@@ -16,15 +16,15 @@ const addSongs = songs =>{
     songs
     }
 }
-const removeSong = song =>{
+const removeSong = songId =>{
     return {
         type: REMOVESONG,
-        song
+        songId
     }
 }
 
-export const deleteSong = song => async dispatch =>{
-    const response = await fetch(`/api/songs/${song.id}`,{
+export const deleteSong = songId => async dispatch =>{
+    const response = await csrfFetch(`/api/songs/${songId}`,{
         method: 'DELETE'
     });
     if(response.ok){
@@ -92,6 +92,10 @@ const songReducer = (state =initialState, action)=>{
         case ADDONESONG:
             newState = {...state, [action.song.id]: action.song};
             return newState;
+         case REMOVESONG:
+             newState = {...state};
+             delete newState.songs[action.song]
+             return {...newState}
         default:
             return state;
     }

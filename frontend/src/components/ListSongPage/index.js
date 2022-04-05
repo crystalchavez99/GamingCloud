@@ -1,13 +1,15 @@
 //import useParams from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
-import { getAllSongs } from '../../store/song.js';
+import { deleteSong, getAllSongs } from '../../store/song.js';
 import './ListSongPage.css';
 import { NavLink } from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player';
+import { useHistory } from 'react-router-dom';
 
 function ListSongPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
     useEffect(() => {
@@ -26,7 +28,13 @@ function ListSongPage() {
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
                             sessionLinks = (<><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
-                            <button>Delete</button></>)
+                            <button
+                            onClick={(e)=>{
+                                dispatch(deleteSong(song.id))
+                                return history.push("/")
+                            }
+                            }
+                            >Delete</button></>)
                         }
                     }
                     return (
