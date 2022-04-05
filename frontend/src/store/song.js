@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const ADDSONGS = 'songs/ADDSONGS';
 const ADDONESONG = 'songs/ADDONESONG';
+const REMOVESONG = 'songs/REMOVESONG';
 
 const addOneSong = song =>{
     return{
@@ -13,6 +14,22 @@ const addSongs = songs =>{
     return {
     type: ADDSONGS,
     songs
+    }
+}
+const removeSong = song =>{
+    return {
+        type: REMOVESONG,
+        song
+    }
+}
+
+export const deleteSong = song => async dispatch =>{
+    const response = await fetch(`/api/songs/${song.id}`,{
+        method: 'DELETE'
+    });
+    if(response.ok){
+        const data = await response.json();
+        dispatch(removeSong(data.song))
     }
 }
 export const getAllSongs = () =>async(dispatch) =>{

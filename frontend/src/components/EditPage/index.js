@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { addSong, editSong } from '../../store/song';
 import { useParams } from 'react-router-dom';
 
-function UploadPage({song, user }) {
+function EditPage({song, user }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const { songId } = useParams();
@@ -69,4 +69,4 @@ function UploadPage({song, user }) {
 
     )
 }
-export default UploadPage;
+export default EditPage;
