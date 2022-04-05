@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       type: DataTypes.INTEGER
     },
-    // albumId: DataTypes.INTEGER,
+    songCover: DataTypes.STRING,
     url: DataTypes.STRING,
     title: {
       validate: {
