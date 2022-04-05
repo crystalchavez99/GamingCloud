@@ -44,3 +44,6 @@ span:hover{
     padding-left: 30px;
     float: left;
 }
+.splash .song .editdelete{
+    display: none;
+}

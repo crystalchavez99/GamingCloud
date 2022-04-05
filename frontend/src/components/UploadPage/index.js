@@ -13,7 +13,7 @@ function UploadPage({ user }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    if(!sessionUser){
+    if (!sessionUser) {
         return null;
     }
 
@@ -30,33 +30,31 @@ function UploadPage({ user }) {
     }
     return (
         <div>
-            <h1>Upload Page</h1>
+            <h1>Upload</h1>
+            <p>Take your gaming music to the next level.</p>
             <div className='upload'>
-                <form onSubmit={handleSubmit} className='add-song'>
+                <form onSubmit={handleSubmit}>
                     <label>
                         Title
+                        <input
+                            onChange={e => setTitle(e.target.value)}
+                            value={title}
+                            placeholder="Title" />
                     </label>
-                    <input
-                        onChange={e => setTitle(e.target.value)}
-                        value={title}
-                        placeholder="Title">
-                    </input>
                     <label>
                         Genre
+                        <input
+                            onChange={e => setGenre(e.target.value)}
+                            value={genre}
+                            placeholder="Genre" />
                     </label>
-                    <input
-                        onChange={e => setGenre(e.target.value)}
-                        value={genre}
-                        placeholder="Title">
-                    </input>
                     <label>
                         Url
+                        <input
+                            onChange={e => setUrl(e.target.value)}
+                            value={url}
+                            placeholder="Url" />
                     </label>
-                    <input
-                        onChange={e => setUrl(e.target.value)}
-                        value={url}
-                        placeholder="Title">
-                    </input>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>
             </div>

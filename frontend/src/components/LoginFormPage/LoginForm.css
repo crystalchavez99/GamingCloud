@@ -4,7 +4,6 @@ body{
 .login{
     display: flex;
     margin-top: 15%;
-    margin-left: 5%;
     justify-content: center;
     align-items: center;
     color: #999;
