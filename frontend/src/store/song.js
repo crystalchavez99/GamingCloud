@@ -1,4 +1,12 @@
 const ADDSONGS = 'songs/ADDSONGS';
+const ADDONESONG = 'songs/ADDONESONG';
+
+const addOneSong = song =>{
+    return{
+        type: ADDONESONG,
+        song
+    }
+}
 const addSongs = songs =>{
     return {
     type: ADDSONGS,
@@ -14,6 +22,21 @@ export const getAllSongs = () =>async(dispatch) =>{
         dispatch(addSongs(data.songs));
     }
 }
+
+export const addSong = song => async dispatch =>{
+    const response = await(`/api/songs`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(song)
+    });
+    if(response.ok){
+        const data = await response.json();
+        console.log('add',data);
+        dispatch(addOneSong(data.song))
+    }
+}
 const initialState = {songs: []}
 const songReducer = (state =initialState, action)=>{
     let newState;
@@ -25,6 +48,9 @@ const songReducer = (state =initialState, action)=>{
             })
             return {...listSongs,...state.songs};
         }
+        case ADDONESONG:
+            newState = {...state, [action.song.id]: action.song};
+            return newState;
         default:
             return state;
     }
