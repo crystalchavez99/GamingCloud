@@ -6,6 +6,7 @@ import './ListSongPage.css';
 import SongDetail from '../SongDetail';
 function ListSongPage() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
     useEffect(() => {
         dispatch(getAllSongs());
@@ -25,8 +26,9 @@ function ListSongPage() {
                             <a href={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
-                                {/* <p>{`${song.User.username}`}</p> */}
                             </a>
+                            <button>Edit</button>
+                            <button>Delete</button>
                         </div>
                     )
                 })}

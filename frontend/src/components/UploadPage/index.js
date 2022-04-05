@@ -26,7 +26,7 @@ function UploadPage({ user }) {
             userId: sessionUser.id
         }
         dispatch(addSong(payload));
-        history.push("/");
+        history.push("/songs");
     }
     return (
         <div>

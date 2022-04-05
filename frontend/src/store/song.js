@@ -40,6 +40,17 @@ export const addSong = song => async dispatch =>{
         dispatch(addOneSong(data.song))
     }
 }
+
+export const editSong = song => async dispatch =>{
+    const response = await csrfFetch(`/api/songs/${song.id}`,{
+        method: "PUT",
+        body: JSON.stringify(song)
+    });
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addOneSong(data.song));
+    }
+}
 const initialState = {songs: []}
 const songReducer = (state =initialState, action)=>{
     let newState;
