@@ -18,7 +18,7 @@ function UploadPage({ user }) {
         return null;
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const payload = {
             title,
@@ -27,7 +27,7 @@ function UploadPage({ user }) {
             songCover,
             userId: sessionUser.id
         }
-        dispatch(addSong(payload));
+        await dispatch(addSong(payload));
         history.push("/songs");
     }
     return (
