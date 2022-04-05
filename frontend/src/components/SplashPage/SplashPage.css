@@ -61,3 +61,6 @@ span:hover{
     margin: 0;
 }
 
+.splash .editdelete{
+    display: none;
+}
