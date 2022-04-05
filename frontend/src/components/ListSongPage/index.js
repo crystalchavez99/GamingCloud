@@ -16,12 +16,19 @@ function ListSongPage() {
     if (!songs) {
         return null;
     }
-    console.log(sessionUser.id)
+
     return (
         <div>
             <h1>SONG LIST</h1>
             <div className='songList'>
                 {songs.map((song, index) => {
+                    let sessionLinks;
+                    if(sessionUser){
+                        if(sessionUser.id === song.userId){
+                            sessionLinks = (<><button>Edit</button>
+                            <button>Delete</button></>)
+                        }
+                    }
                     return (
                         <div className='song'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
@@ -33,8 +40,7 @@ function ListSongPage() {
                                     controls
                                 />
                             </NavLink>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            {sessionLinks}
                         </div>
                     )
                 })}
