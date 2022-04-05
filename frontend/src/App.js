@@ -10,6 +10,7 @@ import ListSongPage from "./components/ListSongPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SongDetail from "./components/SongDetail";
+import EditPage from "./components/EditPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +39,11 @@ function App() {
           <Route exact path="/songs">
             <ListSongPage />
           </Route>
-          <Route  path="/songs/:songId">
+          <Route exact path="/songs/:songId">
             <SongDetail />
+          </Route>
+          <Route path="/songs/:songId/edit">
+            <EditPage />
           </Route>
         </Switch>
       )}

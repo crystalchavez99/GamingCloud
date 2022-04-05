@@ -5,10 +5,21 @@ h1{
 .songList{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+}
+.react-audio-player{
+    width: 200px;
 }
 .song{
     border: 1px solid #44d62c;
     margin: 10px;
-    width: 170px;
+    width: 250px;
     text-align: center;
+    height: 300px;
+}
+.song p{
+    padding: 10px;
+}
+.song .react-audio-player{
+    padding: 10px;
 }
