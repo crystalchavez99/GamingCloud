@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllSongs, getSong } from "../../store/song";
+import ReactAudioPlayer from 'react-audio-player';
+
 
 function SongDetail() {
     const sessionUser = useSelector(state => state.session.user);
@@ -23,6 +25,11 @@ function SongDetail() {
     return (
         <div className={`songdetail ${song.id}`}>
             <h1>{song.title}</h1>
+            <p>{song.genre}</p>
+            <ReactAudioPlayer
+                src={song.url}
+                controls
+            />
 
         </div>
     )

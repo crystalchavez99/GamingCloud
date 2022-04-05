@@ -27,10 +27,11 @@ function ListSongPage() {
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
+                                {/* <p>{`${sessionUser.username}`}</p> */}
                                 <ReactAudioPlayer
-                    src={song.url}
-                    controls
-                />
+                                    src={song.url}
+                                    controls
+                                />
                             </NavLink>
                             <button>Edit</button>
                             <button>Delete</button>
