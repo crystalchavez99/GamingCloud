@@ -25,7 +25,7 @@ function ListSongPage() {
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<><button>Edit</button>
+                            sessionLinks = (<><NavLink to={`/songs/${song.id}/edit`}>Edit</NavLink>
                             <button>Delete</button></>)
                         }
                     }
