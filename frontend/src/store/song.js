@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const ADDSONGS = 'songs/ADDSONGS';
 const ADDONESONG = 'songs/ADDONESONG';
 
@@ -20,11 +22,12 @@ export const getAllSongs = () =>async(dispatch) =>{
         const data = await response.json();
         console.log(data);
         dispatch(addSongs(data.songs));
+        return response
     }
 }
 
 export const addSong = song => async dispatch =>{
-    const response = await(`/api/songs`,{
+    const response = await csrfFetch(`/api/songs`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
