@@ -6,9 +6,14 @@ function SongDetail(){
     const sessionUser = useSelector(state => state.session.user);
     const {songId} = useParams();
     const dispatch = useDispatch();
-    const song = useSelector(state =>state.song);
+    const song = useSelector(state => state.song);
     console.log(sessionUser);
     console.log(song)
+    return(
+        <>
+        <h1>Song Title</h1>
+        </>
+    )
 }
 
 export default SongDetail;

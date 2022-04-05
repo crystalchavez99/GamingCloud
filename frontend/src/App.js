@@ -38,6 +38,9 @@ function App() {
           <Route exact path="/songs">
             <ListSongPage />
           </Route>
+          <Route  path="/songs/:songId">
+            <SongDetail />
+          </Route>
         </Switch>
       )}
     </>
