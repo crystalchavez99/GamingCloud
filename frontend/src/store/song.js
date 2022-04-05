@@ -20,7 +20,7 @@ export const getAllSongs = () =>async(dispatch) =>{
 
     if(response.ok){
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         dispatch(addSongs(data.songs));
         return response
     }
@@ -36,7 +36,7 @@ export const addSong = song => async dispatch =>{
     });
     if(response.ok){
         const data = await response.json();
-        console.log('add',data);
+        //console.log('add',data);
         dispatch(addOneSong(data.song))
     }
 }

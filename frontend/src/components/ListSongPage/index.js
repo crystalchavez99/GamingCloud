@@ -4,9 +4,11 @@ import React, { useEffect } from 'react';
 import { getAllSongs } from '../../store/song.js';
 import './ListSongPage.css';
 import { NavLink } from 'react-router-dom';
+import ReactAudioPlayer from 'react-audio-player';
+
 function ListSongPage() {
     const dispatch = useDispatch();
-    // const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
     useEffect(() => {
         dispatch(getAllSongs());
@@ -14,8 +16,7 @@ function ListSongPage() {
     if (!songs) {
         return null;
     }
-    console.log(songs)
-
+    console.log(sessionUser.id)
     return (
         <div>
             <h1>SONG LIST</h1>
@@ -26,6 +27,10 @@ function ListSongPage() {
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                                 <p>{`${song.genre}`}</p>
+                                <ReactAudioPlayer
+                    src={song.url}
+                    controls
+                />
                             </NavLink>
                             <button>Edit</button>
                             <button>Delete</button>

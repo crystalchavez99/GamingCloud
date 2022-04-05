@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllSongs, getSong } from "../../store/song";
 
-function SongDetail(){
+function SongDetail() {
     const sessionUser = useSelector(state => state.session.user);
-    const {songId} = useParams();
+    const { songId } = useParams();
     // console.log(songId)
     const dispatch = useDispatch();
     const songs = useSelector((state) => state.song);
-    console.log(songs[songId])
+    //console.log(songs[songId])
     const song = songs[songId];
-    console.log(song)
-    useEffect(() =>  {
+    //console.log(song)
+    useEffect(() => {
         dispatch(getAllSongs());
     }, [dispatch])
     if (!songs) {
@@ -20,9 +20,9 @@ function SongDetail(){
     }
     //const soloSong = songs.find((song,index)=> song.id === songId)
     //console.log(soloSong)
-    return(
+    return (
         <div className={`songdetail ${song.id}`}>
-        <h1>{song.title}</h1>
+            <h1>{song.title}</h1>
 
         </div>
     )

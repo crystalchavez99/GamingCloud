@@ -14,7 +14,6 @@ function SplashPage() {
                 {/* <ReactPlayer url='https://res.cloudinary.com/dreambssd/video/upload/v1649091553/Stardew_Valley_OST_-_Stardew_Valley_Overture_fd1jmc.mp4' /> */}
                 <ReactAudioPlayer
                     src="https://res.cloudinary.com/dreambssd/video/upload/v1649091553/Stardew_Valley_OST_-_Stardew_Valley_Overture_fd1jmc.mp4"
-                    autoPlay
                     controls
                 />
             </div>
