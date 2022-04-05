@@ -14,6 +14,7 @@ function EditPage({song, user }) {
     const [title, setTitle] = useState(song.title);
     const [genre, setGenre] = useState(song.genre);
     const [url, setUrl] = useState(song.url);
+    const [songCover, setSongCover] = useState(song.songCover);
     const history = useHistory();
 
 
@@ -28,6 +29,7 @@ function EditPage({song, user }) {
             title,
             genre,
             url,
+            songCover,
             userId: sessionUser.id
         }
         dispatch(editSong(payload));
@@ -54,6 +56,13 @@ function EditPage({song, user }) {
                         value={genre}
                         placeholder="Title">
                     </input>
+                    <label>
+                        Song Cover
+                        <input
+                            onChange={e => setSongCover(e.target.value)}
+                            value={songCover}
+                            placeholder="Song Cover" />
+                    </label>
                     <label>
                         Url
                     </label>

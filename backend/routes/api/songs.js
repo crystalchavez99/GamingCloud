@@ -35,11 +35,12 @@ const {requireAuth} = require("../../utils/auth");
     const song = await db.Song.findByPk(id, {
       include: [{ model: db.User},]
     });
-    const {title, url, genre} = req.body;
+    const {title, url, genre,songCover} = req.body;
     song.update({
         title,
         url,
-        genre
+        genre,
+        songCover
     });
     await song.save();
     return res.json(song);
