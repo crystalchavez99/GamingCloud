@@ -1,3 +1,6 @@
+body{
+    display: inline;
+}
 .login{
     display: flex;
     margin-top: 15%;
