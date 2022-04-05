@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import './UploadPage.css';
 import { addSong } from '../../store/song';
 
 function UploadPage({ user }) {
+    const sessionUser = useSelector(state => state.session.user);
+    //console.log(sessionUser.id)
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
     const [url, setUrl] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
 
+    if(!sessionUser){
+        return null;
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
         const payload = {
             title,
             genre,
-            url
+            url,
+            userId: sessionUser.id
         }
         dispatch(addSong(payload));
         history.push("/");

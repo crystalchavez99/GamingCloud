@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/crystalchavez99/GamingCloud#readme",
   "dependencies": {
+    "buffer": "^6.0.3",
     "react-jinke-music-player": "^4.24.2"
   }
 }
