@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addComment} from '../../store/comments';
+import { addComment } from '../../store/comments';
 
-function CommentForm({song}){
+function CommentForm({ song }) {
     //console.log('comment song',song)
     const sessionUser = useSelector(state => state.session.user);
-    const [body,setBody] = useState('');
+    const [body, setBody] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -21,14 +21,15 @@ function CommentForm({song}){
         history.push(`/songs/${song.id}`);
         setBody('');
     }
-    return(
+    return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input
                     onChange={e => setBody(e.target.value)}
                     value={body}
-                    placeholder="Write Comment"/>
-                    <button className='uploadbutton' type='submit'>Upload</button>
+                    placeholder="Write Comment" />
+                <button className='uploadbutton' type='submit'>Upload</button>
+
             </form>
         </div>
     )
