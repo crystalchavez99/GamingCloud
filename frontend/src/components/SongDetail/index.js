@@ -60,8 +60,8 @@ function SongDetail() {
                                         if (sessionUser.id === comment.userId) {
                                             sessionLinks = (
                                                 <button className='delete'
-                                                    onClick={() => {
-                                                        dispatch(deleteComment(comment.id))
+                                                    onClick={ () => {
+                                                         dispatch(deleteComment(comment))
                                                         //history.push(`/songs/${song.id}`)
                                                     }
                                                     }

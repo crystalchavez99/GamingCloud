@@ -17,20 +17,21 @@ const addComments = comments =>{
     comments
     }
 }
-const removeComment = commentId =>{
+const removeComment = comment =>{
     return {
         type: REMOVECOMMENT,
-        commentId
+        comment
     }
 }
 
-export const deleteComment = commentId => async dispatch =>{
-    const response = await csrfFetch(`/api/comments/${commentId}`,{
+export const deleteComment = comment => async dispatch =>{
+    console.log(comment)
+    const response = await csrfFetch(`/api/comments/${comment.id}`,{
         method: 'DELETE'
     });
     if(response.ok){
         const data = await response.json();
-        await dispatch(removeComment(data.commentId));
+        await dispatch(removeComment(data.comment));
     }
 }
 
@@ -58,8 +59,8 @@ export const addComment = comment => async dispatch =>{
         dispatch(addOneComment(data.comment))
     }
 }
-export const getComment = commentId => async dispatch =>{
-    const response = await fetch(`/api/comments/${commentId}`);
+export const getComment = comment => async dispatch =>{
+    const response = await fetch(`/api/comments/${comment.id}`);
 
     if(response.ok){
         const data = await response.json();
@@ -83,7 +84,7 @@ const commentReducer = (state =[], action)=>{
             return newState;
          case REMOVECOMMENT:
              newState = {...state};
-             delete newState.comments[action.comment]
+             delete newState[action.comment.id]
              return {...newState};
         default:
             return state;

@@ -43,7 +43,7 @@ const {requireAuth} = require("../../utils/auth");
         songCover
     });
     await song.save();
-    return res.json(song);
+    res.json(song);
  }))
  router.delete(`/:songId`, asyncHandler(async(req,res)=>{
     const id = parseInt(req.params.songId, 10);
