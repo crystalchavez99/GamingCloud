@@ -25,7 +25,7 @@ const removeComment = comment =>{
 }
 
 export const deleteComment = comment => async dispatch =>{
-    console.log(comment)
+    //console.log(comment)
     const response = await csrfFetch(`/api/comments/${comment.id}`,{
         method: 'DELETE'
     });
