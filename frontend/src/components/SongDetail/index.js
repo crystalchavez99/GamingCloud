@@ -5,6 +5,7 @@ import { getAllSongs, getSong } from "../../store/song";
 import ReactAudioPlayer from 'react-audio-player';
 import './SongDetail.css';
 import { getAllComments, getComment } from "../../store/comments";
+import CommentForm from "../CommentFormPage";
 
 
 function SongDetail() {
@@ -16,12 +17,13 @@ function SongDetail() {
     console.log('songs',songs)
     const comments = useSelector((state) => Object.values(state.comment));
     console.log('comments',comments)
-    const songComments = comments.map(comment=>{
+    const songComments = comments.find(comment=>{
         //console.log(comment)
         if(comment.songId === parseInt(songId)){
-            return comment;
+            return {comment};
         }
     })
+    console.log(songComments)
     console.log(`songComments`,songComments)
     useEffect(() => {
         dispatch(getAllSongs());
@@ -48,6 +50,7 @@ function SongDetail() {
                             <p>{song.genre}</p>
                             <div>
                                 <h2>COMMENTS</h2>
+                                <CommentForm song={song}/>
                                 {comments.map(comment=>{
                                     if(comment.songId === parseInt(songId)){
                                         return(
