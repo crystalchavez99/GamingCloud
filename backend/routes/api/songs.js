@@ -7,7 +7,7 @@ const {requireAuth} = require("../../utils/auth");
 
  router.get('/',asyncHandler(async(req,res)=>{
      const songs = await db.Song.findAll({
-       include: [db.User]
+       include: [db.User,db.Comment]
      });
      return res.json({songs});
  }));
