@@ -23,6 +23,7 @@ function SongDetail() {
             {songs.map(song =>{
                 //console.log(song)
                 if(parseInt(songId) === song.id){
+                    //console.log(song.Comments)
                     //console.log("MATCH")
                     return(
                         <div>
