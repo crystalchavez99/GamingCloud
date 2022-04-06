@@ -64,3 +64,6 @@ span:hover{
 .splash .editdelete{
     display: none;
 }
+.splash .yoursongs{
+    display: none;
+}

@@ -24,6 +24,7 @@ function ListSongPage() {
 
     return (
         <div className='trackList'>
+            <h1 className='yoursongs'>Your Songs</h1>
             <div className='songList'>
                 {songs.map((song, index) => {
                     const user = song.User;
