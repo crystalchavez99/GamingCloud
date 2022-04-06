@@ -6,8 +6,19 @@ const {requireAuth} = require("../../utils/auth");
 
 router.get('/',asyncHandler(async(req,res)=>{{
     const comments = await db.Comment.findAll({
+        include: [{model:db.User},{model:db.Song}],
         order: [["createdAt", "DESC"]]
     });
+    return res.json({comments})
+}}));
+router.get('/:commentId',asyncHandler(async(req,res)=>{{
+    const songId = parseInt(req.params.songId,10);
+    const comments = await db.Comment.findAll({
+        where: {songId},
+        include: [{model:db.User},{model:db.Song}],
+        order: [["createdAt", "DESC"]]
+    })
+    return res.json(comments)
 }}));
 
 router.post('/', asyncHandler(async(req,res)=>{
