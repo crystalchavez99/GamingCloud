@@ -30,7 +30,7 @@ export const deleteComment = commentId => async dispatch =>{
     });
     if(response.ok){
         const data = await response.json();
-        dispatch(removeComment(data.comment))
+        await dispatch(removeComment(data.commentId));
     }
 }
 
@@ -84,7 +84,7 @@ const commentReducer = (state =[], action)=>{
          case REMOVECOMMENT:
              newState = {...state};
              delete newState.comments[action.comment]
-             return {...newState}
+             return {...newState};
         default:
             return state;
     }

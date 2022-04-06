@@ -18,6 +18,8 @@ function SongDetail() {
     console.log('songs', songs)
     const comments = useSelector((state) => Object.values(state.comment));
     console.log('comments', comments)
+
+
     // const songComments = comments.find(comment=>{
     //     //console.log(comment)
     //     if(comment.songId === parseInt(songId)){
@@ -29,7 +31,6 @@ function SongDetail() {
     useEffect(() => {
         dispatch(getAllSongs());
         dispatch(getAllComments())
-        dispatch(getComment(songId))
     }, [dispatch, songId])
     if (!songs) {
         return null;
@@ -59,11 +60,9 @@ function SongDetail() {
                                         if (sessionUser.id === comment.userId) {
                                             sessionLinks = (
                                                 <button className='delete'
-                                                    onClick={(e) => {
-
-                                                        await dispatch(deleteComment(comment.id))
-                                                        history.push(`/songs/${song.id}`)
-
+                                                    onClick={() => {
+                                                        dispatch(deleteComment(comment.id))
+                                                        //history.push(`/songs/${song.id}`)
                                                     }
                                                     }
                                                 >Delete</button>)
