@@ -32,7 +32,12 @@ function UploadPage({ user }) {
         //console.log(errors)
     }, [title, genre, url, songCover]);
     if (!sessionUser) {
-        return null;
+        return (
+            <>
+            <h1>MUST BE LOGGED IN TO UPLOAD</h1>
+            
+            </>
+        );
     }
 
     const handleSubmit = async e => {
