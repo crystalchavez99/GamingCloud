@@ -3,8 +3,11 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songRouter = require('./songs.js');
+const commentRouter = require('./comments.js');
 
 router.use('/songs',songRouter);
+
+router.use('/comments', commentRouter);
 
 router.use('/session', sessionRouter);
 
