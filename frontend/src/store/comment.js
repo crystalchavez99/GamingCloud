@@ -1,25 +1,25 @@
 import { csrfFetch } from "./csrf";
 
-const ADDCOMMENTS = 'songs/ADDCOMMENTS';
-const ADDONECOMMENT= 'songs/ADDONECOMMENT';
-const REMOVECOMMENT= 'songs/REMOVECOMMENT';
+const ADDCOMMENTS = 'comments/ADDCOMMENTS';
+const ADDONECOMMENT= 'comments/ADDONECOMMENT';
+const REMOVECOMMENT= 'comments/REMOVECOMMENT';
 
 
 const addOneComment = comment =>{
     return{
-        type: ADDONESONG,
+        type: ADDONECOMMENT,
         comment
     }
 }
 const addComments = comments =>{
     return {
-    type: ADDSONGS,
+    type: ADDCOMMENTS,
     comments
     }
 }
 const removeComment = commentId =>{
     return {
-        type: REMOVESONG,
+        type: REMOVECOMMENT,
         commentId
     }
 }
@@ -58,7 +58,7 @@ export const addComment = comment => async dispatch =>{
         dispatch(addOneComment(data.comment))
     }
 }
-export const getSong = commentId => async dispatch =>{
+export const getComment = commentId => async dispatch =>{
     const response = await fetch(`/api/comments/${commentId}`);
 
     if(response.ok){
