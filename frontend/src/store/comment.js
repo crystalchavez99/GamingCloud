@@ -1,0 +1,94 @@
+import { csrfFetch } from "./csrf";
+
+const ADDCOMMENTS = 'songs/ADDCOMMENTS';
+const ADDONECOMMENT= 'songs/ADDONECOMMENT';
+const REMOVECOMMENT= 'songs/REMOVECOMMENT';
+
+
+const addOneComment = comment =>{
+    return{
+        type: ADDONESONG,
+        comment
+    }
+}
+const addComments = comments =>{
+    return {
+    type: ADDSONGS,
+    comments
+    }
+}
+const removeComment = commentId =>{
+    return {
+        type: REMOVESONG,
+        commentId
+    }
+}
+
+export const deleteComment = commentId => async dispatch =>{
+    const response = await csrfFetch(`/api/comments/${commentId}`,{
+        method: 'DELETE'
+    });
+    if(response.ok){
+        const data = await response.json();
+        dispatch(removeComment(data.comment))
+    }
+}
+
+export const getAllComments = () =>async(dispatch) =>{
+    const response = await fetch('/api/comments')
+
+    if(response.ok){
+        const data = await response.json();
+        //console.log(data);
+        dispatch(addComments(data.comments));
+        return response
+    }
+}
+export const addComment = comment => async dispatch =>{
+    const response = await csrfFetch(`/api/comments`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(comment)
+    });
+    if(response.ok){
+        const data = await response.json();
+        //console.log('add',data);
+        dispatch(addOneComment(data.comment))
+    }
+}
+export const getSong = commentId => async dispatch =>{
+    const response = await fetch(`/api/comments/${commentId}`);
+
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addOneComment(data.comment))
+        return data.comment;
+    }
+}
+
+const commentReducer = (state =[], action)=>{
+    let newState;
+    switch(action.type){
+        case ADDCOMMENTS: {
+            const listComments = {};
+            action.comments.forEach(comment=>{
+                listComments[comment.id] = comment;
+            })
+            return {...listComments,...state.comments};
+        }
+        case ADDONECOMMENT:
+            newState = {...state, [action.comment.id]: action.comment};
+            return newState;
+         case REMOVECOMMENT:
+             newState = {...state};
+             delete newState.comments[action.comment]
+             return {...newState}
+        default:
+            return state;
+    }
+
+}
+
+export default commentReducer;
