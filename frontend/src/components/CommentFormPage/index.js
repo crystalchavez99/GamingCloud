@@ -21,6 +21,8 @@ function CommentForm({ song }) {
         history.push(`/songs/${song.id}`);
         setBody('');
     }
+
+    
     return (
         <div>
             <form onSubmit={handleSubmit}>

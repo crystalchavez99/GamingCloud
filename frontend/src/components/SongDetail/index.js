@@ -53,7 +53,8 @@ function SongDetail() {
                             <p>{song.genre}</p>
                             <div>
                                 <h2>COMMENTS</h2>
-                                <CommentForm song={song} />
+                                {sessionUser && (<CommentForm song={song} />)}
+                                {!sessionUser && (<h2>Need to be logged in to comment.</h2>)}
                                 {comments.map((comment) => {
                                     let sessionLinks;
                                     if (sessionUser) {
