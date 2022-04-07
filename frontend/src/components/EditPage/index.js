@@ -93,7 +93,7 @@ function EditPage({song, user }) {
                 {errors.length > 0 && (
                         <div className='errors'>
                             The following errors were found:
-                            <ul>
+                            <ul className='errorList'>
                                 {errors.map(error => (
                                     <li key={error}>{error}</li>
                                 ))}
