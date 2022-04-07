@@ -32,7 +32,7 @@ function ListSongPage() {
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
                             <button className='delete'
                             onClick={(e)=>{
                                 dispatch(deleteSong(song.id))
@@ -48,6 +48,7 @@ function ListSongPage() {
                                 <p>{`${song.title}`}</p>
                                 <img className="songCover"src={song.songCover}/>
                                 <p>Genre: {`${song.genre}`}</p>
+                                <p>Artist: {`${user.username}`}</p>
                                 <ReactAudioPlayer
                                     src={song.url}
                                     controls
