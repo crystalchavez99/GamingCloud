@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './UploadPage.css';
 import { addSong } from '../../store/song';
-
+let comp;
+let chomp;
 function UploadPage({ user }) {
     const sessionUser = useSelector(state => state.session.user);
     //console.log(sessionUser.id)
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
+    const [audio, setAudio] = useState();
+    const [image, setImage] = useState();
     const [url, setUrl] = useState('');
     const [songCover, setSongCover] = useState('');
     const [errors, setErrors] = useState([]);
@@ -31,21 +34,36 @@ function UploadPage({ user }) {
         setErrors(errors)
         //console.log(errors)
     }, [title, genre, url, songCover]);
+
+    useEffect(()=>{
+        if(audio){
+            comp = new Audio(audio);
+            setUrl(comp.src)
+            //console.log('url',url)
+            //console.log('audio',comp.src)
+        }
+        if(image){
+            chomp = new Image(image);
+            setSongCover(chomp.src)
+            //console.log('url',url)
+            //console.log('image',chomp.src)
+        }
+    },[audio,image])
     if (!sessionUser) {
         return (
             <>
             <h1>MUST BE LOGGED IN TO UPLOAD</h1>
-            
+
             </>
         );
     }
-
+    console.log(audio)
     const handleSubmit = async e => {
         e.preventDefault();
         const payload = {
             title,
             genre,
-            url,
+            url: comp.src,
             songCover,
             userId: sessionUser.id
         }
@@ -53,6 +71,18 @@ function UploadPage({ user }) {
         setErrors([]);
         history.push("/songs");
     }
+    const addSongFile = (e) => {
+        if (e.target.files[0]) {
+          setAudio(URL.createObjectURL(e.target.files[0]));
+        }
+
+      };
+    const addImageFile = (e) => {
+        if (e.target.files[0]) {
+            setSongCover(URL.createObjectURL(e.target.files[0]));
+        }
+
+      };
 
     return (
         <div>
@@ -89,18 +119,21 @@ function UploadPage({ user }) {
                     <label>
                         Song Cover
                         <input
-                            onChange={e => setSongCover(e.target.value)}
-                            value={songCover}
+                        type="file"
+                            onChange={addImageFile}
+                            //value={songCover}
                             placeholder="Song Cover"
                              />
                     </label>
                     <label>
                         Url
                         <input
-                            onChange={e => setUrl(e.target.value)}
-                            value={url}
-                            placeholder="Url"
-                             />
+                         type="file"
+                         onChange={addSongFile}
+                        //value={url}
+                        placeholder="Url"
+                         />
+                         {/* {console.log(url)} */}
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>
