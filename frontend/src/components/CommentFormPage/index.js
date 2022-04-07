@@ -18,11 +18,12 @@ function CommentForm({ song }) {
             userId: sessionUser.id
         }
         await dispatch(addComment(payload));
-        history.push(`/songs/${song.id}`);
         setBody('');
+        history.push(`/songs/${song.id}`);
+
     }
 
-    
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
