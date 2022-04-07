@@ -16,20 +16,20 @@ const addSongs = songs =>{
     songs
     }
 }
-const removeSong = songId =>{
+const removeSong = song =>{
     return {
         type: REMOVESONG,
-        songId
+        song
     }
 }
 
-export const deleteSong = songId => async dispatch =>{
-    const response = await csrfFetch(`/api/songs/${songId}`,{
+export const deleteSong = song => async dispatch =>{
+    const response = await csrfFetch(`/api/songs/${song.id}`,{
         method: 'DELETE'
     });
     if(response.ok){
         const data = await response.json();
-        dispatch(removeSong(data.song))
+        await dispatch(removeSong(data.song))
     }
 }
 export const getAllSongs = () =>async(dispatch) =>{
@@ -93,7 +93,7 @@ const songReducer = (state =[], action)=>{
             return newState;
          case REMOVESONG:
              newState = {...state};
-             delete newState.songs[action.song]
+             delete newState[action.song.id]
              return {...newState}
         default:
             return state;

@@ -28,6 +28,9 @@ function UploadPage({ user }) {
         if (!url) {
             errors.push('Please provide a url!')
         }
+        if(songCover.length > 255){
+            errors.push('Too long of a song cover url!!')
+        }
         if (!songCover) {
             errors.push('Please provide a songCover!')
         }
@@ -96,7 +99,7 @@ function UploadPage({ user }) {
                     {errors.length > 0 && (
                         <div className='errors'>
                             The following errors were found:
-                            <ul>
+                            <ul className='errorList'>
                                 {errors.map(error => (
                                     <li key={error}>{error}</li>
                                 ))}
@@ -122,6 +125,7 @@ function UploadPage({ user }) {
                     <label>
                         Song Cover
                         <input
+                        type="url"
                         onChange={e => setSongCover(e.target.value)}
                         value={songCover}
                             placeholder="Song Cover"
@@ -130,6 +134,7 @@ function UploadPage({ user }) {
                     <label>
                         Url
                         <input
+                        type="url"
                          onChange={e => setUrl(e.target.value)}
                             value={url}
                         placeholder="Url"

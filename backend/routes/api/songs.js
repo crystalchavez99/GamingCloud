@@ -47,10 +47,9 @@ const {requireAuth} = require("../../utils/auth");
  }))
  router.delete(`/:songId`, asyncHandler(async(req,res)=>{
     const id = parseInt(req.params.songId, 10);
-    const song = await db.Song.findByPk(id, {
-      include: [{ model: db.User},]
-    });
+    const song = await db.Song.findByPk(id);
    await song.destroy();
-   res.redirect("/");
+   res.json({song})
+   //res.redirect("/");
  }))
 module.exports =router;

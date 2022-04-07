@@ -9,10 +9,15 @@
     color: #999;
 
 }
-.errors{
+.errorList{
     color: #999;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    color: red;
+    opacity: .7;
 }
 
 .upload > form{

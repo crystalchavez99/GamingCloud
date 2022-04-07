@@ -34,8 +34,8 @@ function ListSongPage() {
                         if(sessionUser.id === song.userId){
                             sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
                             <button className='delete'
-                            onClick={(e)=>{
-                                dispatch(deleteSong(song.id))
+                            onClick={async (e)=>{
+                                await dispatch(deleteSong(song))
                                 return history.push("/")
                             }
                             }
