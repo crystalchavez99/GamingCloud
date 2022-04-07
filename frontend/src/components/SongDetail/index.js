@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getAllSongs, getSong } from "../../store/song";
 import ReactAudioPlayer from 'react-audio-player';
+import { NavLink } from "react-router-dom";
 import './SongDetail.css';
 import { deleteComment, getAllComments, getComment } from "../../store/comments";
 import CommentForm from "../CommentFormPage";
@@ -51,6 +52,7 @@ function SongDetail() {
                             <h1>{song.title}</h1>
                             <img src={song.songCover} />
                             <p>{song.genre}</p>
+                            <p>Artist:<NavLink to={`/profile/${song.User.username}`}>{`${song.User.username}`}</NavLink></p>
                             <div>
                                 <h2>COMMENTS</h2>
                                 {sessionUser && (<CommentForm song={song} />)}
@@ -73,6 +75,7 @@ function SongDetail() {
                                         return (
                                             <>
                                                 <p>{comment.body}</p>
+                                                {/* <p>{comment.User.username}</p> */}
                                                 {sessionLinks}
                                             </>
 

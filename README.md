@@ -46,3 +46,4 @@ GamingCloud is a SoundCloud clone that focuses on both the listeners and the art
    npm start
    ```
 9.  Can now use the demo user or create an account to start using **GamingCloud**
+# Features
