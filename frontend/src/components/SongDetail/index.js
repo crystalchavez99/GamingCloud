@@ -47,7 +47,7 @@ function SongDetail() {
                     //console.log(song.Comments)
                     //console.log("MATCH")
                     return (
-                        <div>
+                        <div className="song-detail">
                             <h1>{song.title}</h1>
                             <img src={song.songCover} />
                             <p>{song.genre}</p>
@@ -71,10 +71,10 @@ function SongDetail() {
                                     }
                                     if (comment.songId === parseInt(songId)) {
                                         return (
-                                            <>
+                                            <div className="comment">
                                                 <p>{comment.body}</p>
                                                 {sessionLinks}
-                                            </>
+                                            </div>
 
                                         )
                                     }

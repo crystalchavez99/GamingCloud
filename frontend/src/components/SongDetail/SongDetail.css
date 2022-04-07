@@ -4,3 +4,13 @@
     align-items: center;
     color: #999;
 }
+.comment{
+     background-color: #44d62c;
+     color: black;
+     border-radius: 5px;
+     padding: 10px;
+    }
+.song-detail img{
+    width: 350px;
+    height: 350px;
+}
