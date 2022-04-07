@@ -1,0 +1,22 @@
+.profilepage{
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 1250px;
+    height: 100%;
+    margin: 0 330px;
+    border: 1px solid #44d62c;
+}
+.profilebanner{
+    color: black;
+    background-color: gray;
+}
+.profilepage img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #44d62c;
+    display: block;
+    text-align: center;
+}

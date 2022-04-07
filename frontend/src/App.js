@@ -11,6 +11,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SongDetail from "./components/SongDetail";
 import EditPage from "./components/EditPage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/songs/:songId/edit">
             <EditPage />
+          </Route>
+          <Route path="/profile">
+            <ProfilePage user={sessionUser}/>
           </Route>
         </Switch>
       )}
