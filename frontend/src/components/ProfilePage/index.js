@@ -22,12 +22,17 @@ function ProfilePage() {
             return user;
         }
     })
+    console.log('artist',artist)
     const songs = artist.Songs;
     console.log(songs)
     //console.log('match artitst',artist)
     useEffect(()=>{
         dispatch(getAllUsers())
+        dispatch(getAllSongs)
     })
+    if(!artist){
+        return null;
+    }
     return (
         <div className="profilepage">
             <div className='profilebanner'>
