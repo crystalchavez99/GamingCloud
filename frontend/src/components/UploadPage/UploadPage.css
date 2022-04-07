@@ -9,6 +9,7 @@
     color: #999;
     display: flex;
     flex-direction: column;
+    font-weight: bold;
 }
 
 .upload > form{
