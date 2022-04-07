@@ -46,14 +46,16 @@ function ListSongPage() {
                         <div className='song'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
+                            </NavLink>
                                 <img className="songCover"src={song.songCover}/>
                                 <p>Genre: {`${song.genre}`}</p>
-                                <p>Artist: {`${user.username}`}</p>
+
+                                <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p>
                                 <ReactAudioPlayer
                                     src={song.url}
                                     controls
                                 />
-                            </NavLink>
+
                             {sessionLinks}
                         </div>
                     )

@@ -46,8 +46,8 @@ function App() {
           <Route path="/songs/:songId/edit">
             <EditPage />
           </Route>
-          <Route path="/profile">
-            <ProfilePage user={sessionUser}/>
+          <Route path="/profile/:userName">
+            <ProfilePage />
           </Route>
         </Switch>
       )}

@@ -1,11 +1,10 @@
 import './ProfilePage.css';
-function ProfilePage({ user }) {
-    console.log(user)
+function ProfilePage() {
     return (
         <div className="profilepage">
             <div className='profilebanner'>
                 <img alt='PROFILE PICTURE' />
-                <p>{user.username}</p>
+                <p>Profile</p>
             </div>
             <div className='profilecontent'>
                 <h3>Songs</h3>
