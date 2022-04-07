@@ -93,7 +93,7 @@ function EditPage({song, user }) {
                             placeholder="Song Cover"
                              />
                     </label>
-                    <label>
+                    {/* <label>
                         Url
                         <input
                          type="file"
@@ -101,8 +101,7 @@ function EditPage({song, user }) {
                         //value={url}
                         placeholder="Url"
                          />
-                         {/* {console.log(url)} */}
-                    </label>
+                    </label> */}
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>
             </div>
