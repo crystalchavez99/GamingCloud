@@ -47,3 +47,12 @@ GamingCloud is a SoundCloud clone that focuses on both the listeners and the art
    ```
 9.  Can now use the demo user or create an account to start using **GamingCloud**
 # Features
+All users can access the songs and comments.
+
+* Read Songs
+* Read Comments
+
+Logged in users can create, edit, and delete songs of their ownership.
+Logged in users can create, and delete comments of their ownership.
+* Create/Update/Delete Songs
+* Create/Delete Comments
