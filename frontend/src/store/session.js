@@ -1,6 +1,6 @@
 // frontend/src/store/session.js
 import { csrfFetch } from './csrf';
-const ADDUSERS = 'session/ADDUSERS';
+// const ADDUSERS = 'user/ADDUSERS';
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
@@ -17,12 +17,12 @@ const removeUser = () => {
   };
 };
 
-const addUsers = users =>{
-  return {
-  type: ADDUSERS,
-  users
-  }
-}
+// const addUsers = users =>{
+//   return {
+//   type: ADDUSERS,
+//   users
+//   }
+// }
 
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
@@ -68,16 +68,16 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-export const getAllUsers =() =>async(dispatch) =>{
-  const response = await fetch('/api/users')
+// export const getAllUsers =() =>async(dispatch) =>{
+//   const response = await fetch('/api/users')
 
-  if(response.ok){
-      const data = await response.json();
-      //console.log(data);
-      dispatch(addUsers(data.users));
-      return response
-  }
-}
+//   if(response.ok){
+//       const data = await response.json();
+//       //console.log('data usre',data);
+//       dispatch(addUsers(data.users));
+//       return data
+//   }
+// }
 
 const initialState = { user: null };
 
@@ -92,13 +92,13 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user = null;
       return newState;
-    case ADDUSERS: {
-      const listUsers = {};
-      action.users.forEach(use=>{
-          listUsers[use.id] = use;
-      })
-      return {...listUsers,...state.users};
-    }
+    // case ADDUSERS: {
+    //   const listUsers = {};
+    //   action.users.forEach(user=>{
+    //       listUsers[user.id] = user;
+    //   })
+    //   return {...listUsers,...state.users};
+    // }
     default:
       return state;
   }

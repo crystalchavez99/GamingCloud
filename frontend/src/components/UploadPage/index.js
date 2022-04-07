@@ -28,6 +28,9 @@ function UploadPage({ user }) {
         if (!url) {
             errors.push('Please provide a url!')
         }
+        if(songCover.length > 255){
+            errors.push('Too long of a song cover url!!')
+        }
         if (!songCover) {
             errors.push('Please provide a songCover!')
         }

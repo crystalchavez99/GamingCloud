@@ -16,9 +16,30 @@ function EditPage({song, user }) {
     const [genre, setGenre] = useState(song.genre);
     const [url, setUrl] = useState(song.url);
     const [songCover, setSongCover] = useState(song.songCover);
+    const [errors, setErrors] = useState([]);
     // const [audio, setAudio] = useState();
     // const [image, setImage] = useState();
     const history = useHistory();
+    useEffect(() => {
+        const errors = [];
+        if (!title) {
+            errors.push('Please provide a title!')
+        }
+        if (!genre) {
+            errors.push('Please provide a genre!')
+        }
+        if (!url) {
+            errors.push('Please provide a url!')
+        }
+        if(songCover.length > 255){
+            errors.push('Too long of a song cover url!!')
+        }
+        if (!songCover) {
+            errors.push('Please provide a songCover!')
+        }
+        setErrors(errors)
+        //console.log(errors)
+    }, [title, genre, url, songCover]);
 
     // useEffect(()=>{
     //     if(audio){
@@ -49,6 +70,7 @@ function EditPage({song, user }) {
             userId: sessionUser.id
         }
         dispatch(editSong(payload));
+        setErrors([]);
         history.push("/songs");
     }
     // const addSongFile = (e) => {
@@ -68,6 +90,16 @@ function EditPage({song, user }) {
             <h1>Upload Page</h1>
             <div className='upload'>
                 <form onSubmit={handleSubmit} className='add-song'>
+                {errors.length > 0 && (
+                        <div className='errors'>
+                            The following errors were found:
+                            <ul>
+                                {errors.map(error => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     <label>
                         Title
                     </label>

@@ -12,6 +12,7 @@ import Navigation from "./components/Navigation";
 import SongDetail from "./components/SongDetail";
 import EditPage from "./components/EditPage";
 import ProfilePage from "./components/ProfilePage";
+import ErrorPage from "./components/404Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,13 +29,13 @@ function App() {
           <Route exact path="/">
             <SplashPage />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/upload">
+          <Route exact path="/upload">
             <UploadPage user={sessionUser}/>
           </Route>
           <Route exact path="/songs">
@@ -46,8 +47,11 @@ function App() {
           <Route path="/songs/:songId/edit">
             <EditPage />
           </Route>
-          <Route path="/profile/:userName">
+          <Route exact path="/profile/:userName">
             <ProfilePage />
+          </Route>
+          <Route>
+            <ErrorPage />
           </Route>
         </Switch>
       )}
