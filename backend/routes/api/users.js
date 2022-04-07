@@ -29,7 +29,12 @@ const validateSignup = [
       .withMessage('Password must be 6 characters or more.'),
     handleValidationErrors
   ];
-
+  router.get('/',asyncHandler(async(req,res)=>{
+    const users = await db.User.findAll({
+      include: [db.Song,db.Comment]
+    });
+    return res.json({users});
+}));
 // Sign up
 router.post(
     '/',
