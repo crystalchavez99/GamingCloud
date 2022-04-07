@@ -85,10 +85,13 @@ function UploadPage({ user }) {
     //   };
 
     return (
-        <div>
+        <div className='uploadPage'>
             <h1>Upload</h1>
             <p>Take your gaming music to the next level.</p>
+            <p>To upload music and a song cover they must be in url based format with source attached.</p>
+            <p>Would recommend converting that audio and image on https://cloudinary.com</p>
             <div className='upload'>
+
                 <form onSubmit={handleSubmit}>
                     {errors.length > 0 && (
                         <div className='errors'>

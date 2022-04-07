@@ -1,0 +1,34 @@
+.profilepage{
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 1250px;
+    height: 100%;
+    margin: 0 330px;
+    border: 1px solid #44d62c;
+}
+.profilebanner{
+    color: black;
+    background-color: gray;
+    float: left;
+    padding: 10px;
+}
+.artistide{
+    display: flex;
+    align-items: center;
+}
+.artistide p{
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.profilepage img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+}

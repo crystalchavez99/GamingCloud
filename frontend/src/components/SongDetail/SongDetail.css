@@ -3,4 +3,72 @@
     justify-content: center;
     align-items: center;
     color: #999;
+    margin: 0 330px;
+}
+.single-song{
+    width: 1250px;
+}
+.single-song h1, .single-song a{
+    color: black;
+}
+.single-song a:hover{
+    color: white;
+}
+.songINFO{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #44d62c;
+    padding: 20px;
+    background-color: grey;
+    color: black;
+}
+.commentINFO input{
+    width: 75%;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    height: 30px;
+    text-align: left;
+}
+
+.songtext{
+    float: left;
+    color: black;
+}
+.songINFO img{
+    width: 300px;
+    height: 300px;
+    float: right;
+}
+
+.musicplayer{
+    margin: 5px;
+    text-align: center;
+}
+.musicplayer .react-audio-player{
+    width: 100%;
+
+}
+.commentINFO{
+    border: 1px solid #44d62c;
+}
+.commentINFO h2{
+text-align: center;
+}
+.comment{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin: 6px;
+    padding: 5px;
+    border: 1px solid black;
+    color: white;
+    background-color:#44d62c;
+}
+.comment button{
+    border: 1px solid black;
+
+}
+.commenttext .author{
+    color: black;
 }

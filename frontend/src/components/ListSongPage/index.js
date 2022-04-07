@@ -24,7 +24,7 @@ function ListSongPage() {
 
     return (
         <div className='trackList'>
-            <h1 className='yoursongs'>Your Songs</h1>
+            <h1 className='yoursongs'>All Songs</h1>
             <div className='songList'>
                 {songs.map((song, index) => {
                     const user = song.User;
@@ -32,7 +32,7 @@ function ListSongPage() {
                     let sessionLinks;
                     if(sessionUser){
                         if(sessionUser.id === song.userId){
-                            sessionLinks = (<div className='editdelete'><NavLink to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
                             <button className='delete'
                             onClick={(e)=>{
                                 dispatch(deleteSong(song.id))
@@ -46,13 +46,16 @@ function ListSongPage() {
                         <div className='song'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
+                            </NavLink>
                                 <img className="songCover"src={song.songCover}/>
                                 <p>Genre: {`${song.genre}`}</p>
+
+                                {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
                                 <ReactAudioPlayer
                                     src={song.url}
                                     controls
                                 />
-                            </NavLink>
+
                             {sessionLinks}
                         </div>
                     )
