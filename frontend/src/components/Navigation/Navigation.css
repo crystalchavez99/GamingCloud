@@ -1,6 +1,5 @@
 .navbar{
     border-bottom: 1px solid #44d62c;
-
 }
 ul{
     flex: 100%;
@@ -30,4 +29,8 @@ a:hover, .fas:hover{
     box-shadow: none;
     border-radius: 0px;
 }
-
+.profile-dropdown{
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
