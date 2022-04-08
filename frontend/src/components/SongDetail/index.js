@@ -12,15 +12,15 @@ import { restoreUser } from "../../store/session";
 
 function SongDetail() {
     const sessionUser = useSelector(state => state.session.user);
-    console.log(sessionUser)
+    //console.log(sessionUser)
     const { songId } = useParams();
     // console.log(songId)
     const dispatch = useDispatch();
     const history = useHistory();
     const songs = useSelector((state) => Object.values(state.song));
-    console.log('songs', songs)
+    //console.log('songs', songs)
     const comments = useSelector((state) => Object.values(state.comment));
-    console.log('comments', comments)
+    //console.log('comments', comments)
 
 
     // const songComments = comments.find(comment=>{
@@ -82,7 +82,7 @@ function SongDetail() {
                                         }
                                     }
                                     if (comment.songId === parseInt(songId)) {
-                                        console.log(comment.User)
+                                        //console.log(comment.User)
                                         return (
                                             <div className="comment">
                                                 <div className="commenttext">

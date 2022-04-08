@@ -9,6 +9,9 @@
     height: 100%;
     margin: 0 330px;
 }
+.splash .song img, .splash .song audio{
+    width: 200px;
+}
 .splash > .banner{
     display: flex;
     flex-direction: column;

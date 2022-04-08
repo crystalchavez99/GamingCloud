@@ -18,6 +18,9 @@ h1{
 .song img, .song audio{
     width: 200px;
 }
+.song img{
+    height: 200px;
+}
 
 .edit, .delete{
     background-color: #44d62c;

@@ -12,7 +12,7 @@ function ListSongPage({version}) {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
-    console.log(songs)
+    //console.log(songs)
 
     useEffect(() => {
         dispatch(getAllSongs());
@@ -61,12 +61,12 @@ function ListSongPage({version}) {
                     )
                 })}
                 {version && (<>
-                {console.log(version)}
+                {/* //{console.log(version)} */}
                     {version.map((song, index) => {
                         if(!song){
                             return null;
                         }
-                        console.log(song)
+                        //console.log(song)
                     //console.log(user.username)
                     let sessionLinks;
                     if(sessionUser){

@@ -11,23 +11,23 @@ function SplashPage() {
     useEffect(()=>{
         dispatch(getAllSongs());
     },[dispatch])
-    console.log(songs);
+    //console.log(songs);
     if(!songs){
         return null;
     }
     const country = songs.map(song=>{
-        console.log(song)
+        //console.log(song)
         if(song.genre === 'Country'){
             return song;
         }
     })
     const gregorian = songs.map(song=>{
-        console.log(song)
+        //console.log(song)
         if(song.genre === 'Gregorian'){
             return song;
         }
     })
-    console.log(`country`,country)
+   // console.log(`country`,country)
 
     return (
         <div className='splash'>
@@ -50,7 +50,6 @@ function SplashPage() {
                 <p>All of Gregorian. Just for you.</p>
                 <ListSongPage version={gregorian}/>
             </div>
-
             {/* <div className='player'>
                 <ReactAudioPlayer
                     src="https://res.cloudinary.com/dreambssd/video/upload/v1649091553/Stardew_Valley_OST_-_Stardew_Valley_Overture_fd1jmc.mp4"
