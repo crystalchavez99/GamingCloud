@@ -1,5 +1,6 @@
 .navbar{
     border-bottom: 1px solid #44d62c;
+
 }
 ul{
     flex: 100%;
@@ -10,6 +11,9 @@ ul{
     align-items: center;
 }li{
     list-style-type: none;
+    display: list-item;
+    background-color: black;
+    padding: 5px 0;
 }
 a{
     color: #999;
@@ -30,7 +34,26 @@ a:hover, .fas:hover{
     border-radius: 0px;
 }
 .profile-dropdown{
-    border: 1px solid white;
-    display: flex;
+    display: block;
     flex-direction: column;
+    left: 990px;
+    color: #999;
+    position: absolute;
+    width: min-content;
+    text-align: center;
+}
+.logout{
+    background-color: #44d62c;
+    color: #000;
+    line-height: 16px;
+    border: 0;
+    box-shadow: none;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 5px;
+}
+.logout:hover{
+    color: white;
 }
