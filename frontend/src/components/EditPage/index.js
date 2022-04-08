@@ -119,6 +119,7 @@ function EditPage({song, user }) {
                     <label>
                         Song Cover
                         <input
+                        type="url"
                         onChange={e => setSongCover(e.target.value)}
                         value={songCover}
                             placeholder="Song Cover"
@@ -127,6 +128,7 @@ function EditPage({song, user }) {
                     <label>
                         Url
                         <input
+                        type="url"
                          onChange={e => setUrl(e.target.value)}
                             value={url}
                         placeholder="Url"
