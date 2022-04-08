@@ -31,7 +31,7 @@ export const getUser = user => async dispatch =>{
         const data = await response.json();
         console.log('data user', data)
         dispatch(loadUser(data.user))
-        return data.user;
+        return data
     }
 }
 const initialState = { user: null };
@@ -49,7 +49,7 @@ const userReducer = (state = initialState, action) => {
         case LOADUSER: {
             return {
                 ...state,
-                [action.user.id]: {
+                [action.user]: {
                   ...state[action.user.id],
                   ...action.user
                 }

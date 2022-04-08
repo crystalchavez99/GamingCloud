@@ -1,22 +1,23 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import ReactAudioPlayer from 'react-audio-player';
-
+import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 import { useEffect } from 'react';
 import { getAllSongs } from '../../store/song';
 import starter from '../../images/default.jpg';
 import { getUser } from '../../store/users';
 function ProfilePage() {
+    console.log('NEW PROFILE PAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     const dispatch = useDispatch();
     const artist = useParams();
     const artistInfo = useSelector(state => Object.values(state.user))
     //console.log(artist)
-    console.log(artistInfo)
+    //console.log(artistInfo,'artist')
     useEffect(() => {
         //dispatch(getAllSongs())
         dispatch(getUser(artist.userName))
-    }, [dispatch])
+    }, [dispatch,artist])
     //const songs = useSelector((state) => Object.values(state.song));
     // const users = useSelector((state) => Object.values(state.user));
     // console.log(users)
@@ -67,19 +68,24 @@ function ProfilePage() {
                             {console.log(artist)}
                             {artist.Songs.map(song => {
                                 console.log(song, `artist song`)
-                                return (
-                                    <div className='singsongInfo'>
-                                        <div className='songImg'>
-                                            <img src={song.songCover} />
+                                if(artist.id === song.userId){
+                                    return (
+                                        <div className='singsongInfo'>
+                                            <div className='songImg'>
+                                                <img src={song.songCover} />
+                                            </div>
+                                            <div className='songCatch'>
+                                            <NavLink to={`/songs/${song.id}`}>
+                                                <p>{`${song.title}`}</p>
+                                            </NavLink>
+                                            <p>{song.genre}</p>
+                                            <ReactAudioPlayer controls src={song.url} />
+                                            </div>
                                         </div>
-                                        <div className='songCatch'>
-                                        <p>{song.title}</p>
-                                        <p>{song.genre}</p>
-                                        <ReactAudioPlayer controls src={song.url} />
-                                        </div>
-                                    </div>
 
-                                )
+                                    )
+                                }
+
 
                             })}
                             {/* <p>{song.title}</p>
