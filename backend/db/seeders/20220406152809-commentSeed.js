@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Comments', [
       {
         userId: 2,
-        songId: 2,
+        songId: 1,
         body: 'This is my favorite Pokemon OST!',
         createdAt: new Date(),
         updatedAt: new Date()
