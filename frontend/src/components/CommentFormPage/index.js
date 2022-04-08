@@ -30,7 +30,8 @@ function CommentForm({ song }) {
                 <input
                     onChange={e => setBody(e.target.value)}
                     value={body}
-                    placeholder="Write Comment" />
+                    placeholder="Write Comment"
+                    required />
                 <button className='uploadbutton' type='submit'>Upload</button>
 
             </form>
