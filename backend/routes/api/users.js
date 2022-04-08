@@ -37,6 +37,17 @@ router.get('/',asyncHandler(async(req,res)=>{
     });
     return res.json({users});
 }));
+router.get('/:username',asyncHandler(async(req,res)=>{
+  const username = req.params.username;
+  console.log('username',username)
+  console.log(`inside route`)
+    const user = await User.findOne({
+      where: {username},
+      include: [db.Song]
+    });
+    console.log('found',user)
+    return res.json({user});
+}));
 
 // Sign up
 router.post(
