@@ -9,6 +9,9 @@
     height: 100%;
     margin: 0 330px;
 }
+.splash .song img, .splash .song audio{
+    width: 200px;
+}
 .splash > .banner{
     display: flex;
     flex-direction: column;
@@ -16,7 +19,7 @@
     justify-content: center;
     height: 330px;
     color: white;
-    border-bottom: 5px solid #44d62c;
+    border-bottom: 5px solid grey;
     text-align: center;
     background-image: url('../../images/crowd.jpg');
 }
@@ -25,7 +28,7 @@
     padding-left: 30px;
 }
 .tracks{
-    border-bottom: 5px solid #44d62c;
+    border-bottom: 5px solid grey;
     padding: 4px;
 }
 span{

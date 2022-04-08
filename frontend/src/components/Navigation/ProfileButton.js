@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
           <li>{user.email}</li>
           <li><NavLink to={`/profile/${user.username}`}>Profile</NavLink></li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout} className="logout">Log Out</button>
           </li>
         </ul>
       )}

@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import './SplashPage.css';
 import ListSongPage from '../ListSongPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllSongs } from '../../store/song';
 
 function SplashPage() {
+    const songs = useSelector(state => Object.values(state.song));
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(getAllSongs());
+    },[dispatch])
+    //console.log(songs);
+    if(!songs){
+        return null;
+    }
+    const country = songs.map(song=>{
+        //console.log(song)
+        if(song.genre === 'Country'){
+            return song;
+        }
+    })
+    const gregorian = songs.map(song=>{
+        //console.log(song)
+        if(song.genre === 'Gregorian'){
+            return song;
+        }
+    })
+   // console.log(`country`,country)
+
     return (
         <div className='splash'>
             <div className='banner'>
@@ -15,7 +40,16 @@ function SplashPage() {
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
             </div>
-
+            <div className='tracks'>
+                <p>Country</p>
+                <p>All of Country. Just for you.</p>
+                <ListSongPage version={country}/>
+            </div>
+            <div className='tracks'>
+                <p>Greogrian</p>
+                <p>All of Gregorian. Just for you.</p>
+                <ListSongPage version={gregorian}/>
+            </div>
             {/* <div className='player'>
                 <ReactAudioPlayer
                     src="https://res.cloudinary.com/dreambssd/video/upload/v1649091553/Stardew_Valley_OST_-_Stardew_Valley_Overture_fd1jmc.mp4"

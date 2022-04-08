@@ -11,13 +11,15 @@ h1{
     flex-wrap: wrap;
 }
 .song{
-    border: 1px solid #44d62c;
     margin: 10px;
     width: 300px;
     text-align: center;
 }
 .song img, .song audio{
     width: 200px;
+}
+.song img{
+    height: 200px;
 }
 
 .edit, .delete{
