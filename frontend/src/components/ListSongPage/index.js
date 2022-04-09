@@ -36,7 +36,7 @@ function ListSongPage({version}) {
                             <button className='delete'
                             onClick={async (e)=>{
                                 await dispatch(deleteSong(song))
-                                return history.push("/")
+                                // return history.push("/")
                             }
                             }
                             >Delete</button></div>)
