@@ -112,6 +112,7 @@ function UploadPage({ user }) {
                             onChange={e => setTitle(e.target.value)}
                             value={title}
                             placeholder="Title"
+                            required
                              />
                     </label>
                     <label>
@@ -120,6 +121,7 @@ function UploadPage({ user }) {
                             onChange={e => setGenre(e.target.value)}
                             value={genre}
                             placeholder="Genre"
+                            required
                              />
                     </label>
                     <label>
@@ -129,6 +131,7 @@ function UploadPage({ user }) {
                         onChange={e => setSongCover(e.target.value)}
                         value={songCover}
                             placeholder="Song Cover"
+                            required
                              />
                     </label>
                     <label>
@@ -138,6 +141,7 @@ function UploadPage({ user }) {
                          onChange={e => setUrl(e.target.value)}
                             value={url}
                         placeholder="Url"
+                        required
                          />
                          {/* {console.log(url)} */}
                     </label>

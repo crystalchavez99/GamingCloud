@@ -106,7 +106,8 @@ function EditPage({song, user }) {
                     <input
                         onChange={e => setTitle(e.target.value)}
                         value={title}
-                        placeholder="Title">
+                        placeholder="Title"
+                        required>
                     </input>
                     <label>
                         Genre
@@ -114,7 +115,8 @@ function EditPage({song, user }) {
                     <input
                         onChange={e => setGenre(e.target.value)}
                         value={genre}
-                        placeholder="Genre">
+                        placeholder="Genre"
+                        required>
                     </input>
                     <label>
                         Song Cover
@@ -123,6 +125,7 @@ function EditPage({song, user }) {
                         onChange={e => setSongCover(e.target.value)}
                         value={songCover}
                             placeholder="Song Cover"
+                            required
                              />
                     </label>
                     <label>
@@ -132,6 +135,7 @@ function EditPage({song, user }) {
                          onChange={e => setUrl(e.target.value)}
                             value={url}
                         placeholder="Url"
+                        required
                          />
                          {/* {console.log(url)} */}
                     </label>
