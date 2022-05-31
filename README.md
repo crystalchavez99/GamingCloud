@@ -2,6 +2,9 @@
 ## About This Project
 GamingCloud is a SoundCloud clone that focuses on both the listeners and the artists to embrace a gaming music platform. Users can create their own tracks and share with others, and can find new gaming music to listen to love and support artists. It's primary focus is to help independent artists build and grow their careers for industries to notice them.
 [Live Link](https://gamingcloud.herokuapp.com/)
+
+<img src="https://res.cloudinary.com/dreambssd/image/upload/v1653501119/CLOUD_sskb9u.png"/>
+
 ## Wiki
 * [Feature List](https://github.com/crystalchavez99/GamingCloud/wiki/Feature-List)
 * [Database Schema](https://github.com/crystalchavez99/GamingCloud/wiki/Database-Schema)
