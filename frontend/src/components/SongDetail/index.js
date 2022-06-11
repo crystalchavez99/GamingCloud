@@ -61,7 +61,7 @@ function SongDetail() {
                                 <img src={song.songCover} />
                             </div>
                             <div className="musicplayer">
-                            <ReactAudioPlayer src={song.url} controls />
+                            {/* <ReactAudioPlayer src={song.url} controls /> */}
                             </div>
                             <div className="commentINFO">
                                 <h2>COMMENTS</h2>

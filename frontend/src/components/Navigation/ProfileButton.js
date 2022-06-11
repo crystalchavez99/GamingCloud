@@ -62,7 +62,6 @@ function ProfileButton({ user }) {
             <MenuItem onClick={handleClose}>
               <NavLink to={`/profile/${user.username}`}exact={true} activeClassName='active'>
                 <i className="fa-solid fa-user">
-                  My Profile
                 </i>
               </NavLink>
 

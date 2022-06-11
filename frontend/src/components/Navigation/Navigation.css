@@ -67,3 +67,11 @@ a:hover, #basic-button:hover{
     justify-content: center;
     align-items: center;
   }
+  .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list a{
+    text-decoration: none;
+    color: #999;
+}
+.MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list a:hover{
+    text-decoration: none;
+    color: #44d62c;
+}

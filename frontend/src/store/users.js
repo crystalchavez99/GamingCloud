@@ -44,7 +44,7 @@ const userReducer = (state = initialState, action) => {
             return { ...newState, ...state };
         }
         case LOADUSER: {
-            newState = {...state};
+            newState = {state};
             newState[action.payload.id] = action.payload;
             return newState;
         }

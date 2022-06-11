@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player';
 import { useHistory } from 'react-router-dom';
 
-function ListSongPage({version}) {
+function ListSongPage({ version }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -26,79 +26,81 @@ function ListSongPage({version}) {
         <div className='trackList'>
             <h1 className='yoursongs'>All Songs</h1>
             <div className='songList'>
-            {!version && songs.map((song, index) => {
+                {!version && songs.map((song, index) => {
                     const user = song.User;
                     //console.log(user.username)
                     let sessionLinks;
-                    if(sessionUser){
-                        if(sessionUser.id === song.userId){
+                    if (sessionUser) {
+                        if (sessionUser.id === song.userId) {
                             sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
-                            <button className='delete'
-                            onClick={async (e)=>{
-                                await dispatch(deleteSong(song))
-                                // return history.push("/")
-                            }
-                            }
-                            >Delete</button></div>)
+                                <button className='delete'
+                                    onClick={async (e) => {
+                                        await dispatch(deleteSong(song))
+                                        // return history.push("/")
+                                    }
+                                    }
+                                >Delete</button></div>)
                         }
                     }
                     return (
                         <div className='song'>
+                            <img className="songCover" src={song.songCover} />
+                            <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song.title}`}</p>
                             </NavLink>
-                                <img className="songCover"src={song.songCover}/>
-                                <p>Genre: {`${song.genre}`}</p>
+                            <p>Genre: {`${song.genre}`}</p>
+                            </div>
 
-                                {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
-                                <ReactAudioPlayer
-                                    src={song.url}
-                                    controls
-                                />
+                            {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
+                            {/* <ReactAudioPlayer
+                                src={song.url}
+                                controls
+                            /> */}
 
                             {sessionLinks}
                         </div>
                     )
                 })}
                 {version && (<>
-                {/* //{console.log(version)} */}
+                    {/* //{console.log(version)} */}
                     {version.map((song, index) => {
-                        if(!song){
+                        if (!song) {
                             return null;
                         }
                         //console.log(song)
-                    //console.log(user.username)
-                    let sessionLinks;
-                    if(sessionUser){
-                        if(sessionUser.id === song.userId){
-                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
-                            <button className='delete'
-                            onClick={async (e)=>{
-                                await dispatch(deleteSong(song))
-                                return history.push("/")
+                        //console.log(user.username)
+                        let sessionLinks;
+                        if (sessionUser) {
+                            if (sessionUser.id === song.userId) {
+                                sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                                    <button className='delete'
+                                        onClick={async (e) => {
+                                            await dispatch(deleteSong(song))
+                                            return history.push("/")
+                                        }
+                                        }
+                                    >Delete</button></div>)
                             }
-                            }
-                            >Delete</button></div>)
                         }
-                    }
-                    return (
-                        <div className='song'>
-                            <NavLink to={`/songs/${song.id}`} key={index}>
-                                <p>{`${song.title}`}</p>
-                            </NavLink>
-                                <img className="songCover"src={song.songCover}/>
+                        return (
+                            <div className='song'>
+                                <NavLink to={`/songs/${song.id}`} key={index}>
+                                    <p>{`${song.title}`}</p>
+                                </NavLink>
+                                <img className="songCover" src={song.songCover} />
                                 <p>Genre: {`${song.genre}`}</p>
 
                                 {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
-                                <ReactAudioPlayer
+                                {/* <ReactAudioPlayer
                                     src={song.url}
                                     controls
-                                />
+                                /> */}
 
-                            {sessionLinks}
-                        </div>
-                    )
-                })}
+                                {sessionLinks}
+                            </div>
+                        )
+                    })}
                 </>)}
             </div>
 

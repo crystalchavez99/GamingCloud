@@ -50,7 +50,7 @@ function ProfilePage() {
                                                     <p>{`${song.title}`}</p>
                                                 </NavLink>
                                                 <p>{song.genre}</p>
-                                                <ReactAudioPlayer controls src={song.url} />
+                                                {/* <ReactAudioPlayer controls src={song.url} /> */}
                                             </div>
                                         </div>
 

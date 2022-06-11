@@ -15,7 +15,7 @@ import EditPage from "./components/EditPage";
 import ProfilePage from "./components/ProfilePage";
 import ErrorPage from "./components/404Page";
 import ReactAudioPlayer from 'react-audio-player';
-
+import ReactPlayer from "./components/ReactPlayer/ReactPlayer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,7 +57,7 @@ function App() {
           </Route>
         </Switch>
       )}
-
+  <ReactPlayer/>
     </>
   );
 }

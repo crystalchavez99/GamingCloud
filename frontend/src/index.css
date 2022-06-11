@@ -16,3 +16,11 @@ html,body{
     display: flex;
     flex-direction: column;
 }
+audio{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/
+    height: 40px;
+    background: grey;
+}
