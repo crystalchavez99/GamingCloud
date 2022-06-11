@@ -38,14 +38,8 @@ function ProfilePage() {
             </div>
             <div className='profilecontent'>
                 <h3>Your Songs</h3>
-                {artistInfo.map(artist => {
-                    if (!artist) {
-                        return null;
-                    }
-                    return (
                         <div className='artistsong'>
-                            {artistInfo?.map(song => {
-                                if (artist.id === song.userId) {
+                            {userProfile?.Songs?.map(song => {
                                     return (
                                         <div className='singsongInfo'>
                                             <div className='songImg'>
@@ -61,15 +55,13 @@ function ProfilePage() {
                                         </div>
 
                                     )
-                                }
 
 
                             })}
                         </div>
 
-                    )
-                }
-                )}
+
+
             </div>
         </div>
     )

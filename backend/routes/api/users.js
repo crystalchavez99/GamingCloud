@@ -44,7 +44,7 @@ router.get('/:username',asyncHandler(async(req,res)=>{
   console.log(`inside route`)
     const user = await User.findOne({
       where: {username},
-      // include: [db.Song]
+      include: [db.Song]
     });
     console.log('FOUND THE USER',user)
     return res.json({user});

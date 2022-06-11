@@ -1,7 +1,8 @@
 // frontend/src/App.js
 import React, { useState, useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { getSong } from "./store/song";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from "./components/SplashPage";
@@ -13,6 +14,7 @@ import SongDetail from "./components/SongDetail";
 import EditPage from "./components/EditPage";
 import ProfilePage from "./components/ProfilePage";
 import ErrorPage from "./components/404Page";
+import ReactAudioPlayer from 'react-audio-player';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/upload">
-            <UploadPage user={sessionUser}/>
+            <UploadPage user={sessionUser} />
           </Route>
           <Route exact path="/songs">
             <ListSongPage />
@@ -55,6 +57,7 @@ function App() {
           </Route>
         </Switch>
       )}
+
     </>
   );
 }
