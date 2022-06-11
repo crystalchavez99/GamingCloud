@@ -1,21 +1,31 @@
-body{
-    display: inline;
-}
-.login{
+#login{
     display: flex;
-    margin-top: 15%;
     justify-content: center;
-    align-items: center;
-    color: #999;
 }
-.login > form{
-    border: 1px solid #44d62c;
+.auth{
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#form-login{
+    /* border: 1px solid #44d62c;
     box-sizing: border-box;
     width:250px;
     text-align: center;
-    padding: 1rem;
+    padding: 1rem; */
+    border: 1px solid #44d62c;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 350px;
+    height: 425px;
+    padding: 5rem;
 }
-.login input{
+#login input{
     padding: 5px;
     margin:10px 0;
     border:0;
@@ -38,4 +48,22 @@ body{
 }
 .loginbutton:hover, .demouserbutton:hover{
     color: white;
+}
+.errors{
+    color:red;
+    padding-bottom: 5px;
+}
+#login p{
+    text-align: center;
+    color: #999;
+}
+
+#login a{
+    text-decoration: none;
+    color:#44d62c;
+    font-weight: 700;
+}
+#login a:hover{
+    opacity: 1;
+    color: #999;
 }

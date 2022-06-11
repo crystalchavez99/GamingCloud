@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A clone of SoundCloud. (Will Update Soon) [Live Link](https://gamingcloud.herokuapp.com/)",
   "main": "index.js",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
@@ -24,7 +25,9 @@
   },
   "homepage": "https://github.com/crystalchavez99/GamingCloud#readme",
   "dependencies": {
+    "aws-sdk": "^2.1152.0",
     "buffer": "^6.0.3",
+    "multer": "^1.4.5-lts.1",
     "react-jinke-music-player": "^4.24.2"
   }
 }

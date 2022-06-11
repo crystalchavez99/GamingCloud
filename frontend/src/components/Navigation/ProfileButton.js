@@ -4,10 +4,18 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink } from "react-router-dom";
 import './Navigation.css';
+import { Button, Menu, MenuItem } from '@mui/material';
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-
+  const [anchor, setAnchor] = useState(null)
+  const open = Boolean(anchor)
+  const handleOpen = e => {
+    setAnchor(e.currentTarget)
+  }
+  const handleClose = e => {
+    setAnchor(null)
+  }
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -32,19 +40,37 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className="userprofile">
-        <i className="fas fa-user-circle" />
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li><NavLink to={`/profile/${user.username}`}>Profile</NavLink></li>
-          <li>
-            <button onClick={logout} className="logout">Log Out</button>
-          </li>
-        </ul>
-      )}
+       {user && <><li>
+          <Button
+            id="basic-button"
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleOpen}>
+                Profile
+            {/* <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+          </NavLink> */}
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchor}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}>
+            <MenuItem onClick={handleClose}>
+              <NavLink to={`/profile/${user.username}`}exact={true} activeClassName='active'>
+                <i className="fa-solid fa-user">
+                  My Profile
+                </i>
+              </NavLink>
+
+            </MenuItem>
+            <MenuItem onClick={handleClose}><button onClick={logout} className="logout">Log Out</button></MenuItem>
+          </Menu>
+        </li>
+        </>}
     </>
   );
 }

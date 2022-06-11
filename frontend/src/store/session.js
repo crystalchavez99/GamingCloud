@@ -25,17 +25,24 @@ const removeUser = () => {
 // }
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
-  const response = await csrfFetch("/api/users", {
+  console.log('thunk action')
+  const { username, email, password, image } = user;
+  const formData = new FormData()
+  formData.append("username",username)
+  formData.append("email",email)
+  formData.append("password",password)
+  if(image) formData.append("image",image)
+  const response = await csrfFetch("/api/users/", {
     method: "POST",
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
+  console.log('response thunk',response)
   const data = await response.json();
   dispatch(setUser(data.user));
+  console.log('thunk data',data)
   return response;
 };
 
@@ -85,9 +92,7 @@ const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state);
-      newState.user = action.payload;
-      return newState;
+      return { ...state, user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
