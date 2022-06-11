@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
             <ProfileButton user={sessionUser} />
-            <NavLink to="/upload" user={sessionUser}>Upload</NavLink>
+            <li><NavLink to="/upload" user={sessionUser}>Upload</NavLink></li>
             </>
         );
     } else {
@@ -34,10 +34,11 @@ function Navigation({ isLoaded }) {
                 </li>
                 <li>
                     <NavLink exact to="/">Home</NavLink>
-                    <NavLink to="/songs">Songs</NavLink>
-                    {isLoaded && sessionLinks}
-
                 </li>
+                <li>
+                <NavLink to="/songs">Songs</NavLink>
+                </li>
+                {isLoaded && sessionLinks}
             </ul>
         </div>
     );

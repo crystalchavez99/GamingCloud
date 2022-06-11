@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -34,31 +34,34 @@ function LoginFormPage() {
   }
 
   return (
-    <div className='login'>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+    <div id='login' className='auth'>
+      <form onSubmit={handleSubmit} id="form-login" >
+      <h1>Log In</h1>
+        <div className='errors'>
+            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+        </div>
         <label>
-          Username or Email
           <input
             type="text"
             value={credential}
+            placeholder="Email or Username"
             onChange={(e) => setCredential(e.target.value)}
-            required
+
           />
         </label>
         <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            placeholder="Your Password"
           />
         </label>
+        <div>
         <button type="submit" className="demouserbutton" onClick={demo}>Demo Login</button>
         <button type="submit" className='loginbutton'>Log In</button>
+        </div>
+        <p>Not a Gamingcloud Member? <a href="/signup">Sign up Here.</a></p>
       </form>
     </div>
   );

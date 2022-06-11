@@ -10,6 +10,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3.js')
 
 const validateSignup = [
     check('email')
@@ -39,23 +40,26 @@ router.get('/',asyncHandler(async(req,res)=>{
 }));
 router.get('/:username',asyncHandler(async(req,res)=>{
   const username = req.params.username;
-  console.log('username',username)
+  console.log('USERNAME ROUTE',username)
   console.log(`inside route`)
     const user = await User.findOne({
       where: {username},
       include: [db.Song]
     });
-    console.log('found',user)
+    console.log('FOUND THE USER',user)
     return res.json({user});
 }));
 
 // Sign up
 router.post(
     '/',
+    singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
+      console.log('ENTERED BACKEND FOR SIGN UP')
       const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
+      const profilePicture  = await singlePublicFileUpload(req.file)
+      const user = await User.signup({ email, username, password, profilePicture});
 
       await setTokenCookie(res, user);
 

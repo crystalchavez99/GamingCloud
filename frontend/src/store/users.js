@@ -3,13 +3,13 @@ const LOADUSER = 'user/LOADUSER';
 const addUsers = users => {
     return {
         type: ADDUSERS,
-        users
+        payload:users
     }
 }
 const loadUser = user => {
     return {
         type: LOADUSER,
-        user
+        payload:user
     }
 }
 export const getAllUsers = () => async (dispatch) => {
@@ -24,36 +24,29 @@ export const getAllUsers = () => async (dispatch) => {
 }
 
 export const getUser = user => async dispatch =>{
-    console.log('get user',user)
     const response = await fetch(`/api/users/${user}`);
-    console.log('response usre',response)
     if(response.ok){
-        const data = await response.json();
-        console.log('data user', data)
-        dispatch(loadUser(data.user))
-        return data
+        const user = await response.json();
+        dispatch(loadUser(user.user))
     }
+    return response
 }
-const initialState = { user: null };
+const initialState = {};
 
 const userReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case ADDUSERS: {
-            const listUsers = {};
-            action.users.forEach(user => {
-                listUsers[user.id] = user;
+            newState = {...state};
+            action.payload.forEach(user => {
+                newState[user.id] = user;
             });
-            return { ...listUsers, ...state.users };
+            return { ...newState, ...state };
         }
         case LOADUSER: {
-            return {
-                ...state,
-                [action.user]: {
-                  ...state[action.user.id],
-                  ...action.user
-                }
-              };
+            newState = {...state};
+            newState[action.payload.id] = action.payload;
+            return newState;
         }
         default:
             return state;
