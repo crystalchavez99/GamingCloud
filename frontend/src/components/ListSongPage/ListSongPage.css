@@ -11,21 +11,26 @@ h1{
     flex-wrap: wrap;
 }
 .song{
-    margin: 10px;
-    width: 300px;
-    text-align: center;
-    color: #999;
-}
-.song img, .song audio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 1rem;
     width: 200px;
+    height: 250px;
 }
 .song img{
-    height: 200px;
+    text-align: center;
+    width: 200px;
+    height: 250px;
 }
+
 
 .edit, .delete{
     background-color: #44d62c;
     color: #000;
+    text-decoration: none;
     line-height: 16px;
     border: 0;
     box-shadow: none;
@@ -37,4 +42,35 @@ h1{
 }
 .edit:hover, .delete:hover{
     color: white;
+}
+
+#image-play{
+    position:relative
+}
+#image-play:hover, #image-play i{
+    display:block;
+
+}
+#image-play > i{
+    position : absolute;
+    display: none;
+    margin:0 auto; left:0px;
+    right:0px;
+    z-index:100
+}
+.song-information{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    line-break: normal;
+}
+.song-information p {
+    text-align: left;
+    margin: 0;
+}
+.song-information a{
+    text-decoration: none;
+    color:#44d62c;
 }

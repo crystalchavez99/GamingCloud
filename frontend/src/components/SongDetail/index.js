@@ -1,36 +1,23 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { getAllSongs, getSong } from "../../store/song";
-import ReactAudioPlayer from 'react-audio-player';
+import { useParams } from "react-router-dom";
+import { getAllSongs } from "../../store/song";
 import { NavLink } from "react-router-dom";
 import './SongDetail.css';
-import { deleteComment, getAllComments, getComment } from "../../store/comments";
+import { deleteComment, getAllComments } from "../../store/comments";
 import CommentForm from "../CommentFormPage";
 import { restoreUser } from "../../store/session";
 
 
 function SongDetail() {
     const sessionUser = useSelector(state => state.session.user);
-    //console.log(sessionUser)
     const { songId } = useParams();
-    // console.log(songId)
     const dispatch = useDispatch();
-    const history = useHistory();
     const songs = useSelector((state) => Object.values(state.song));
-    //console.log('songs', songs)
     const comments = useSelector((state) => Object.values(state.comment));
-    //console.log('comments', comments)
 
 
-    // const songComments = comments.find(comment=>{
-    //     //console.log(comment)
-    //     if(comment.songId === parseInt(songId)){
-    //         return {comment};
-    //     }
-    // })
-    // console.log(songComments)
-    // console.log(`songComments`,songComments)
+
     useEffect(() => {
         dispatch(getAllSongs());
         dispatch(restoreUser())
@@ -46,10 +33,9 @@ function SongDetail() {
         <div className="songdetail">
             {songs.map(song => {
 
-                //console.log(song)
+
                 if (parseInt(songId) === song.id) {
-                    //console.log(song.Comments)
-                    //console.log("MATCH")
+
                     return (
                         <div className="single-song">
                             <div className="songINFO">
@@ -61,7 +47,6 @@ function SongDetail() {
                                 <img src={song.songCover} />
                             </div>
                             <div className="musicplayer">
-                            {/* <ReactAudioPlayer src={song.url} controls /> */}
                             </div>
                             <div className="commentINFO">
                                 <h2>COMMENTS</h2>
@@ -82,7 +67,6 @@ function SongDetail() {
                                         }
                                     }
                                     if (comment.songId === parseInt(songId)) {
-                                        //console.log(comment.User)
                                         return (
                                             <div className="comment">
                                                 <div className="commenttext">

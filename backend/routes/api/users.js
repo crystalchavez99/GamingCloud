@@ -40,13 +40,10 @@ router.get('/',asyncHandler(async(req,res)=>{
 }));
 router.get('/:username',asyncHandler(async(req,res)=>{
   const username = req.params.username;
-  console.log('USERNAME ROUTE',username)
-  console.log(`inside route`)
     const user = await User.findOne({
       where: {username},
       include: [db.Song]
     });
-    console.log('FOUND THE USER',user)
     return res.json({user});
 }));
 
@@ -56,7 +53,6 @@ router.post(
     singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
-      console.log('ENTERED BACKEND FOR SIGN UP')
       const { email, password, username } = req.body;
       const profilePicture  = await singlePublicFileUpload(req.file)
       const user = await User.signup({ email, username, password, profilePicture});

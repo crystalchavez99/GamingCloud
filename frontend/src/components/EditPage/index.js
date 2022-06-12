@@ -1,17 +1,14 @@
 import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addSong, editSong } from '../../store/song';
+import { editSong } from '../../store/song';
 import { useParams } from 'react-router-dom';
-let comp;
-let chomp;
 function EditPage({song, user }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const { songId } = useParams();
     const songs = useSelector((state) => state.song);
     song = songs[songId];
-    //console.log(sessionUser.id)
     const [title, setTitle] = useState(song.title);
     const [genre, setGenre] = useState(song.genre);
     const [url, setUrl] = useState(song.url);
@@ -38,23 +35,9 @@ function EditPage({song, user }) {
             errors.push('Please provide a songCover!')
         }
         setErrors(errors)
-        //console.log(errors)
     }, [title, genre, url, songCover]);
 
-    // useEffect(()=>{
-    //     if(audio){
-    //         comp = new Audio(audio);
-    //         setUrl(comp.src)
-    //         //console.log('url',url)
-    //         //console.log('audio',comp.src)
-    //     }
-    //     if(image){
-    //         chomp = new Image(image);
-    //         setSongCover(chomp.src)
-    //         //console.log('url',url)
-    //         //console.log('image',chomp.src)
-    //     }
-    // },[audio,image])
+
     if(!sessionUser){
         return null;
     }
@@ -137,7 +120,6 @@ function EditPage({song, user }) {
                         placeholder="Url"
                         required
                          />
-                         {/* {console.log(url)} */}
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>

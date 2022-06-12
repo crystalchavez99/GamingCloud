@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const ADDSONGS = 'songs/ADDSONGS';
+const LOADSONGS = 'songs/LOADSONGS';
 const ADDONESONG = 'songs/ADDONESONG';
 const REMOVESONG = 'songs/REMOVESONG';
 const PLAYINGSONG = 'songs/PLAYINGSONG'
@@ -12,7 +12,7 @@ const addOneSong = song =>{
 }
 const addSongs = songs =>{
     return {
-    type: ADDSONGS,
+    type: LOADSONGS,
     songs
     }
 }
@@ -22,10 +22,10 @@ const removeSong = song =>{
         song
     }
 }
-const currentSong = song =>{
+const currentSong = songPlay =>{
     return {
         type: PLAYINGSONG,
-        song
+        songPlay
     }
 }
 export const deleteSong = song => async dispatch =>{
@@ -38,13 +38,12 @@ export const deleteSong = song => async dispatch =>{
     }
 }
 export const getAllSongs = () =>async(dispatch) =>{
-    const response = await fetch('/api/songs')
+    const response = await fetch('/api/songs/all')
 
     if(response.ok){
         const data = await response.json();
         //console.log(data);
         dispatch(addSongs(data.songs));
-        return response
     }
 }
 
@@ -74,25 +73,33 @@ export const editSong = song => async dispatch =>{
     }
 }
 
-export const getSong = songId => async dispatch =>{
+export const playSong = songId => async dispatch =>{
     console.log('entered current song thunk')
     const response = await fetch(`/api/songs/${songId}`);
 
     if(response.ok){
-        const data = await response.json();
-        dispatch(currentSong(data.song))
-        return data.song;
+        const song = await response.json();
+        console.log('get song data',song)
+        dispatch(currentSong(song))
+        console.log('after dispatch',song)
+        return song;
     }
+    return response;
 }
 const songReducer = (state =[], action)=>{
     let newState;
     switch(action.type){
-        case ADDSONGS: {
-            const listSongs = {};
+        case LOADSONGS: {
+            newState = {...state};
+            console.log('load',newState)
+            const songs = {};
             action.songs.forEach(song=>{
-                listSongs[song.id] = song;
+                songs[song.id] = song;
             })
-            return {...listSongs,...state.songs};
+            console.log('songs',songs)
+            newState.songs = songs;
+            console.log('newState song is',newState.songs)
+            return newState.songs;
         }
         case ADDONESONG:
             newState = {...state, [action.song.id]: action.song};
@@ -101,6 +108,11 @@ const songReducer = (state =[], action)=>{
              newState = {...state};
              delete newState[action.song.id]
              return {...newState}
+        case PLAYINGSONG:
+            newState = state;
+            console.log('play newState',newState)
+            newState.playingSong = action.songPlay;
+            return newState;
         default:
             return state;
     }

@@ -49,6 +49,7 @@
 .singsongInfo{
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 .songCatch{
     margin-left: 10px;
@@ -56,4 +57,7 @@
 }
 .songCatch a{
     padding: 0;
+    text-decoration: none;
+    color:#44d62c;
+    font-weight: 700;
 }

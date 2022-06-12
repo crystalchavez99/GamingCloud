@@ -25,11 +25,10 @@
 }
 .splash  .tracks p{
     text-align: left;
-    padding-left: 30px;
 }
 .tracks{
     border-bottom: 5px solid grey;
-    padding: 4px;
+    padding:1rem;
 }
 span{
     transition: color 2s;
@@ -44,7 +43,6 @@ span:hover{
     scroll-snap-type: x mandatory;
 }
 .splash .songList{
-    padding-left: 30px;
     float: left;
     flex-wrap: nowrap;
 }

@@ -5,12 +5,23 @@ const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const {requireAuth} = require("../../utils/auth");
 
- router.get('/',asyncHandler(async(req,res)=>{
+ router.get('/all',asyncHandler(async(req,res)=>{
      const songs = await db.Song.findAll({
        include: [db.User,db.Comment]
      });
      return res.json({songs});
  }));
+ router.get(
+  '/',
+  (req, res) => {
+    const { song } = req;
+    if (song) {
+      return res.json({
+        song
+      });
+    } else return res.json({});
+  }
+);
  router.post(`/`,asyncHandler(async (req,res)=>{
     const {title, url, genre, songCover,userId} = req.body;
      const song = await db.Song.create({
@@ -24,9 +35,9 @@ const {requireAuth} = require("../../utils/auth");
  }))
  router.get(`/:songId`,asyncHandler(async(req,res)=>{
      const id = parseInt(req.params.songId);
-     const song = await db.Song.findByPk(id, {
-      include: [{ model: db.User},]
-    });
+      const song = await db.Song.findByPk(id, {
+       include: [{ model: db.User},]
+     });
      return res.json(song)
  }))
 

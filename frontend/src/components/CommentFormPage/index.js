@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { addComment } from '../../store/comments';
 
 function CommentForm({ song }) {
-    //console.log('comment song',song)
     const sessionUser = useSelector(state => state.session.user);
     const [body, setBody] = useState('');
     const history = useHistory();

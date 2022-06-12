@@ -1,20 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import ReactAudioPlayer from 'react-audio-player';
 import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 import { useEffect } from 'react';
-import { getAllSongs } from '../../store/song';
-import starter from '../../images/default.jpg';
 import { getUser } from '../../store/users';
 function ProfilePage() {
     const dispatch = useDispatch();
     const artist = useParams();
     const artistInfo = useSelector(state => Object.values(state.user))
-    console.log('PAGE ARTIST', artistInfo);
-    console.log('ARITST PARMA',artist);
     const userProfile = artistInfo[0];
-    console.log('USER PAGE IS', userProfile)
     useEffect(() => {
         dispatch(getUser(artist.userName))
     }, [dispatch, artist])
@@ -32,7 +26,7 @@ function ProfilePage() {
         <div className="profilepage">
             <div className='profilebanner'>
                 <div className='artistide'>
-                    <img src={userProfile?.profilePicture} />
+                    <img src={userProfile?.profilePicture} alt={userProfile?.username} />
                     <p>{userProfile?.username}</p>
                 </div>
             </div>
@@ -43,13 +37,12 @@ function ProfilePage() {
                                     return (
                                         <div className='singsongInfo'>
                                             <div className='songImg'>
-                                                <img src={song.songCover} />
+                                                <img src={song.songCover} alt={song?.title}/>
                                             </div>
                                             <div className='songCatch'>
                                                 <NavLink to={`/songs/${song.id}`}>
-                                                    <p>{`${song.title}`}</p>
+                                                    <p>{`${song.title.toUpperCase()}`}</p>
                                                 </NavLink>
-                                                <p>{song.genre}</p>
                                                 {/* <ReactAudioPlayer controls src={song.url} /> */}
                                             </div>
                                         </div>

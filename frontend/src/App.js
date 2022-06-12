@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { getSong } from "./store/song";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from "./components/SplashPage";
@@ -14,13 +13,14 @@ import SongDetail from "./components/SongDetail";
 import EditPage from "./components/EditPage";
 import ProfilePage from "./components/ProfilePage";
 import ErrorPage from "./components/404Page";
-import ReactAudioPlayer from 'react-audio-player';
 import ReactPlayer from "./components/ReactPlayer/ReactPlayer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
   return (

@@ -25,7 +25,6 @@ const removeUser = () => {
 // }
 
 export const signup = (user) => async (dispatch) => {
-  console.log('thunk action')
   const { username, email, password, image } = user;
   const formData = new FormData()
   formData.append("username",username)
@@ -39,10 +38,8 @@ export const signup = (user) => async (dispatch) => {
     },
     body: formData,
   });
-  console.log('response thunk',response)
   const data = await response.json();
   dispatch(setUser(data.user));
-  console.log('thunk data',data)
   return response;
 };
 
@@ -75,16 +72,7 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-// export const getAllUsers =() =>async(dispatch) =>{
-//   const response = await fetch('/api/users')
 
-//   if(response.ok){
-//       const data = await response.json();
-//       //console.log('data usre',data);
-//       dispatch(addUsers(data.users));
-//       return data
-//   }
-// }
 
 const initialState = { user: null };
 

@@ -1,19 +1,17 @@
 //import useParams from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
-import { deleteSong, getAllSongs, getSong } from '../../store/song.js';
+import { deleteSong, getAllSongs,playSong } from '../../store/song.js';
 import './ListSongPage.css';
 import { NavLink } from 'react-router-dom';
-import ReactAudioPlayer from 'react-audio-player';
 import { useHistory } from 'react-router-dom';
 
 function ListSongPage({ version }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const sessionUser = useSelector(state => state.session.user);
-    const songs = useSelector((state) => Object.values(state.song));
-    //console.log(songs)
-
+    const sessionUser = useSelector(state => state?.session?.user);
+    const songs = useSelector((state) => Object.values(state?.song));
+    //console.log('state',songs)
     useEffect(() => {
         dispatch(getAllSongs());
     }, [dispatch]);
@@ -21,18 +19,19 @@ function ListSongPage({ version }) {
     if (!songs) {
         return null;
     }
+    if(songs?.playingSong){
+        return null;
+    }
 
     return (
         <div className='trackList'>
             <h1 className='yoursongs'>All Songs</h1>
             <div className='songList'>
-                {!version && songs.map((song, index) => {
-                    const user = song.User;
-                    //console.log(user.username)
+                {!version && songs?.map((song, index) => {
                     let sessionLinks;
                     if (sessionUser) {
-                        if (sessionUser.id === song.userId) {
-                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                        if (sessionUser.id === song?.userId) {
+                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song?.id}/edit`} className="edit">Edit</NavLink>
                                 <button className='delete'
                                     onClick={async (e) => {
                                         await dispatch(deleteSong(song))
@@ -44,12 +43,12 @@ function ListSongPage({ version }) {
                     }
                     return (
                         <div className='song'>
-                            <img className="songCover" src={song.songCover} />
+                            <img className="songCover" src={song?.songCover} alt={song?.title} onClick={async e => await dispatch(playSong(song?.id))}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
-                                <p>{`${song.title}`}</p>
+                                <p>{`${song?.title}`}</p>
                             </NavLink>
-                            <p>Genre: {`${song.genre}`}</p>
+                            <p>{`${song?.User?.username}`}</p>
                             </div>
 
                             {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
@@ -60,16 +59,16 @@ function ListSongPage({ version }) {
 
                             {sessionLinks}
                         </div>
+
                     )
+
                 })}
                 {version && (<>
-                    {/* //{console.log(version)} */}
                     {version.map((song, index) => {
                         if (!song) {
                             return null;
                         }
-                        //console.log(song)
-                        //console.log(user.username)
+
                         let sessionLinks;
                         if (sessionUser) {
                             if (sessionUser.id === song.userId) {
@@ -88,7 +87,12 @@ function ListSongPage({ version }) {
                                 <NavLink to={`/songs/${song.id}`} key={index}>
                                     <p>{`${song.title}`}</p>
                                 </NavLink>
-                                <img className="songCover" src={song.songCover} />
+                                <div id="image-play">
+                                    <img className="songCover" src={song.songCover} alt={song?.title}/>
+                                    <div>
+                                    <i class="fa-solid fa-circle-play"></i>
+                                    </div>
+                                </div>
                                 <p>Genre: {`${song.genre}`}</p>
 
                                 {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}

@@ -16,10 +16,10 @@ function ProfileButton({ user }) {
   const handleClose = e => {
     setAnchor(null)
   }
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
   useEffect(() => {
     if (!showMenu) return;
