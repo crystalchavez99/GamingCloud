@@ -4,6 +4,26 @@ const db = require('../../db/models');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const {requireAuth} = require("../../utils/auth");
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
+const validateSong = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a title.'),
+  check('url')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a url.'),
+  check('songCover')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a song cover.'),
+  check('genre')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a genre.'),
+  handleValidationErrors
+];
+
 
  router.get('/all',asyncHandler(async(req,res)=>{
      const songs = await db.Song.findAll({
@@ -22,7 +42,8 @@ const {requireAuth} = require("../../utils/auth");
     } else return res.json({});
   }
 );
- router.post(`/`,asyncHandler(async (req,res)=>{
+ router.post(`/`,validateSong,asyncHandler(async (req,res)=>{
+  console.log('enter route')
     const {title, url, genre, songCover,userId} = req.body;
      const song = await db.Song.create({
          title,
