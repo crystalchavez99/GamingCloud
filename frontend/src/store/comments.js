@@ -25,7 +25,7 @@ const removeComment = comment =>{
 }
 
 export const deleteComment = comment => async dispatch =>{
-    //console.log(comment)
+    //
     const response = await csrfFetch(`/api/comments/${comment.id}`,{
         method: 'DELETE'
     });
@@ -40,7 +40,7 @@ export const getAllComments = () =>async(dispatch) =>{
 
     if(response.ok){
         const data = await response.json();
-        //console.log(data);
+        //
         dispatch(addComments(data.comments));
         return response
     }
@@ -55,7 +55,7 @@ export const addComment = comment => async dispatch =>{
     });
     if(response.ok){
         const data = await response.json();
-        //console.log('add',data);
+        //
         dispatch(addOneComment(data.comment))
     }
 }

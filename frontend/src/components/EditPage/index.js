@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { editSong } from '../../store/song';
+import { editSong, getSong } from '../../store/song';
 import { useParams } from 'react-router-dom';
 function EditPage({song, user }) {
     const dispatch = useDispatch();
@@ -15,11 +15,14 @@ function EditPage({song, user }) {
     const [songCover, setSongCover] = useState(song.songCover);
     const [errors, setErrors] = useState([]);
     const [audio, setAudio] = useState(song.audio)
-    console.log(song,'edit song')
+
     // const [audio, setAudio] = useState();
     // const [image, setImage] = useState();
     const history = useHistory();
 
+    // useEffect(()=>{
+    //     dispatch(getSong(song?.id))
+    // },[dispatch,song])
 
     if(!sessionUser){
         return null;
@@ -37,7 +40,7 @@ function EditPage({song, user }) {
         }
         dispatch(editSong(payload))
         .then((res)=>{
-            console.log('cjeck res',res)
+
             if(!res?.ok){
               setErrors(res?.errors)
             }else{
@@ -48,7 +51,7 @@ function EditPage({song, user }) {
         // return dispatch(editSong(payload))
         // .then(()=>{
         //     setErrors([]);
-        //     console.log("DONE EDITING")
+        //
         //     history.push('/songs');
         // })
         // .catch(async (res) => {

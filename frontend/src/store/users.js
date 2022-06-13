@@ -17,7 +17,7 @@ export const getAllUsers = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('data usre',data);
+        //
         dispatch(addUsers(data.users));
         return data
     }

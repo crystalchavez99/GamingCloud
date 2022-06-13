@@ -26,13 +26,13 @@ const removeUser = () => {
 
 export const signup = (user) => async (dispatch) => {
   const { username, email, password, image } = user;
-  console.log('sing up',user)
+
   const formData = new FormData()
   formData.append("username",username)
   formData.append("email",email)
   formData.append("password",password)
   if(image) formData.append("image",image)
-  console.log(formData,'formdata')
+
   const response = await csrfFetch("/api/users/", {
     method: "POST",
     headers: {

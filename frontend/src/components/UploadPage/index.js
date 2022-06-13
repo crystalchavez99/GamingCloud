@@ -6,7 +6,7 @@ import { addSong } from '../../store/song';
 
 function UploadPage({ user }) {
     const sessionUser = useSelector(state => state.session.user);
-    //console.log(sessionUser.id)
+    //
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
      const [url, setUrl] = useState('');
@@ -20,14 +20,14 @@ function UploadPage({ user }) {
     //     if(audio){
     //         comp = new Audio(audio);
     //         setUrl(comp.src)
-    //         //console.log('url',url)
-    //         //console.log('audio',comp.src)
+    //         //
+    //         //
     //     }
     //     if(image){
     //         chomp = new Image(image);
     //         setSongCover(chomp.src)
-    //         //console.log('url',url)
-    //         //console.log('image',chomp.src)
+    //         //
+    //         //
     //     }
     // },[audio,image])
     if (!sessionUser) {
@@ -38,7 +38,7 @@ function UploadPage({ user }) {
             </>
         );
     }
-    // console.log(audio)
+    //
     const handleSubmit = async e => {
         e.preventDefault();
         const payload = {
@@ -109,7 +109,7 @@ function UploadPage({ user }) {
                     <label>
                         Audio
                         <input type="file" onChange={updateFile} required/>
-                         {/* {console.log(url)} */}
+                         
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>

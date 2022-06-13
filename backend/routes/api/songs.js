@@ -41,7 +41,7 @@ const validateSong = [
   }
 );
  router.post(`/`,singleMulterUpload("audio"),validateSong,asyncHandler(async (req,res)=>{
-  console.log('entered post')
+
   const {title, genre, userId,songCover} = req.body;
   const url =  await singlePublicFileUpload(req.file);
   const song = await db.Song.create({
@@ -51,12 +51,12 @@ const validateSong = [
       genre,
       userId
   })
-  console.log('song,',song)
+
      return res.json({song})
  }))
 
  router.get(`/:songId`,asyncHandler(async(req,res)=>{
-  console.log('enter get one song')
+
      const id = parseInt(req.params.songId);
       const song = await db.Song.findByPk(id, {
        include: [{ model: db.User},]
@@ -65,6 +65,7 @@ const validateSong = [
  }))
 
  router.put(`/:songId`, validateSong,asyncHandler(async(req,res)=>{
+  console.log('enter edit route')
     const id = parseInt(req.params.songId, 10);
     const song = await db.Song.findByPk(id, {
       include: [{ model: db.User},]
@@ -77,7 +78,7 @@ const validateSong = [
         songCover
     });
     await song.save();
-    res.json(song);
+    return res.json(song);
  }))
  router.delete(`/:songId`, asyncHandler(async(req,res)=>{
     const id = parseInt(req.params.songId, 10);
