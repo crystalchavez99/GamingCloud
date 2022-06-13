@@ -40,16 +40,6 @@ function SplashPage() {
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
             </div>
-            <div className='tracks'>
-                <p>Country</p>
-                <p>All of Country. Just for you.</p>
-                <ListSongPage version={country}/>
-            </div>
-            <div className='tracks'>
-                <p>Greogrian</p>
-                <p>All of Gregorian. Just for you.</p>
-                <ListSongPage version={gregorian}/>
-            </div>
             {/* <div className='player'>
                 <ReactAudioPlayer
                     src="https://res.cloudinary.com/dreambssd/video/upload/v1649091553/Stardew_Valley_OST_-_Stardew_Valley_Overture_fd1jmc.mp4"

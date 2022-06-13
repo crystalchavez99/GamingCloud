@@ -14,47 +14,43 @@ function EditPage({song, user }) {
     const [url, setUrl] = useState(song.url);
     const [songCover, setSongCover] = useState(song.songCover);
     const [errors, setErrors] = useState([]);
+    const [audio, setAudio] = useState(song.audio)
+    console.log(song,'edit song')
     // const [audio, setAudio] = useState();
     // const [image, setImage] = useState();
     const history = useHistory();
-    useEffect(() => {
-        const errors = [];
-        if (!title) {
-            errors.push('Please provide a title!')
-        }
-        if (!genre) {
-            errors.push('Please provide a genre!')
-        }
-        if (!url) {
-            errors.push('Please provide a url!')
-        }
-        if(songCover.length > 255){
-            errors.push('Too long of a song cover url!!')
-        }
-        if (!songCover) {
-            errors.push('Please provide a songCover!')
-        }
-        setErrors(errors)
-    }, [title, genre, url, songCover]);
 
 
     if(!sessionUser){
         return null;
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const payload = {
             ...song,
             title,
             genre,
-            url,
             songCover,
+            audio,
             userId: sessionUser.id
         }
-        dispatch(editSong(payload));
-        setErrors([]);
-        history.push("/songs");
+        return dispatch(editSong(payload))
+        .then(()=>{
+            setErrors([]);
+            history.push('/songs');
+        })
+        .catch(async (res) => {
+            console.log('res',res)
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+
+          })
+
+
+
+
+
     }
     // const addSongFile = (e) => {
     //     if (e.target.files[0]) {
@@ -68,6 +64,10 @@ function EditPage({song, user }) {
     //     }
 
     //   };
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setAudio(file);
+    };
     return (
         <div>
             <h1>Upload Page</h1>
@@ -90,7 +90,7 @@ function EditPage({song, user }) {
                         onChange={e => setTitle(e.target.value)}
                         value={title}
                         placeholder="Title"
-                        required>
+                        >
                     </input>
                     <label>
                         Genre
@@ -99,7 +99,7 @@ function EditPage({song, user }) {
                         onChange={e => setGenre(e.target.value)}
                         value={genre}
                         placeholder="Genre"
-                        required>
+                        >
                     </input>
                     <label>
                         Song Cover
@@ -108,18 +108,12 @@ function EditPage({song, user }) {
                         onChange={e => setSongCover(e.target.value)}
                         value={songCover}
                             placeholder="Song Cover"
-                            required
+
                              />
                     </label>
                     <label>
-                        Url
-                        <input
-                        type="url"
-                         onChange={e => setUrl(e.target.value)}
-                            value={url}
-                        placeholder="Url"
-                        required
-                         />
+                        Audio
+                        <input type="file" onChange={updateFile}/>
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>

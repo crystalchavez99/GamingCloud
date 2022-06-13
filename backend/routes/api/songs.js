@@ -6,15 +6,13 @@ const router = express.Router();
 const {requireAuth} = require("../../utils/auth");
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const {multipleMulterUpload, singlePublicFileUpload, singleMulterUpload} = require('../../awsS3.js')
 
 const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Please provide a title.'),
-  check('url')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a url.'),
   check('songCover')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a song cover.'),
@@ -42,19 +40,24 @@ const validateSong = [
     } else return res.json({});
   }
 );
- router.post(`/`,validateSong,asyncHandler(async (req,res)=>{
-  console.log('enter route')
-    const {title, url, genre, songCover,userId} = req.body;
-     const song = await db.Song.create({
-         title,
-         songCover,
-         url,
-         genre,
-         userId
-     })
+ router.post(`/`,singleMulterUpload("audio"),validateSong,asyncHandler(async (req,res)=>{
+  console.log('entered post')
+  const {title, genre, userId} = req.body;
+  const url =  await singlePublicFileUpload(req.file);
+  const songCover =  await singlePublicFileUpload(req.file);
+  const song = await db.Song.create({
+      title,
+      songCover: songCover,
+      url: url,
+      genre,
+      userId
+  })
+  console.log('song,',song)
      return res.json({song})
  }))
+
  router.get(`/:songId`,asyncHandler(async(req,res)=>{
+  console.log('enter get one song')
      const id = parseInt(req.params.songId);
       const song = await db.Song.findByPk(id, {
        include: [{ model: db.User},]
@@ -62,7 +65,7 @@ const validateSong = [
      return res.json(song)
  }))
 
- router.put(`/:songId`, asyncHandler(async(req,res)=>{
+ router.put(`/:songId`, validateSong,asyncHandler(async(req,res)=>{
     const id = parseInt(req.params.songId, 10);
     const song = await db.Song.findByPk(id, {
       include: [{ model: db.User},]

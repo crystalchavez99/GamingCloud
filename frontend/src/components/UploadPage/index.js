@@ -3,40 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './UploadPage.css';
 import { addSong } from '../../store/song';
-let comp;
-let chomp;
+
 function UploadPage({ user }) {
     const sessionUser = useSelector(state => state.session.user);
     //console.log(sessionUser.id)
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
-    // const [audio, setAudio] = useState();
-    // const [image, setImage] = useState();
-    const [url, setUrl] = useState('');
-    const [songCover, setSongCover] = useState('');
+     const [url, setUrl] = useState('');
+     const [songCover, setSongCover] = useState('');
     const [errors, setErrors] = useState([]);
     const history = useHistory();
     const dispatch = useDispatch();
-    useEffect(() => {
-        const errors = [];
-        if (!title) {
-            errors.push('Please provide a title!')
-        }
-        if (!genre) {
-            errors.push('Please provide a genre!')
-        }
-        if (!url) {
-            errors.push('Please provide a url!')
-        }
-        if(songCover.length > 255){
-            errors.push('Too long of a song cover url!!')
-        }
-        if (!songCover) {
-            errors.push('Please provide a songCover!')
-        }
-        setErrors(errors)
-        //console.log(errors)
-    }, [title, genre, url, songCover]);
+    const [audio, setAudio] = useState("")
 
     // useEffect(()=>{
     //     if(audio){
@@ -66,26 +44,28 @@ function UploadPage({ user }) {
         const payload = {
             title,
             genre,
-            url,//: comp.src,
             songCover,
+            audio,
             userId: sessionUser.id
         }
-        await dispatch(addSong(payload));
-        setErrors([]);
-        history.push("/songs");
+        return dispatch(addSong(payload))
+        .then(()=>{
+            setErrors([]);
+            history.push('/songs');
+        })
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+
+          })
+
+
+
     }
-    // const addSongFile = (e) => {
-    //     if (e.target.files[0]) {
-    //       setAudio(URL.createObjectURL(e.target.files[0]));
-    //     }
-
-    //   };
-    // const addImageFile = (e) => {
-    //     if (e.target.files[0]) {
-    //         setSongCover(URL.createObjectURL(e.target.files[0]));
-    //     }
-
-    //   };
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setAudio(file);
+      };
 
     return (
         <div className='uploadPage'>
@@ -112,7 +92,6 @@ function UploadPage({ user }) {
                             onChange={e => setTitle(e.target.value)}
                             value={title}
                             placeholder="Title"
-                            required
                              />
                     </label>
                     <label>
@@ -121,28 +100,15 @@ function UploadPage({ user }) {
                             onChange={e => setGenre(e.target.value)}
                             value={genre}
                             placeholder="Genre"
-                            required
                              />
                     </label>
                     <label>
                         Song Cover
-                        <input
-                        type="url"
-                        onChange={e => setSongCover(e.target.value)}
-                        value={songCover}
-                            placeholder="Song Cover"
-                            required
-                             />
+                        <input type="url" onChange={e => setSongCover(e.target.value)} value={songCover} placeholder="Image URL" />
                     </label>
                     <label>
-                        Url
-                        <input
-                        type="url"
-                         onChange={e => setUrl(e.target.value)}
-                            value={url}
-                        placeholder="Url"
-                        required
-                         />
+                        Audio
+                        <input type="file" onChange={updateFile} required/>
                          {/* {console.log(url)} */}
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>

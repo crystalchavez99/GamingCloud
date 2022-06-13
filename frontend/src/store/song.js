@@ -4,113 +4,121 @@ const LOADSONGS = 'songs/LOADSONGS';
 const ADDONESONG = 'songs/ADDONESONG';
 const REMOVESONG = 'songs/REMOVESONG';
 const PLAYINGSONG = 'songs/PLAYINGSONG'
-const addOneSong = song =>{
-    return{
+const addOneSong = song => {
+    return {
         type: ADDONESONG,
         song
     }
 }
-const addSongs = songs =>{
+const addSongs = songs => {
     return {
-    type: LOADSONGS,
-    songs
+        type: LOADSONGS,
+        songs
     }
 }
-const removeSong = song =>{
+const removeSong = song => {
     return {
         type: REMOVESONG,
         song
     }
 }
-const currentSong = songPlay =>{
+const currentSong = songPlay => {
     return {
         type: PLAYINGSONG,
         songPlay
     }
 }
-export const deleteSong = song => async dispatch =>{
-    const response = await csrfFetch(`/api/songs/${song.id}`,{
+export const deleteSong = song => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${song.id}`, {
         method: 'DELETE'
     });
-    if(response.ok){
+    if (response.ok) {
         const data = await response.json();
         await dispatch(removeSong(data.song))
     }
 }
-export const getAllSongs = () =>async(dispatch) =>{
+export const getAllSongs = () => async (dispatch) => {
     const response = await fetch('/api/songs/all')
 
-    if(response.ok){
+    if (response.ok) {
         const data = await response.json();
         //console.log(data);
         dispatch(addSongs(data.songs));
     }
 }
 
-export const addSong = song => async dispatch =>{
-    const response = await csrfFetch(`/api/songs`,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(song)
+export const addSong = song => async dispatch => {
+    const {title,genre,songCover,audio,userId} = song;
+    console.log(song, 'song thunk')
+    const formData = new FormData()
+    formData.append("title",title)
+    formData.append("genre",genre)
+    formData.append("userId",userId)
+    formData.append("songCover",songCover)
+    if(audio) formData.append("audio",audio)
+    const response = await csrfFetch(`/api/songs/`,{
+        method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
     });
-    if(response.ok){
         const data = await response.json();
-        //console.log('add',data);
+        console.log('add', data);
         dispatch(addOneSong(data.song))
-    }
+        console.log('data', data)
+        return response;
+
 }
 
-export const editSong = song => async dispatch =>{
-    const response = await csrfFetch(`/api/songs/${song.id}`,{
+export const editSong = song => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${song.id}`, {
         method: "PUT",
         body: JSON.stringify(song)
     });
-    if(response.ok){
+    if (response.ok) {
         const data = await response.json();
         dispatch(addOneSong(data.song));
     }
 }
 
-export const playSong = songId => async dispatch =>{
+export const playSong = songId => async dispatch => {
     console.log('entered current song thunk')
     const response = await fetch(`/api/songs/${songId}`);
 
-    if(response.ok){
+    if (response.ok) {
         const song = await response.json();
-        console.log('get song data',song)
+        console.log('get song data', song)
         dispatch(currentSong(song))
-        console.log('after dispatch',song)
+        console.log('after dispatch', song)
         return song;
     }
     return response;
 }
-const songReducer = (state =[], action)=>{
+const songReducer = (state = [], action) => {
     let newState;
-    switch(action.type){
+    switch (action.type) {
         case LOADSONGS: {
-            newState = {...state};
-            console.log('load',newState)
+            newState = { ...state };
+            console.log('load', newState)
             const songs = {};
-            action.songs.forEach(song=>{
+            action.songs.forEach(song => {
                 songs[song.id] = song;
             })
-            console.log('songs',songs)
+            console.log('songs', songs)
             newState.songs = songs;
-            console.log('newState song is',newState.songs)
+            console.log('newState song is', newState.songs)
             return newState.songs;
         }
         case ADDONESONG:
-            newState = {...state, [action.song.id]: action.song};
-            return newState;
-         case REMOVESONG:
-             newState = {...state};
-             delete newState[action.song.id]
-             return {...newState}
+            return { ...state, [action.song.id]: action.song };;
+        case REMOVESONG:
+            newState = { ...state };
+            delete newState[action.song.id]
+            return { ...newState }
         case PLAYINGSONG:
             newState = state;
-            console.log('play newState',newState)
+            console.log('play newState', newState)
             newState.playingSong = action.songPlay;
             return newState;
         default:

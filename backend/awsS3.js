@@ -31,6 +31,7 @@ const singlePublicFileUpload = async (file) => {
 };
 
 const multiplePublicFileUpload = async (files) => {
+  console.log(typeof(files))
   return await Promise.all(
     files.map((file) => {
       return singlePublicFileUpload(file);
@@ -87,6 +88,8 @@ const singleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).single(nameOfKey);
 const multipleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).array(nameOfKey);
+
+
 
 module.exports = {
   s3,

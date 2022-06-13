@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { playSong } from '../../store/song';
 function ReactPlayer(){
     const playSongs = useSelector(state => state?.song?.playingSong)
+    console.log('current song XXXXXXXXXXXXXXXXXXXXXXXXXXX', playSongs)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(playSong(playSongs?.id))
-    },[dispatch])
+    },[dispatch,playSongs])
     return(
         <ReactAudioPlayer
          src={playSongs?.url}
