@@ -41,8 +41,8 @@ function SongDetail() {
                             <div className="songINFO">
                                 <div className="songtext">
                                     <h1>{song.title}</h1>
-                                    <p>{song.genre}</p>
-                                    <p>Artist:<NavLink to={`/profile/${song.User.username}`}>{`${song.User.username}`}</NavLink></p>
+                                    <p>Genre: {song.genre}</p>
+                                    <p id="user-navlink">Artist: <NavLink to={`/profile/${song.User.username}`}>{`${song.User.username}`}</NavLink></p>
                                 </div>
                                 <img src={song.songCover} />
                             </div>
@@ -73,6 +73,7 @@ function SongDetail() {
                                                     <p>{new Date(comment.createdAt).toDateString()}</p>
                                                 </div>
                                                 <p id="user-comment">{comment?.User?.username}</p>
+
                                                 {/* <p className="author">{comment.User.username}</p> */}
                                                 </div>
                                                 {sessionLinks}

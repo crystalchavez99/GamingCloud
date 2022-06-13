@@ -139,7 +139,7 @@ const songReducer = (state = [], action) => {
             return { ...newState }
         case PLAYINGSONG:
             newState = state;
-
+            newState.playingSong = "";
             newState.playingSong = action.songPlay;
             return newState;
         default:

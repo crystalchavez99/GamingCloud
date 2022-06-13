@@ -35,10 +35,12 @@ input, label {
 }
 .upload input{
     padding: 5px;
-    margin:10px 0;
-    border:0;
-    border-bottom:1px solid #eee;
-    border-radius:10px;
+    margin: 10px 0;
+    border: 0;
+      border-bottom-color: currentcolor;
+      border-bottom-style: none;
+      border-bottom-width: 0px;
+    border-radius: 10px;
 
 }
 .uploadbutton{
@@ -56,3 +58,13 @@ input, label {
 .submit-button:hover{
     color: white;
 }
+#upload-song{
+    display: flex;
+    text-decoration: none;
+    font-weight: 800;
+    color: #44d62c;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: .5rem;
+    border: 1px solid #44d62c;
+    }

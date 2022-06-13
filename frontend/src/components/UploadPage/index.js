@@ -106,10 +106,9 @@ function UploadPage({ user }) {
                         Song Cover
                         <input type="url" onChange={e => setSongCover(e.target.value)} value={songCover} placeholder="Image URL" />
                     </label>
-                    <label>
+                    <label id="upload-song">
                         Audio
-                        <input type="file" onChange={updateFile} required/>
-                         
+                        <input type="file" onChange={updateFile} required className='url-input' />
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>

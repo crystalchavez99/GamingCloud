@@ -109,9 +109,9 @@ function EditPage({song, user }) {
 
                              />
                     </label>
-                    <label>
+                    <label id="upload-song">
                         Audio
-                        <input type="file" onChange={updateFile}/>
+                        <input type="file" onChange={updateFile} className='url-input'/>
                     </label>
                     <button className='uploadbutton' type='submit'>Upload</button>
                 </form>

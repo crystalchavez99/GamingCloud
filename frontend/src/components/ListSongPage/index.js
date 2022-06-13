@@ -22,6 +22,11 @@ function ListSongPage({ version }) {
     if(songs?.playingSong){
         return null;
     }
+    // function playTheSong(){
+    //     let audio = document.getElementsByTagName("audio")
+    //     audio.src = document.getElementsByClassName("songCover").getAttribute("data-value")
+    //     audio.play()
+    // }
 
     return (
         <div className='trackList'>
@@ -43,7 +48,7 @@ function ListSongPage({ version }) {
                     }
                     return (
                         <div className='song'>
-                            <img className="songCover" src={song?.songCover} alt={song?.title} onClick={async e => await dispatch(playSong(song?.id))}/>
+                            <img className="songCover" src={song?.songCover} alt={song?.title} data-value={song?.url} onClick={async e => await dispatch(playSong(song?.id))}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
                                 <p>{`${song?.title}`}</p>

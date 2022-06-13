@@ -30,6 +30,6 @@ body{
     justify-content: space-between;
     align-content: center;
 }
-.react-audio-player {
+audio {
     width: 100%;
 }
