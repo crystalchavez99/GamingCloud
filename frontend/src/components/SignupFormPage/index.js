@@ -57,8 +57,9 @@ function SignupFormPage() {
             placeholder="Username"
           />
         </label>
-        <label>
-        <input type="file" onChange={updateFile} />
+        <label id="upload-profile">
+          <p>Profile Picture</p>
+        <input className="url-input" type="file" onChange={updateFile} placeholder="Profile Picture"/>
         </label>
         <label>
           <input

@@ -68,3 +68,31 @@
     opacity: 1;
     color: #999;
 }
+
+#upload-profile{
+display: flex;
+text-decoration: none;
+font-weight: 800;
+color: #44d62c;
+border-radius: 3px;
+cursor: pointer;
+margin-bottom: .5rem;
+border: 1px solid #44d62c;
+}
+
+#signup input{
+    padding: 5px;
+margin: 10px 0;
+border: 0;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+border-radius: 10px;
+}
+input[type="file"] {
+    display: none;
+  }
+.url-input{
+    margin-bottom: 10px;
+text-align-last: center;
+}
