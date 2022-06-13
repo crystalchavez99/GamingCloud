@@ -64,6 +64,7 @@
 .commentINFO{
     flex-grow: 1;
     border: 1px solid #44d62c;
+    padding: 0 1rem;
 }
 .commentINFO h2{
 text-align: center;
