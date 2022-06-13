@@ -39,8 +39,15 @@ router.post('/', validateComment,asyncHandler(async(req,res)=>{
         userId,
         songId,
     });
-    console.log('RESULT', comment)
-    return res.json({comment});
+    const user = await db.User.findOne({
+        where: comment.userId
+      });
+      const comments = await db.Comment.findOne({
+        where: comment.id,
+        include: [{model:db.User}],
+        order: [["createdAt", "DESC"]]
+    })
+    return res.json(comments);
 }))
 
 router.delete('/:commentId', asyncHandler(async(req,res)=>{

@@ -57,7 +57,8 @@ export const addComment = comment => async dispatch =>{
     console.log('comment thunk response',response)
         const data = await response.json();
         console.log('comment thunk data',data)
-        dispatch(addOneComment(data.comment))
+        dispatch(addOneComment(data))
+        console.log('comment thunk data',data)
         console.log('final response',response)
         return response;
 
@@ -83,6 +84,7 @@ const commentReducer = (state =[], action)=>{
             return {...listComments,...state.comments};
         }
         case ADDONECOMMENT:
+            console.log('action',action)
             newState = {...state, [action.comment.id]: action.comment};
             return newState;
          case REMOVECOMMENT:
