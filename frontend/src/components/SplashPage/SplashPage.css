@@ -3,11 +3,13 @@
     border-right: 1px solid #44d62c;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     color: #999;
-    width: 1250px;
-    height: 100%;
+    width: auto;
     margin: 0 330px;
+    padding: 0;
+    flex-grow: 1;
 }
 .splash .song img, .splash .song audio{
     width: 200px;
@@ -67,4 +69,26 @@ span:hover{
 }
 .splash .yoursongs{
     display: none;
+}
+
+.artists{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    text-align: left;
+    padding: 1rem;
+}
+.art-list{
+    display: flex;
+}
+#artist-information{
+    display:flex;
+    margin-right: 1rem;
+    flex-direction: column;
+    width: min-content;
+}
+#artist-information a{
+    color:#44d62c;
+    text-decoration: none;
+
 }

@@ -4,12 +4,15 @@ import './SplashPage.css';
 import ListSongPage from '../ListSongPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSongs } from '../../store/song';
+import {getAllUsers} from '../../store/users';
 
 function SplashPage() {
     const songs = useSelector(state => Object.values(state?.song));
+    const artists = useSelector(state => Object.values(state?.user))
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getAllSongs());
+        dispatch(getAllUsers())
     },[dispatch])
     //
     if(!songs){
@@ -27,6 +30,19 @@ function SplashPage() {
                 <p>GamingCloud Weekly</p>
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
+            </div>
+            <div className='artists'>
+                <p>Artists You Should Know</p>
+                <div className='art-list'>
+                {artists?.map(artist=>{
+                    return(
+                    <div id="artist-information">
+                        <img src={artist?.profilePicture}/>
+                        <a href={`/profile/${artist?.username}`}><p>{artist?.username}</p></a>
+                    </div>
+                    )
+                })}
+                </div>
             </div>
             {/* <div className='player'>
                 <ReactAudioPlayer

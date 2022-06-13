@@ -17,7 +17,7 @@ import ReactPlayer from "./components/ReactPlayer/ReactPlayer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
 
@@ -57,7 +57,7 @@ function App() {
           </Route>
         </Switch>
       )}
-  <ReactPlayer/>
+  {/* <ReactPlayer/> */}
     </>
   );
 }
