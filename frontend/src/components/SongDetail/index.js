@@ -71,7 +71,7 @@ function SongDetail() {
                                             <div className="comment">
                                                 <div className="commenttext">
                                                 <p>{comment.body}</p>
-                                                <p>{comment.createdAt}</p>
+                                                <p>{new Date(comment.createdAt).toDateString()}</p>
                                                 {/* <p className="author">{comment.User.username}</p> */}
                                                 </div>
                                                 {sessionLinks}
