@@ -86,9 +86,15 @@ span:hover{
     margin-right: 1rem;
     flex-direction: column;
     width: min-content;
+    text-align: center;
 }
 #artist-information a{
     color:#44d62c;
     text-decoration: none;
 
+}
+#artist-information img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
 }

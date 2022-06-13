@@ -40,30 +40,15 @@ function EditPage({song, user }) {
             userId: sessionUser.id
         }
         dispatch(editSong(payload))
-        .then((res)=>{
-
-            if(!res?.ok){
-              setErrors(res?.errors)
-            }else{
-              setErrors([])
-              history.push(`/songs`)
-            }
+        .then(()=>{
+            setErrors([]);
+            history.push('/songs');
         })
-        // return dispatch(editSong(payload))
-        // .then(()=>{
-        //     setErrors([]);
-        //
-        //     history.push('/songs');
-        // })
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data.errors) setErrors(data.errors);
-        //   })
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
 
-
-
-
-
+          })
     }
     // const addSongFile = (e) => {
     //     if (e.target.files[0]) {

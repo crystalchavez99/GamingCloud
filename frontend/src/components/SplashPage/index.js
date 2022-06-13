@@ -35,6 +35,9 @@ function SplashPage() {
                 <p>Artists You Should Know</p>
                 <div className='art-list'>
                 {artists?.map(artist=>{
+                    if(!artist){
+                        return null;
+                    }
                     return(
                     <div id="artist-information">
                         <img src={artist?.profilePicture}/>

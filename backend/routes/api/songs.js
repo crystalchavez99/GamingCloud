@@ -77,8 +77,9 @@ const validateSong = [
         genre,
         songCover
     });
+    console.log('song update status',song)
     await song.save();
-    return res.json(song);
+    return res.json({song});
  }))
  router.delete(`/:songId`, asyncHandler(async(req,res)=>{
     const id = parseInt(req.params.songId, 10);

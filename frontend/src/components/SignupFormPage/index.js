@@ -26,8 +26,9 @@ function SignupFormPage() {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
+    }else{
+      return setErrors(['Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
   const updateFile = (e) => {
     const file = e.target.files[0];
