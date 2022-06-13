@@ -72,12 +72,10 @@ export const addSong = song => async dispatch => {
 }
 
 export const editSong = song => async dispatch => {
-    console.log('enter thunk for edit',song)
     const response = await csrfFetch(`/api/songs/${song.id}`, {
         method: "PUT",
         body: JSON.stringify(song)
     });
-    console.log('get response for edit',response)
     if (response.ok) {
         const data = await response.json();
 

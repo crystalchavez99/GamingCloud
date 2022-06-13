@@ -67,7 +67,6 @@ function SongDetail() {
                                         }
                                     }
                                     if (comment.songId === parseInt(songId)) {
-                                        console.log('song commnet',comment)
                                         return (
                                             <div className="comment">
                                                 <div className="commenttext">

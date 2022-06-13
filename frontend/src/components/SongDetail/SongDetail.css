@@ -1,9 +1,12 @@
 .songdetail{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #999;
     margin: 0 330px;
+    padding: 0;
+    flex-grow: 1;
 }
 .single-song{
     width: 1250px;

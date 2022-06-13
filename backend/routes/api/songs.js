@@ -65,7 +65,6 @@ const validateSong = [
  }))
 
  router.put(`/:songId`, validateSong,asyncHandler(async(req,res)=>{
-  console.log('enter edit route')
     const id = parseInt(req.params.songId, 10);
     const song = await db.Song.findByPk(id, {
       include: [{ model: db.User},]
@@ -77,7 +76,6 @@ const validateSong = [
         genre,
         songCover
     });
-    console.log('song update status',song)
     await song.save();
     return res.json({song});
  }))

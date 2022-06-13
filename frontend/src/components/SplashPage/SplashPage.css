@@ -74,7 +74,6 @@ span:hover{
 .artists{
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
     text-align: left;
     padding: 1rem;
 }

@@ -19,6 +19,7 @@ export const getAllUsers = () => async (dispatch) => {
         const data = await response.json();
         //
         dispatch(addUsers(data.users));
+        console.log('data of all users',data)
         return data
     }
 }
@@ -28,6 +29,7 @@ export const getUser = user => async dispatch =>{
     if(response.ok){
         const user = await response.json();
         dispatch(loadUser(user.user))
+        console.log('user get for profile thunk',user)
     }
     return response
 }
@@ -44,7 +46,7 @@ const userReducer = (state = initialState, action) => {
             return { ...newState, ...state };
         }
         case LOADUSER: {
-            newState = {state};
+            newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
         }
