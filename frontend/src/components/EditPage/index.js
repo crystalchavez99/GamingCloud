@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editSong, getSong } from '../../store/song';
 import { useParams } from 'react-router-dom';
+import '../UploadPage/UploadPage.css';
 function EditPage({song, user }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -81,10 +82,10 @@ function EditPage({song, user }) {
         if (file) setAudio(file);
     };
     return (
-        <div>
+        <div className='uploadPage'>
             <h1>Upload Page</h1>
             <div className='upload'>
-                <form onSubmit={handleSubmit} className='add-song'>
+                <form onSubmit={handleSubmit}>
                 {errors.length > 0 && (
                         <div className='errors'>
                             The following errors were found:
@@ -97,22 +98,22 @@ function EditPage({song, user }) {
                     )}
                     <label>
                         Title
-                    </label>
-                    <input
+                        <input
                         onChange={e => setTitle(e.target.value)}
                         value={title}
                         placeholder="Title"
-                        >
-                    </input>
+                        />
+                    </label>
+
                     <label>
                         Genre
-                    </label>
-                    <input
+                        <input
                         onChange={e => setGenre(e.target.value)}
                         value={genre}
                         placeholder="Genre"
-                        >
-                    </input>
+                        />
+                    </label>
+
                     <label>
                         Song Cover
                         <input
