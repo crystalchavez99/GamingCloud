@@ -46,18 +46,21 @@ export const getAllComments = () =>async(dispatch) =>{
     }
 }
 export const addComment = comment => async dispatch =>{
-    const response = await csrfFetch(`/api/comments`,{
+    console.log('enter add thunk',comment)
+    const response = await csrfFetch(`/api/comments/`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(comment)
     });
-    if(response.ok){
+    console.log('comment thunk response',response)
         const data = await response.json();
-        //
+        console.log('comment thunk data',data)
         dispatch(addOneComment(data.comment))
-    }
+        console.log('final response',response)
+        return response;
+
 }
 export const getComment = comment => async dispatch =>{
     const response = await fetch(`/api/comments/${comment.id}`);

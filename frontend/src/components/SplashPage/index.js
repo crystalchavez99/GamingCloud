@@ -9,7 +9,6 @@ import {getAllUsers} from '../../store/users';
 function SplashPage() {
     const songs = useSelector(state => Object.values(state?.song));
     const artists = useSelector(state => Object.values(state?.user));
-    console.log('splash page all users', artists)
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getAllSongs());

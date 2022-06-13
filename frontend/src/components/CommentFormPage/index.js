@@ -6,6 +6,8 @@ import { addComment } from '../../store/comments';
 function CommentForm({ song }) {
     const sessionUser = useSelector(state => state.session.user);
     const [body, setBody] = useState('');
+    const [errors, setErrors] = useState([]);
+
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -16,9 +18,19 @@ function CommentForm({ song }) {
             songId: song.id,
             userId: sessionUser.id
         }
-        await dispatch(addComment(payload));
-        setBody('');
-        history.push(`/songs/${song.id}`);
+        return dispatch(addComment(payload))
+            .then(() => {
+                setErrors([]);
+                setBody('');
+                history.push(`/songs/${song.id}`);
+            })
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+
+            })
+
+
 
     }
 
@@ -26,11 +38,21 @@ function CommentForm({ song }) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                {errors.length > 0 && (
+                    <div className='errors'>
+                        The following errors were found:
+                        <ul className='errorList'>
+                            {errors.map(error => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <input
                     onChange={e => setBody(e.target.value)}
                     value={body}
                     placeholder="Write Comment"
-                    required />
+                />
                 <button className='uploadbutton' type='submit'>Upload</button>
 
             </form>

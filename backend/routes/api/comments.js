@@ -3,6 +3,16 @@ const db = require('../../db/models');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
 const {requireAuth} = require("../../utils/auth");
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
+const validateComment = [
+    check('body')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a comment.'),
+    handleValidationErrors
+]
 
 router.get('/',asyncHandler(async(req,res)=>{{
     const comments = await db.Comment.findAll({
@@ -21,13 +31,15 @@ router.get('/:commentId',asyncHandler(async(req,res)=>{{
     return res.json(comments)
 }}));
 
-router.post('/', asyncHandler(async(req,res)=>{
+router.post('/', validateComment,asyncHandler(async(req,res)=>{
+    console.log('ENTERRED POST ROUTE')
     const {userId,songId,body} = req.body;
     const comment = await db.Comment.create({
+        body,
         userId,
         songId,
-        body
     });
+    console.log('RESULT', comment)
     return res.json({comment});
 }))
 
