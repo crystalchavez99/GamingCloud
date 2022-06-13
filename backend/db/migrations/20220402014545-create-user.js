@@ -20,7 +20,9 @@ module.exports = {
       },
       profilePicture: {
         type: Sequelize.STRING,
+        defaultValue: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png',
         allowNull: true,
+
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

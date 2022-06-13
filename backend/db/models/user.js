@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     profilePicture: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png',
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
