@@ -70,8 +70,6 @@
 text-align: center;
 }
 .comment{
-    display: flex;
-    justify-content: space-between;
     border-radius: 5px;
     margin: 6px;
     padding: 5px;
@@ -84,6 +82,7 @@ text-align: center;
 
 }
 .commenttext, .songtext{
+    box-sizing: border-box;
     text-align: left;
 }
 .commenttext .author{
@@ -93,4 +92,9 @@ text-align: center;
 #user-comment{
     color:black;
     font-weight: 700;
+    text-align: left;
+}
+#row-comment{
+    display: flex;
+    justify-content: space-between;
 }

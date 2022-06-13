@@ -68,8 +68,10 @@ function SongDetail() {
                                         return (
                                             <div className="comment">
                                                 <div className="commenttext">
-                                                <p>{comment.body}</p>
-                                                <p>{new Date(comment.createdAt).toDateString()}</p>
+                                                <div id="row-comment">
+                                                    <p>{comment.body}</p>
+                                                    <p>{new Date(comment.createdAt).toDateString()}</p>
+                                                </div>
                                                 <p id="user-comment">{comment?.User?.username}</p>
                                                 {/* <p className="author">{comment.User.username}</p> */}
                                                 </div>
