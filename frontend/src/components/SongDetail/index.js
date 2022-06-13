@@ -46,8 +46,6 @@ function SongDetail() {
                                 </div>
                                 <img src={song.songCover} />
                             </div>
-                            <div className="musicplayer">
-                            </div>
                             <div className="commentINFO">
                                 <h2>COMMENTS</h2>
                                 {sessionUser && (<CommentForm song={song} />)}
