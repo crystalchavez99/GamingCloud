@@ -58,7 +58,7 @@ function App() {
           </Route>
         </Switch>
       )}
-  {/* <ReactPlayer/> */}
+  <ReactPlayer/>
     </>
   );
 }

@@ -10,10 +10,14 @@ function ReactPlayer(){
         dispatch(playSong(playSongs?.id))
     },[dispatch,playSongs])
     return(
-        <ReactAudioPlayer
+        <div id="audio-footer">
+            <div id="audio-container">
+            <ReactAudioPlayer
          src={playSongs?.url}
         controls
     />
+            </div>
+        </div>
     )
 }
 

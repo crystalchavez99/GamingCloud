@@ -32,7 +32,6 @@ router.get('/:commentId',asyncHandler(async(req,res)=>{{
 }}));
 
 router.post('/', validateComment,asyncHandler(async(req,res)=>{
-    console.log('ENTERRED POST ROUTE')
     const {userId,songId,body} = req.body;
     const comment = await db.Comment.create({
         body,

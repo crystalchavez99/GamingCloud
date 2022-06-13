@@ -20,11 +20,16 @@ body{
     display: flex;
     flex-direction: column;
 }
-audio{
-    position: fixed;
-    bottom: 0;
+
+
+#audio-footer{
+    margin-top: auto;
+}
+#audio-container{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.react-audio-player {
     width: 100%;
-    /* Height of the footer*/
-    height: 40px;
-    background: grey;
 }
