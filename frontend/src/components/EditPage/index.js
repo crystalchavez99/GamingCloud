@@ -35,17 +35,26 @@ function EditPage({song, user }) {
             audio,
             userId: sessionUser.id
         }
-        return dispatch(editSong(payload))
-        .then(()=>{
-            setErrors([]);
-            history.push('/songs');
+        dispatch(editSong(payload))
+        .then((res)=>{
+            console.log('cjeck res',res)
+            if(!res?.ok){
+              setErrors(res?.errors)
+            }else{
+              setErrors([])
+              history.push(`/songs`)
+            }
         })
-        .catch(async (res) => {
-            console.log('res',res)
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-
-          })
+        // return dispatch(editSong(payload))
+        // .then(()=>{
+        //     setErrors([]);
+        //     console.log("DONE EDITING")
+        //     history.push('/songs');
+        // })
+        // .catch(async (res) => {
+        //     const data = await res.json();
+        //     if (data.errors) setErrors(data.errors);
+        //   })
 
 
 

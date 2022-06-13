@@ -42,12 +42,11 @@ const validateSong = [
 );
  router.post(`/`,singleMulterUpload("audio"),validateSong,asyncHandler(async (req,res)=>{
   console.log('entered post')
-  const {title, genre, userId} = req.body;
+  const {title, genre, userId,songCover} = req.body;
   const url =  await singlePublicFileUpload(req.file);
-  const songCover =  await singlePublicFileUpload(req.file);
   const song = await db.Song.create({
       title,
-      songCover: songCover,
+      songCover,
       url: url,
       genre,
       userId

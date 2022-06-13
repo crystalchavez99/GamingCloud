@@ -76,10 +76,17 @@ export const editSong = song => async dispatch => {
         method: "PUT",
         body: JSON.stringify(song)
     });
+    console.log('res thun',response)
     if (response.ok) {
         const data = await response.json();
-        dispatch(addOneSong(data.song));
+        console.log('data edit',data)
+        await dispatch(addOneSong(data));
+        console.log('data edit FOR SURE',data)
+    }else{
+        const data = await response.json();
+        console.log('data edit',data)
     }
+    return response
 }
 
 export const playSong = songId => async dispatch => {
@@ -111,7 +118,9 @@ const songReducer = (state = [], action) => {
             return newState.songs;
         }
         case ADDONESONG:
-            return { ...state, [action.song.id]: action.song };;
+            console.log('action',action)
+            newState = {...state,[action.song.id]: action.song}
+            return newState;
         case REMOVESONG:
             newState = { ...state };
             delete newState[action.song.id]
