@@ -67,11 +67,13 @@ function SongDetail() {
                                         }
                                     }
                                     if (comment.songId === parseInt(songId)) {
+                                        console.log('song commnet',comment)
                                         return (
                                             <div className="comment">
                                                 <div className="commenttext">
                                                 <p>{comment.body}</p>
                                                 <p>{new Date(comment.createdAt).toDateString()}</p>
+                                                <p id="user-comment">{comment?.User?.username}</p>
                                                 {/* <p className="author">{comment.User.username}</p> */}
                                                 </div>
                                                 {sessionLinks}

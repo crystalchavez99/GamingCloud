@@ -72,3 +72,8 @@ text-align: center;
 .commenttext .author{
     color: black;
 }
+
+#user-comment{
+    color:black;
+    font-weight: 700;
+}
