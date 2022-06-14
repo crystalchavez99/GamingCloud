@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
             MenuListProps={{
               'aria-labelledby': 'basic-button',
             }}>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={handleClose} id="popup">
               <NavLink to={`/profile/${user.username}`}exact={true} activeClassName='active'>
                 <i className="fa-solid fa-user">
                 </i>
