@@ -79,7 +79,6 @@ const commentReducer = (state =[], action)=>{
             return {...listComments,...state.comments};
         }
         case ADDONECOMMENT:
-            console.log('action',action)
             newState = {...state, [action.comment.id]: action.comment};
             return newState;
          case REMOVECOMMENT:

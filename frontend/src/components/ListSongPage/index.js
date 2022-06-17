@@ -20,7 +20,6 @@ function ListSongPage({ version }) {
     async function change(src){
         let newSong = await dispatch(playSong(src?.id))
 
-        console.log(AudioPlayer[0]?.currentSrc)
         if(AudioPlayer[0].getAttribute("src") !== src){
             AudioPlayer[0].setAttribute("src",newSong?.url)
         }

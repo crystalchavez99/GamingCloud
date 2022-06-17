@@ -25,7 +25,6 @@ function SplashPage() {
             <div className='banner'>
                 <h1><span>GamingCloud</span></h1>
                 <h3>Refresh Page to Play Another Audio</h3>
-                <p>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
             </div>
             <div className='tracks'>
                 <p>GamingCloud Weekly</p>
