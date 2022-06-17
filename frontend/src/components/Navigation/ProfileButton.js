@@ -60,10 +60,10 @@ function ProfileButton({ user }) {
               'aria-labelledby': 'basic-button',
             }}>
             <MenuItem onClick={handleClose} id="popup">
-              <NavLink to={`/profile/${user.username}`}exact={true} activeClassName='active'>
+              <a href={`/profile/${user.username}`}exact={true} activeClassName='active'>
                 <i className="fa-solid fa-user">
                 </i>
-              </NavLink>
+              </a>
 
             </MenuItem>
             <MenuItem onClick={handleClose}><button onClick={logout} className="logout">Log Out</button></MenuItem>
