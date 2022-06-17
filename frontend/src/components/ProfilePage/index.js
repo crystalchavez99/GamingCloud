@@ -7,7 +7,7 @@ import { getUser } from '../../store/users';
 function ProfilePage() {
     const dispatch = useDispatch();
     const artist = useParams();
-    const artistInfo = useSelector(state => Object.values(state.user))
+    const artistInfo = useSelector(state => Object.values(state?.user))
     const userProfile = artistInfo[0];
     useEffect(() => {
         dispatch(getUser(artist.userName))
