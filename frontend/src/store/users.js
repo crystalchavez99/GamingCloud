@@ -1,8 +1,8 @@
-const ADDUSERS = 'user/ADDUSERS';
+const GETALLUSERS = 'user/GETALLUSERS';
 const LOADUSER = 'user/LOADUSER';
 const addUsers = users => {
     return {
-        type: ADDUSERS,
+        type: GETALLUSERS,
         payload:users
     }
 }
@@ -21,6 +21,7 @@ export const getAllUsers = () => async (dispatch) => {
         dispatch(addUsers(data.users));
         return data
     }
+    return response;
 }
 
 export const getUser = user => async dispatch =>{
@@ -28,6 +29,7 @@ export const getUser = user => async dispatch =>{
     if(response.ok){
         const user = await response.json();
         dispatch(loadUser(user.user))
+        return user
     }
     return response
 }
@@ -36,15 +38,15 @@ const initialState = {};
 const userReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case ADDUSERS: {
+        case GETALLUSERS: {
             newState = {...state};
             action.payload.forEach(user => {
                 newState[user.id] = user;
             });
-            return { ...newState, ...state };
+            return { ...newState,...state};
         }
         case LOADUSER: {
-            newState = {state};
+            newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
         }
