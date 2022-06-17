@@ -43,10 +43,10 @@ const userReducer = (state = initialState, action) => {
             action.payload.forEach(user => {
                 newState[user.id] = user;
             });
-            return { ...newState,...state};
+            return { ...newState};
         }
         case LOADUSER: {
-            newState = {...state};
+            newState = {};
             newState[action.payload.id] = action.payload;
             return newState;
         }

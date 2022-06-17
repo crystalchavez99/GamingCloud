@@ -5,6 +5,7 @@ import ListSongPage from '../ListSongPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSongs } from '../../store/song';
 import {getAllUsers} from '../../store/users';
+import { NavLink } from 'react-router-dom';
 
 function SplashPage() {
     const songs = useSelector(state => Object.values(state?.song));
@@ -41,7 +42,7 @@ function SplashPage() {
                     return(
                     <div id="artist-information">
                         <img src={artist?.profilePicture}/>
-                        <a href={`/profile/${artist?.username}`}><p>{artist?.username}</p></a>
+                        <NavLink to={`/profile/${artist?.username}`}><p>{artist?.username}</p></NavLink>
                     </div>
                     )
                 })}

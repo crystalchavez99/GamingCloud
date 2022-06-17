@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import './ReactPlayer.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { playSong } from '../../store/song';
 function ReactPlayer() {
@@ -7,7 +9,7 @@ function ReactPlayer() {
     const playSongs = useSelector(state => state?.song?.playingSong)
     //const [songs,setSong] = useState(playSongs?.url)
     let current = playSongs?.url;
-    
+
     const dispatch = useDispatch()
     //   useEffect(() => {
     //       dispatch(playSong(playSongs?.id))
@@ -16,7 +18,7 @@ function ReactPlayer() {
     return (
         <div id="audio-footer">
             <div id="audio-container">
-                <audio
+                <AudioPlayer
                    controlsList
                     src={current}
                     controls
