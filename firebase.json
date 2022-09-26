@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "gamingcloud-73c6f",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
