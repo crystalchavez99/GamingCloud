@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(50)
     },
   }, {});
+  Song.prototype.toSageObject = function() {
+    const {id, userId, songCover, url, title, genre} = this;
+    return {id, userId, songCover, url, title, genre};
+  }
   Song.associate = function(models) {
     // associations can be defined here
     Song.belongsTo(models.User, {foreignKey: 'userId'});
