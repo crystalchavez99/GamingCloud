@@ -38,6 +38,7 @@ router.get('/',asyncHandler(async(req,res)=>{
     });
     return res.json({users});
 }));
+
 router.get('/:username',asyncHandler(async(req,res)=>{
   const username = req.params.username;
     const user = await User.findOne({

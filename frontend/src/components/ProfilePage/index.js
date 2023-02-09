@@ -20,8 +20,6 @@ function ProfilePage() {
         return null;
     }
 
-
-
     return (
         <div className="profilepage">
             <div className='profilebanner'>
