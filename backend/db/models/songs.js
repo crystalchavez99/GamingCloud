@@ -11,13 +11,15 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
     title: {
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        len: [1,50]
       },
       type: DataTypes.STRING(50)
     },
     genre: {
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        len: [1,50]
     },
       type: DataTypes.STRING(50)
     },

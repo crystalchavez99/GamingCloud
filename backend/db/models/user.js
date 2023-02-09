@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicture: {
       type: DataTypes.STRING,
+      allowNull: false,
       defaultValue: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png',
     },
     hashedPassword: {
@@ -60,8 +61,8 @@ module.exports = (sequelize, DataTypes) => {
    };
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Song, {foreignKey: 'userId'});
-    User.hasMany(models.Comment, {foreignKey: 'userId'});
+    User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'cascade',hooks:true});
+    User.hasMany(models.Comment, {foreignKey: 'userId', onDelete: 'cascade',hooks:true});
   };
   User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
