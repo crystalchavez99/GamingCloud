@@ -8,8 +8,8 @@ import {getAllUsers} from '../../store/users';
 import { NavLink } from 'react-router-dom';
 
 function SplashPage() {
-    const songs = useSelector(state => Object.values(state?.song));
-    const artists = useSelector(state => Object.values(state?.user));
+    const songs = useSelector(state => Object.values(state.song));
+    const artists = useSelector(state => Object.values(state.user));
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getAllSongs());
@@ -35,14 +35,14 @@ function SplashPage() {
             <div className='artists'>
                 <p>Artists You Should Know</p>
                 <div className='art-list'>
-                {artists?.map(artist=>{
+                {artists.map(artist=>{
                     if(!artist || artist.length > 1){
                         return null;
                     }
                     return(
                     <div id="artist-information">
-                        <img src={artist?.profilePicture}/>
-                        <NavLink to={`/profile/${artist?.username}`}><p>{artist?.username}</p></NavLink>
+                        <img src={artist.profilePicture}/>
+                        <NavLink to={`/profile/${artist.username}`}><p>{artist.username}</p></NavLink>
                     </div>
                     )
                 })}

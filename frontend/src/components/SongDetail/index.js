@@ -73,7 +73,7 @@ function SongDetail() {
                                                 <div id="row-comment">
                                                     <div>
                                                     <p>{comment.body}</p>
-                                                    <p id="user-comment">{comment?.User?.username}</p>
+                                                    <p id="user-comment">{comment.User.username}</p>
                                                     </div>
                                                     <div>
                                                     <p>{new Date(comment.createdAt).toDateString()}</p>

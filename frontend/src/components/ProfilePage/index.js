@@ -8,7 +8,7 @@ import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
     const artist = useParams();
-    const artistInfo = useSelector(state => Object.values(state?.user))
+    const artistInfo = useSelector(state => Object.values(state.user))
     const userProfile = artistInfo[0];
     useEffect(() => {
         dispatch(getUser(artist.userName))
@@ -25,18 +25,18 @@ function ProfilePage() {
         <div className="profilepage">
             <div className='profilebanner'>
                 <div className='artistide'>
-                    <img src={userProfile?.profilePicture} alt={userProfile?.username} />
-                    <p>{userProfile?.username}</p>
+                    <img src={userProfile.profilePicture} alt={userProfile.username} />
+                    <p>{userProfile.username}</p>
                 </div>
             </div>
             <div className='profilecontent'>
                 <h3>Your Songs</h3>
                         <div className='artistsong'>
-                            {userProfile?.Songs?.map(song => {
+                            {userProfile.Songs.map(song => {
                                     return (
                                         <div className='singsongInfo'>
                                             <div className='songImg'>
-                                                <img src={song.songCover} alt={song?.title}/>
+                                                <img src={song.songCover} alt={song.title}/>
                                             </div>
                                             <div className='songCatch'>
                                                 <NavLink to={`/songs/${song.id}`}>

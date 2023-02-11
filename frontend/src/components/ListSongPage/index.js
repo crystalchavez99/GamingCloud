@@ -9,8 +9,8 @@ import { useHistory } from 'react-router-dom';
 function ListSongPage({ version }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const sessionUser = useSelector(state => state?.session?.user);
-    const songs = useSelector((state) => Object.values(state?.song));
+    const sessionUser = useSelector(state => state.session.user);
+    const songs = useSelector((state) => Object.values(state.song));
     const AudioPlayer = document.getElementsByTagName("audio");
     useEffect(() => {
         dispatch(getAllSongs());
@@ -18,10 +18,10 @@ function ListSongPage({ version }) {
 
 
     async function change(src){
-        let newSong = await dispatch(playSong(src?.id))
+        let newSong = await dispatch(playSong(src.id))
 
         if(AudioPlayer[0].getAttribute("src") !== src){
-            AudioPlayer[0].setAttribute("src",newSong?.url)
+            AudioPlayer[0].setAttribute("src",newSong.url)
         }
         if(AudioPlayer[0].currentSrc){
             AudioPlayer[0].pause();
@@ -34,7 +34,7 @@ function ListSongPage({ version }) {
     if (!songs) {
         return null;
     }
-    if(songs?.playingSong){
+    if(songs.playingSong){
         return null;
     }
     // function playTheSong(){
@@ -47,11 +47,11 @@ function ListSongPage({ version }) {
         <div className='trackList'>
             <h1 className='yoursongs'>All Songs</h1>
             <div className='songList'>
-                {!version && songs?.map((song, index) => {
+                {!version && songs.map((song, index) => {
                     let sessionLinks;
                     if (sessionUser) {
-                        if (sessionUser.id === song?.userId) {
-                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song?.id}/edit`} className="edit">Edit</NavLink>
+                        if (sessionUser.id === song.userId) {
+                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
                                 <button className='delete'
                                     onClick={async (e) => {
                                         await dispatch(deleteSong(song))
@@ -63,12 +63,12 @@ function ListSongPage({ version }) {
                     }
                     return (
                         <div className='song'>
-                            <img className="songCover" src={song?.songCover} alt={song?.title} data-value={song?.url} onClick={() =>change(song)}/>
+                            <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index}>
-                                <p>{`${song?.title}`}</p>
+                                <p>{`${song.title}`}</p>
                             </NavLink>
-                            <p>{`${song?.User?.username}`}</p>
+                            <p>{`${song.User.username}`}</p>
                             </div>
 
                             {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}
@@ -108,7 +108,7 @@ function ListSongPage({ version }) {
                                     <p>{`${song.title}`}</p>
                                 </NavLink>
                                 <div id="image-play">
-                                    <img className="songCover" src={song.songCover} alt={song?.title}/>
+                                    <img className="songCover" src={song.songCover} alt={song.title}/>
                                     <div>
                                     <i class="fa-solid fa-circle-play"></i>
                                     </div>
