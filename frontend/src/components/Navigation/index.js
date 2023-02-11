@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -26,15 +25,15 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <div className='navbar'>
+        <div className='navbar '>
             <ul>
-                <li>
+                <li className='nav-item'>
                     <NavLink exact to="/">GamingCloud <i class="fa-solid fa-headphones"></i></NavLink>
                 </li>
-                <li>
+                <li className='nav-item'>
                     <NavLink exact to="/">Home</NavLink>
                 </li>
-                <li>
+                <li lassName='nav-item'>
                 <NavLink to="/songs">Songs</NavLink>
                 </li>
                 {isLoaded && sessionLinks}
