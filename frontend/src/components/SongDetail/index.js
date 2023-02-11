@@ -7,6 +7,8 @@ import './SongDetail.css';
 import { deleteComment, getAllComments } from "../../store/comments";
 import CommentForm from "../CommentFormPage";
 import { restoreUser } from "../../store/session";
+import React from 'react';
+
 
 
 function SongDetail() {

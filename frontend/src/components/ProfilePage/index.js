@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 import { useEffect } from 'react';
 import { getUser } from '../../store/users';
+import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
     const artist = useParams();
