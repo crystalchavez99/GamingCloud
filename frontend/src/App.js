@@ -25,7 +25,7 @@ function App() {
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
   return (
-    <>
+    <div>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -59,7 +59,7 @@ function App() {
         </Switch>
       )}
   <ReactPlayer/>
-    </>
+    </div>
   );
 }
 

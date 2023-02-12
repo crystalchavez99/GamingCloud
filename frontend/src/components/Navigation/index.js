@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -40,7 +42,14 @@ function Navigation({ isLoaded }) {
                 <NavLink to="/songs">Library</NavLink>
                 </li>
                 <li className='nav-item'>
-                    <TextField className='bg-white' label='search'/>
+                    <TextField className='bg-white' label='search' InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <LibraryMusicIcon />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"/>
                 </li>
                 <li className='nav-item'><NavLink to="/upload">Upload</NavLink></li>
                 {isLoaded && sessionLinks}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-import './SplashPage.css';
+// import './SplashPage.css';
 import ListSongPage from '../ListSongPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSongs } from '../../store/song';
@@ -22,12 +22,12 @@ function SplashPage() {
 
 
     return (
-        <div className='splash'>
-            <div className='banner'>
+        <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{marginLeft: "20%", marginRight: "20%"}}>
+            <div className='banner border border-warning'>
                 <h1><span>GamingCloud</span></h1>
                 <p>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
             </div>
-            <div className='tracks'>
+            <div className='tracks border border-danger'>
                 <p>GamingCloud Weekly</p>
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
