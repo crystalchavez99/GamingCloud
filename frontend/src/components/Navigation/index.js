@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import TextField from '@mui/material/TextField';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -25,17 +26,24 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <div className='navbar '>
-            <ul>
+        <div className='navbar'>
+            <ul className='d-flex justify-content-center align-items-center '>
                 <li className='nav-item'>
                     <NavLink exact to="/">GamingCloud <i class="fa-solid fa-headphones"></i></NavLink>
                 </li>
                 <li className='nav-item'>
                     <NavLink exact to="/">Home</NavLink>
                 </li>
-                <li lassName='nav-item'>
-                <NavLink to="/songs">Songs</NavLink>
+                <li>
+                    Feed
                 </li>
+                <li className='nav-item'>
+                <NavLink to="/songs">Library</NavLink>
+                </li>
+                <li className='nav-item'>
+                    <TextField className='bg-white' label='search'/>
+                </li>
+                <li className='nav-item'><NavLink to="/upload">Upload</NavLink></li>
                 {isLoaded && sessionLinks}
             </ul>
         </div>
