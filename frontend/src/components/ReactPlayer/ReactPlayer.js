@@ -8,7 +8,7 @@ function ReactPlayer() {
     const audioPlayer = useRef();
     const playSongs = useSelector(state => state.song)
     //const [songs,setSong] = useState(playSongs.url)
-    console.log('RP Line 11',playSongs)
+    //console.log('RP Line 11',playSongs)
     let current = playSongs.url;
     const dispatch = useDispatch()
     //   useEffect(() => {

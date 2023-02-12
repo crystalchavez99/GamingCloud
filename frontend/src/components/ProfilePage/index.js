@@ -7,17 +7,18 @@ import { getUser } from '../../store/users';
 import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
-    const artist = useParams();
+    const {userName} = useParams();
+    console.log("PP", userName)
     const artistInfo = useSelector(state => Object.values(state.user))
     const userProfile = artistInfo[0];
     useEffect(() => {
-        dispatch(getUser(artist.userName))
-    }, [dispatch, artist])
+        dispatch(getUser(userName))
+    })
 
     if (!artistInfo) {
         return null;
     }
-    if (!artist) {
+    if (!userName) {
         return null;
     }
 

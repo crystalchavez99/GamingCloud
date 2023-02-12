@@ -17,17 +17,18 @@ export const getAllUsers = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        //
         dispatch(addUsers(data.users));
         return data
     }
     return response;
 }
 
-export const getUser = user => async dispatch =>{
-    const response = await fetch(`/api/users/${user}`);
+export const getUser = (userName) => async dispatch =>{
+    const response = await fetch(`/api/users/${userName}`);
+    console.log("user RES thunk", response)
     if(response.ok){
         const user = await response.json();
+        console.log("user thunk", user)
         dispatch(loadUser(user.user))
         return user
     }
