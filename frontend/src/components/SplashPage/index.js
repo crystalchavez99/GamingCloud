@@ -4,28 +4,31 @@ import ReactAudioPlayer from 'react-audio-player';
 import ListSongPage from '../ListSongPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSongs } from '../../store/song';
-import {getAllUsers} from '../../store/users';
+import { getAllUsers } from '../../store/users';
 import { NavLink } from 'react-router-dom';
 
 function SplashPage() {
     const songs = useSelector(state => Object.values(state.song));
     const artists = useSelector(state => Object.values(state.user));
     const dispatch = useDispatch();
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getAllSongs());
         dispatch(getAllUsers())
-    },[dispatch])
+    }, [dispatch])
     //
-    if(!songs){
+    if (!songs) {
         return null;
     }
 
 
     return (
-        <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{marginLeft: "20%", marginRight: "20%"}}>
-            <div className='banner border border-warning w-100'>
-                <h1 className='text-center'><span>GamingCloud</span></h1>
-                <p className='text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
+        <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{ marginLeft: "20%", marginRight: "20%" }}>
+            <div className='card w-100'>
+                <img className='card-img' src="https://res.cloudinary.com/dreambssd/image/upload/v1676262531/band-4671748_960_720_c4bs8h.jpg" style={{height: "21.875rem"}}/>
+                <div className='card-img-overlay '>
+                    <h1 className='card-title text-center'><span>GamingCloud</span></h1>
+                    <p className='card-text text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
+                </div>
             </div>
             <div className='tracks border border-danger'>
                 <p>GamingCloud Weekly</p>
@@ -35,17 +38,17 @@ function SplashPage() {
             <div className='artists'>
                 <p>Artists You Should Know</p>
                 <div className='art-list'>
-                {artists.map(artist=>{
-                    if(!artist || artist.length > 1){
-                        return null;
-                    }
-                    return(
-                    <div id="artist-information">
-                        <img src={artist.profilePicture}/>
-                        <NavLink to={`/profile/${artist.username}`}><p>{artist.username}</p></NavLink>
-                    </div>
-                    )
-                })}
+                    {artists.map(artist => {
+                        if (!artist || artist.length > 1) {
+                            return null;
+                        }
+                        return (
+                            <div id="artist-information">
+                                <img src={artist.profilePicture} />
+                                <NavLink to={`/profile/${artist.username}`}><p>{artist.username}</p></NavLink>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             {/* <div className='player'>
