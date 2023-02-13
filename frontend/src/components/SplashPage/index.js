@@ -30,8 +30,8 @@ function SplashPage() {
                     <p className='card-text text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
                 </div>
             </div>
-            <div className='tracks border border-danger'>
-                <p>GamingCloud Weekly</p>
+            <div className='d-flex flex-column align-items-start border border-danger w-100' style={{padding: "0.313rem", color:"white", height: "20.625rem"}}>
+                <h4>GamingCloud Weekly</h4>
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
             </div>
