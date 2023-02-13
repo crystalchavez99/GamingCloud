@@ -28,20 +28,20 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='navbar'>
-            <ul className='d-flex justify-content-center align-items-center '>
-                <li className='nav-item'>
+            <ul className='d-flex justify-content-center align-items-center bg-dark'>
+                <li className='nav-item bg-dark'>
                     <NavLink exact to="/">GamingCloud <i class="fa-solid fa-headphones"></i></NavLink>
                 </li>
-                <li className='nav-item'>
+                <li className='nav-item bg-dark'>
                     <NavLink exact to="/">Home</NavLink>
                 </li>
-                <li>
+                <li className='nav-item bg-dark'>
                     Feed
                 </li>
-                <li className='nav-item'>
+                <li className='nav-item bg-dark'>
                 <NavLink to="/songs">Library</NavLink>
                 </li>
-                <li className='nav-item'>
+                <li className='nav-item bg-dark'>
                     <TextField className='bg-white' label='search' InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -51,7 +51,7 @@ function Navigation({ isLoaded }) {
         }}
         variant="standard"/>
                 </li>
-                <li className='nav-item'><NavLink to="/upload">Upload</NavLink></li>
+                <li className='nav-item bg-dark'><NavLink to="/upload">Upload</NavLink></li>
                 {isLoaded && sessionLinks}
             </ul>
         </div>

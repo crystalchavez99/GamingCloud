@@ -16,13 +16,14 @@ function ReactPlayer() {
     //   },[])
     return (
         <div id="audio-footer" className='fixed-bottom'>
-            <div id="audio-container">
+            <div id="audio-container" >
                 <AudioPlayer
                    controlsList
                     src={current}
                     controls
                     ref={audioPlayer}
                     autoPlay
+                    style={{background:" #f2f2f2"}}
                     // onChange={TrackChange(current)}
                 />
             </div>

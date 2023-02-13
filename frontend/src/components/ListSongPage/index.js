@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect,useRef } from 'react';
 import { deleteSong, getAllSongs,playSong } from '../../store/song.js';
-import './ListSongPage.css';
+// import './ListSongPage.css';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -62,10 +62,10 @@ function ListSongPage({ version }) {
                         }
                     }
                     return (
-                        <div className='song'>
-                            <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)}/>
+                        <div className='song border border-white'>
+                            <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)} style={{width:"12.5rem" }}/>
                             <div className='song-information'>
-                            <NavLink to={`/songs/${song.id}`} key={index}>
+                            <NavLink to={`/songs/${song.id}`} key={index} className="text-decoration-none">
                                 <p>{`${song.title}`}</p>
                             </NavLink>
                             <p>{`${song.User.username}`}</p>

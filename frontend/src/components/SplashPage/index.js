@@ -22,7 +22,7 @@ function SplashPage() {
 
 
     return (
-        <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{ marginLeft: "20%", marginRight: "20%"}}>
+        <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{ marginLeft: "20%", marginRight: "20%", background: "white"}}>
             <div className='card w-100'>
                 <img className='card-img' src="https://res.cloudinary.com/dreambssd/image/upload/v1676262531/band-4671748_960_720_c4bs8h.jpg" style={{height: "21.875rem"}}/>
                 <div className='card-img-overlay '>
@@ -30,22 +30,22 @@ function SplashPage() {
                     <p className='card-text text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
                 </div>
             </div>
-            <div className='d-flex flex-column align-items-start w-100' style={{padding: "0.313rem", color:"white", height: "20.625rem"}}>
+            <div className='d-flex flex-column align-items-start w-100' style={{padding: "0.313rem", color:"black", height: "20.625rem"}}>
                 <h4>GamingCloud Weekly</h4>
                 <p>All of GamingCloud. Just for you.</p>
                 <ListSongPage />
             </div>
             <div className='test border border-danger w-100' style={{height: "20.625rem", padding: "0.313rem"}}>
-                <h4 style={{color: "white"}}>Artists You Should Know</h4 >
+                <h4 style={{color: "black"}}>Artists You Should Know</h4 >
                 <div className='art-list d-flex justify-content-around'>
                     {artists.map(artist => {
                         if (!artist || artist.length > 1) {
                             return null;
                         }
                         return (
-                            <div id="artist-information">
+                            <div id="artist-information" >
                                 <img src={artist.profilePicture} className="rounded-circle"/>
-                                <NavLink to={`/profile/${artist.username}`}><p className='text-center'>{artist.username}</p></NavLink>
+                                <NavLink to={`/profile/${artist.username}`} className="text-decoration-none"><p className='text-center'>{artist.username}</p></NavLink>
                             </div>
                         )
                     })}

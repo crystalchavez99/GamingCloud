@@ -40,13 +40,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-       {user && <><li>
+       {user && <><li className='nav-item bg-dark'>
           <Button
             id="basic-button"
             aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
-            onClick={handleOpen}>
+            onClick={handleOpen} >
                 Profile
             {/* <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
           </NavLink> */}
