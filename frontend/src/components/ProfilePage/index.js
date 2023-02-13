@@ -29,6 +29,10 @@ function ProfilePage() {
                     <img src={userProfile.profilePicture} alt={userProfile.username} />
                     <p>{userProfile.username}</p>
                 </div>
+                <div className='d-flex justify-content-end'>
+                    <button>Share</button>
+                    <button>Edit</button>
+                </div>
             </div>
             <div className='profilecontent'>
                 <h3>Your Songs</h3>
