@@ -74,4 +74,17 @@ router.post(
     })
   );
 
+  // edit user
+  router.put('/:userName', asyncHandler(async (req, res) => {
+    const username = req.params.userName;
+    const user = await User.findOne({
+      where: {username},
+      include: [db.Song]
+    });
+    const {bio} = req.body;
+    user.update({bio})
+    await user.save();
+    return res.json({user})
+
+  }));
 module.exports = router;
