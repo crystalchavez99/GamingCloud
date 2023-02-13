@@ -36,7 +36,7 @@ function SplashPage() {
                 <ListSongPage />
             </div>
             <div className='test border border-danger w-100' style={{height: "20.625rem", padding: "0.313rem"}}>
-                <p>Artists You Should Know</p>
+                <h4 style={{color: "white"}}>Artists You Should Know</h4 >
                 <div className='art-list d-flex justify-content-around'>
                     {artists.map(artist => {
                         if (!artist || artist.length > 1) {
@@ -44,8 +44,8 @@ function SplashPage() {
                         }
                         return (
                             <div id="artist-information">
-                                <img src={artist.profilePicture} />
-                                <NavLink to={`/profile/${artist.username}`}><p>{artist.username}</p></NavLink>
+                                <img src={artist.profilePicture} className="rounded-circle"/>
+                                <NavLink to={`/profile/${artist.username}`}><p className='text-center'>{artist.username}</p></NavLink>
                             </div>
                         )
                     })}

@@ -45,7 +45,7 @@ function ListSongPage({ version }) {
 
     return (
         <div className='trackList'>
-            <h1 className='yoursongs'>All Songs</h1>
+            {/* <h1 className='yoursongs'>All Songs</h1> */}
             <div className='songList'>
                 {!version && songs.map((song, index) => {
                     let sessionLinks;
