@@ -23,9 +23,9 @@ function SplashPage() {
 
     return (
         <div className='splash d-flex flex-column justify-content-center align-items-center border border-success' style={{marginLeft: "20%", marginRight: "20%"}}>
-            <div className='banner border border-warning'>
-                <h1><span>GamingCloud</span></h1>
-                <p>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
+            <div className='banner border border-warning w-100'>
+                <h1 className='text-center'><span>GamingCloud</span></h1>
+                <p className='text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
             </div>
             <div className='tracks border border-danger'>
                 <p>GamingCloud Weekly</p>

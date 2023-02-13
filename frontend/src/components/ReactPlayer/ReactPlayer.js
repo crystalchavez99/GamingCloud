@@ -15,7 +15,7 @@ function ReactPlayer() {
     //       dispatch(playSong(playSongs.id))
     //   },[])
     return (
-        <div id="audio-footer">
+        <div id="audio-footer" className='fixed-bottom'>
             <div id="audio-container">
                 <AudioPlayer
                    controlsList
