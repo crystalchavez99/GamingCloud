@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-       {user && <><li className='nav-item bg-dark'>
+       {user && <><li className='nav-item bg-dark' >
           <Button
             id="basic-button"
             aria-controls={open ? 'basic-menu' : undefined}
@@ -58,15 +58,16 @@ function ProfileButton({ user }) {
             onClose={handleClose}
             MenuListProps={{
               'aria-labelledby': 'basic-button',
-            }}>
-            <MenuItem onClick={handleClose} id="popup">
+            }}
+           >
+            <MenuItem onClick={handleClose} id="popup" >
               <NavLink to={`/profile/${user.username}`}exact={true} activeClassName='active'>
                 <i className="fa-solid fa-user">
                 </i>
               </NavLink>
 
             </MenuItem>
-            <MenuItem onClick={handleClose}><button onClick={logout} className="logout">Log Out</button></MenuItem>
+            <MenuItem onClick={handleClose}><button onClick={logout} className="logout" style={{background: "#f50", color: "white"}}>Log Out</button></MenuItem>
           </Menu>
         </li>
         </>}

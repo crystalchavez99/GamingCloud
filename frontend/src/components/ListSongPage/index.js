@@ -46,7 +46,7 @@ function ListSongPage({ version }) {
     return (
         <div className='trackList'>
             {/* <h1 className='yoursongs'>All Songs</h1> */}
-            <div className='songList'>
+            <div className='songList d-flex'>
                 {!version && songs.map((song, index) => {
                     let sessionLinks;
                     if (sessionUser) {
@@ -66,9 +66,9 @@ function ListSongPage({ version }) {
                             <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)} style={{width:"12.5rem" }}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index} className="text-decoration-none">
-                                <p>{`${song.title}`}</p>
+                                <p className='my-0'>{`${song.title}`}</p>
                             </NavLink>
-                            <p>{`${song.User.username}`}</p>
+                            <p className='my-0'>{`${song.User.username}`}</p>
                             </div>
 
                             {/* <p>Artist:<NavLink to={`/profile/${user.username}`}>{`${user.username}`}</NavLink></p> */}

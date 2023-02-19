@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
+import { Scrollbar } from 'react-scrollbars-custom';
 // import './SplashPage.css';
 import ListSongPage from '../ListSongPage';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,10 +31,12 @@ function SplashPage() {
                     <p className='card-text text-center'>GamingCloud gives our users the ability to create your musicial talent, find fans & industries, and connect with others. </p>
                 </div>
             </div>
-            <div className='d-flex flex-column align-items-start w-100' style={{padding: "0.313rem", color:"black", height: "20.625rem"}}>
+            <div className='w-100' style={{padding: "0.313rem", color:"black", height: "20.625rem"}}>
                 <h4>GamingCloud Weekly</h4>
                 <p>All of GamingCloud. Just for you.</p>
-                <ListSongPage />
+                    <Scrollbar>
+                        <ListSongPage />
+                    </Scrollbar>
             </div>
             <div className='test border border-danger w-100' style={{height: "20.625rem", padding: "0.313rem"}}>
                 <h4 style={{color: "black"}}>Artists You Should Know</h4 >

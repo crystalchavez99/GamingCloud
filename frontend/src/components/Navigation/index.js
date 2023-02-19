@@ -27,8 +27,8 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <div className='navbar'>
-            <ul className='d-flex justify-content-center align-items-center bg-dark'>
+        <div className='navbar p-0'>
+            <ul className='d-flex justify-content-center align-items-center bg-dark p-0 mb-0'>
                 <li className='nav-item bg-dark'>
                     <NavLink exact to="/">GamingCloud <i class="fa-solid fa-headphones"></i></NavLink>
                 </li>
