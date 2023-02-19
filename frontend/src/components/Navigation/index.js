@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import LoginFormModal from '../LoginFormPage/newIndex';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -20,7 +21,8 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login">Log In</NavLink>
+                {/* <NavLink to="/login">Log In</NavLink> */}
+                <LoginFormModal />
                 <NavLink to="/signup">Sign Up</NavLink>
             </>
         );
