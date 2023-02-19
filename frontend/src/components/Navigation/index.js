@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
                     <NavLink exact to="/">Home</NavLink>
                 </li>
                 <li className='nav-item bg-dark'>
-                    Feed
+                <NavLink to="/feed">Feed</NavLink>
                 </li>
                 <li className='nav-item bg-dark'>
                 <NavLink to="/songs">Library</NavLink>

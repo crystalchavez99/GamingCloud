@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import {  Redirect } from 'react-router-dom';
-import './LoginForm.css';
+// import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function LoginFormPage() {
   }
 
   return (
-    <div id='login' className='auth'>
+    <div id='login' className="d-flex border border-danger  justify-content-center align-items-center">
       <form onSubmit={handleSubmit} id="form-login" >
       <h1>Log In</h1>
         <div className='errors'>
@@ -58,10 +58,10 @@ function LoginFormPage() {
           />
         </label>
         <div>
-        <button type="submit" className="demouserbutton" onClick={demo}>Demo Login</button>
-        <button type="submit" className='loginbutton'>Log In</button>
+        <button type="submit" className="demouserbutton" onClick={demo} style={{background: "#f50", color: "white", fontWeight: "bold"}}>Demo Login</button>
+        <button type="submit" className='loginbutton' style={{background: "#f50", color: "white", fontWeight: "bold"}}>Log In</button>
         </div>
-        <p>Not a Gamingcloud Member? <a href="/signup">Sign up Here.</a></p>
+        <p>Not a Gamingcloud Member? <a href="/signup" className="text-decoration-none">Sign up Here.</a></p>
       </form>
     </div>
   );
