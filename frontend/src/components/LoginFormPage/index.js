@@ -35,8 +35,8 @@ function LoginFormPage() {
   }
 
   return (
-    <div id='login' className="d-flex border border-danger  justify-content-center align-items-center">
-      <form onSubmit={handleSubmit} id="form-login" >
+    <div id='login' className="p-5">
+      <form onSubmit={handleSubmit} id="form-login" className='text-center'>
       <h1>Log In</h1>
         <div className='errors'>
             {errors.map((error, idx) => <div key={idx}>{error}</div>)}

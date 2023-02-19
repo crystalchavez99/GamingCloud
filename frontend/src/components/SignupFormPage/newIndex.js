@@ -1,22 +1,22 @@
 // frontend/src/components/LoginFormModal/index.js
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import LoginFormPage from './index';
+import SignupFormPage from './index';
 import index from './index';
 
-function LoginFormModal() {
+function SignupFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="border border-white bg-dark" style={{color: "white"}}>Log In</button>
+      <button onClick={() => setShowModal(true)} className="border border-white" style={{color: "white"}}>Create an account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <LoginFormPage />
+          <SignupFormPage />
         </Modal>
       )}
     </>
   );
 }
 
-export default LoginFormModal;
+export default SignupFormModal;
