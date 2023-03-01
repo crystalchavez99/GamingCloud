@@ -10,7 +10,8 @@ import { NavLink } from 'react-router-dom';
 
 function SplashPage() {
     const songs = useSelector(state => Object.values(state.song));
-    const artists = useSelector(state => Object.values(state.user));
+    const artists = useSelector(state => Object.values(state.user.allUsers));
+    console.log('splash page', artists)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllSongs());

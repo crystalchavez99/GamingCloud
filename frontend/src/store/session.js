@@ -40,9 +40,12 @@ export const signup = (user) => async (dispatch) => {
     },
     body: formData,
   });
+  console.log("SIGN UP RES", response)
   const data = await response.json();
+  console.log("DATA BEFORE DISPATCH", data, data.user)
   dispatch(setUser(data.user));
-  return response;
+  console.log("SIGN UP DATA", data)
+  //return response;
 };
 
 export const login = (user) => async (dispatch) => {
@@ -83,6 +86,7 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       newState = {...state}
+      console.log("SET USER THUNK", newState)
       return {user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state);

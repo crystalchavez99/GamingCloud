@@ -7,16 +7,26 @@ import { getUser } from '../../store/users';
 import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
-    const {userName} = useParams();
-    const artistInfo = useSelector(state => Object.values(state.user))
-    const userProfile = artistInfo[0];
+    const { userName } = useParams();
+
     useEffect(() => {
         dispatch(getUser(userName))
-    })
+    }, [dispatch, userName])
+
+    const artistInfo = useSelector(state => Object.values(state.user))
+    console.log("ARTIST INFO", artistInfo)
 
     if (!artistInfo) {
         return null;
     }
+
+
+    const userProfile = artistInfo[0];
+
+
+
+
+
     if (!userName) {
         return null;
     }
@@ -35,26 +45,24 @@ function ProfilePage() {
             </div>
             <div className='profilecontent'>
                 <h3>Your Songs</h3>
-                        <div className='artistsong'>
-                            {userProfile.Songs.map(song => {
-                                    return (
-                                        <div className='singsongInfo'>
-                                            <div className='songImg'>
-                                                <img src={song.songCover} alt={song.title}/>
-                                            </div>
-                                            <div className='songCatch'>
-                                                <NavLink to={`/songs/${song.id}`}>
-                                                    <p>{`${song.title.toUpperCase()}`}</p>
-                                                </NavLink>
-                                                {/* <ReactAudioPlayer controls src={song.url} /> */}
-                                            </div>
-                                        </div>
+                <div className='artistsong'>
+                    {userProfile.Songs.map(song => {
+                        return (
+                            <div className='singsongInfo'>
+                                <div className='songImg'>
+                                    <img src={song.songCover} alt={song.title} />
+                                </div>
+                                <div className='songCatch'>
+                                    <NavLink to={`/songs/${song.id}`}>
+                                        <p>{`${song.title.toUpperCase()}`}</p>
+                                    </NavLink>
+                                    {/* <ReactAudioPlayer controls src={song.url} /> */}
+                                </div>
+                            </div>
+                        )
+                    })}
 
-                                    )
-
-
-                            })}
-                        </div>
+                </div>
 
 
 
