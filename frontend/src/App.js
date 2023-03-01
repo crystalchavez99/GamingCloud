@@ -26,7 +26,7 @@ function App() {
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
   return (
-    <div>
+    <div className="mb-5">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>

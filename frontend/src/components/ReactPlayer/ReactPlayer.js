@@ -8,14 +8,13 @@ function ReactPlayer() {
     const audioPlayer = useRef();
     const playSongs = useSelector(state => state.song)
     //const [songs,setSong] = useState(playSongs.url)
-    //console.log('RP Line 11',playSongs)
     let current = playSongs.url;
     const dispatch = useDispatch()
     //   useEffect(() => {
     //       dispatch(playSong(playSongs.id))
     //   },[])
     return (
-        <div id="audio-footer" className='fixed-bottom mt-4'>
+        <div id="audio-footer" className='fixed-bottom'>
             <div id="audio-container" >
                 <AudioPlayer
                    controlsList

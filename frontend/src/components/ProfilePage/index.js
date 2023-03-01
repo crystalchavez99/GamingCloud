@@ -8,7 +8,6 @@ import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
     const {userName} = useParams();
-    console.log("PP", userName)
     const artistInfo = useSelector(state => Object.values(state.user))
     const userProfile = artistInfo[0];
     useEffect(() => {

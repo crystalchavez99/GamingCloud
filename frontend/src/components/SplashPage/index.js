@@ -38,7 +38,7 @@ function SplashPage() {
                         <ListSongPage />
                     </Scrollbar>
             </div>
-            <div className='border border-danger mw-100' style={{height: "20.625rem", padding: "0.313rem"}}>
+            <div className='border border-danger w-100 ' style={{height: "20.625rem", padding: "0.313rem"}}>
                 <h4 style={{color: "black"}}>Artists You Should Know</h4 >
                 <div className='d-flex overflow-auto'>
                     {artists.map(artist => {
@@ -47,7 +47,7 @@ function SplashPage() {
                         }
                         return (
                             <div className="artist-information" >
-                                <img src={artist.profilePicture} className="rounded-circle"/>
+                                <img src={artist.profilePicture} className="rounded-circle" style={{height: "11.25rem", width: "11.25rem"}}/>
                                 <NavLink to={`/profile/${artist.username}`} className="text-decoration-none"><p className='text-center'>{artist.username}</p></NavLink>
                             </div>
                         )

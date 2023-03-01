@@ -11,7 +11,6 @@ function ListSongPage({ version }) {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
-    console.log("songs", songs)
     const AudioPlayer = document.getElementsByTagName("audio");
     useEffect(() => {
         dispatch(getAllSongs());
@@ -64,7 +63,7 @@ function ListSongPage({ version }) {
                     }
                     return (
                         <div className='song border border-white'>
-                            <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)} style={{width:"12.5rem" }}/>
+                            <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)} style={{width:"12.5rem", height:"12.5rem" }}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index} className="text-decoration-none">
                                 <p className='my-0'>{`${song.title}`}</p>
@@ -111,7 +110,7 @@ function ListSongPage({ version }) {
                                 <div id="image-play">
                                     <img className="songCover" src={song.songCover} alt={song.title}/>
                                     <div>
-                                    <i class="fa-solid fa-circle-play"></i>
+                                    <i className="fa-solid fa-circle-play"></i>
                                     </div>
                                 </div>
                                 <p>Genre: {`${song.genre}`}</p>

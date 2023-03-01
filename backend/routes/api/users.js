@@ -42,13 +42,11 @@ router.get('/',asyncHandler(async(req,res)=>{
 }));
 
 router.get('/:userName',asyncHandler(async(req,res)=>{
-  //console.log("BE params",req.params.userName)
   const username = req.params.userName;
     const user = await User.findOne({
       where: {username},
       include: [db.Song]
     });
-    //console.log("BACKEND", user)
     return res.json({user});
 }));
 

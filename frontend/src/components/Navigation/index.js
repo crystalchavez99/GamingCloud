@@ -23,10 +23,10 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 {/* <NavLink to="/login">Log In</NavLink> */}
-                <li className='nav-item bg-dark'>
+                <li className='nav-item bg-dark' key="login">
                     <LoginFormModal />
                 </li>
-                <li className='nav-item bg-dark'><SignupFormModal /></li>
+                <li className='nav-item bg-dark' key="signup"><SignupFormModal /></li>
             </>
         );
     }
@@ -34,19 +34,19 @@ function Navigation({ isLoaded }) {
     return (
         <div className='navbar p-0'>
             <ul className='d-flex justify-content-center align-items-center bg-dark p-0 mb-0'>
-                <li className='nav-item bg-dark'>
-                    <NavLink exact to="/">GamingCloud <i class="fa-solid fa-headphones"></i></NavLink>
+                <li className='nav-item bg-dark' key="logo">
+                    <NavLink exact to="/">GamingCloud <i className="fa-solid fa-headphones"></i></NavLink>
                 </li>
-                <li className='nav-item bg-dark'>
+                <li className='nav-item bg-dark' key="home">
                     <NavLink exact to="/">Home</NavLink>
                 </li>
-                <li className='nav-item bg-dark'>
+                <li className='nav-item bg-dark' key="feed">
                     <NavLink to="/feed">Feed</NavLink>
                 </li>
-                <li className='nav-item bg-dark'>
+                <li className='nav-item bg-dark' key="songs">
                     <NavLink to="/songs">Library</NavLink>
                 </li>
-                <li className='nav-item bg-dark'>
+                <li className='nav-item bg-dark' key="search">
                     <TextField className='bg-white' label='search' placeholder='In Progress' InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
                     }}
                         variant="standard" />
                 </li>
-                <li className='nav-item bg-dark'><NavLink to="/upload">Upload</NavLink></li>
+                <li className='nav-item bg-dark' key="upload"><NavLink to="/upload">Upload</NavLink></li>
                 {isLoaded && sessionLinks}
             </ul>
         </div>
