@@ -43,6 +43,7 @@ export const getAllSongs = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         //
+        console.log("DATA", data)
         dispatch(addSongs(data.songs));
     }
 }
@@ -107,7 +108,7 @@ export const getSong = songId => async dispatch => {
 
     if (response.ok) {
         const song = await response.json();
-
+        console.log(song, "LINE 111")
         dispatch(addOneSong(song))
 
         return song;
@@ -119,14 +120,12 @@ const songReducer = (state = [], action) => {
     switch (action.type) {
         case LOADSONGS: {
             newState = { ...state };
-
             const songs = {};
+            console.log("ACTION", action.songs)
             action.songs.forEach(song => {
                 songs[song.id] = song;
             })
-
             newState.songs = songs;
-
             return newState.songs;
         }
         case ADDONESONG:

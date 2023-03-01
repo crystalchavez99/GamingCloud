@@ -16,15 +16,17 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-            <ProfileButton user={sessionUser} />
+                <ProfileButton user={sessionUser} />
             </>
         );
     } else {
         sessionLinks = (
             <>
                 {/* <NavLink to="/login">Log In</NavLink> */}
-                <LoginFormModal/>
-                <SignupFormModal/>
+                <li className='nav-item bg-dark'>
+                    <LoginFormModal />
+                </li>
+                <li className='nav-item bg-dark'><SignupFormModal /></li>
             </>
         );
     }
@@ -39,20 +41,20 @@ function Navigation({ isLoaded }) {
                     <NavLink exact to="/">Home</NavLink>
                 </li>
                 <li className='nav-item bg-dark'>
-                <NavLink to="/feed">Feed</NavLink>
+                    <NavLink to="/feed">Feed</NavLink>
                 </li>
                 <li className='nav-item bg-dark'>
-                <NavLink to="/songs">Library</NavLink>
+                    <NavLink to="/songs">Library</NavLink>
                 </li>
                 <li className='nav-item bg-dark'>
                     <TextField className='bg-white' label='search' placeholder='In Progress' InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <LibraryMusicIcon />
-            </InputAdornment>
-          ),
-        }}
-        variant="standard"/>
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <LibraryMusicIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                        variant="standard" />
                 </li>
                 <li className='nav-item bg-dark'><NavLink to="/upload">Upload</NavLink></li>
                 {isLoaded && sessionLinks}

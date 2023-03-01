@@ -9,7 +9,7 @@ function SignupFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="border border-white" style={{color: "white"}}>Create an account</button>
+      <button onClick={() => setShowModal(true)}>Create an account</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <SignupFormPage />

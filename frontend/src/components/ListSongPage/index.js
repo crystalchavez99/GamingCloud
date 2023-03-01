@@ -11,6 +11,7 @@ function ListSongPage({ version }) {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector((state) => Object.values(state.song));
+    console.log("songs", songs)
     const AudioPlayer = document.getElementsByTagName("audio");
     useEffect(() => {
         dispatch(getAllSongs());
