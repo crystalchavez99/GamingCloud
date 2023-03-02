@@ -26,9 +26,7 @@ export const getUser = (userName) => async dispatch =>{
     const response = await fetch(`/api/users/${userName}`);
     if(response.ok){
         const user = await response.json();
-        console.log(`get user thunk before dispatch`, user)
-        dispatch(loadUser(user))
-        console.log(`get user thunk`, user)
+        dispatch(loadUser(user.user))
         //return user
     }
     return response
@@ -39,9 +37,7 @@ const userReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GETALLUSERS: {
-            console.log(`get all state`, state)
             newState = {...state};
-            console.log(`get all newState`, newState, newState.allUsers)
             action.payload.forEach(user => {
                 newState.allUsers[user.id] = user;
             });
@@ -50,7 +46,6 @@ const userReducer = (state = initialState, action) => {
         case LOADUSER: {
             newState = {...state};
             newState.profileUser = action.payload;
-            console.log("LOAD USER AFTER", newState)
             return newState;
         }
         default:

@@ -22,16 +22,11 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      let newUser = dispatch(sessionActions.signup({ email, username, password,image }))
+      dispatch(sessionActions.signup({ email, username, password,image }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
       });
-      if(newUser){
-        console.log(`SIGN UP HANDLE SUBMIT` , newUser)
-        history.push(`/profile/${newUser.username}`)
-        return newUser
-      }
     }else{
       return setErrors(['Confirm Password field must be the same as the Password field']);
     }

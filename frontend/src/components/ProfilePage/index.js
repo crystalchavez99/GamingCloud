@@ -13,15 +13,13 @@ function ProfilePage() {
         dispatch(getUser(userName))
     }, [dispatch, userName])
 
-    const artistInfo = useSelector(state => Object.values(state.user))
-    console.log("ARTIST INFO", artistInfo)
+    const artistInfo = useSelector(state => state?.user?.profileUser)
 
     if (!artistInfo) {
         return null;
     }
 
 
-    const userProfile = artistInfo[0];
 
 
 
@@ -35,8 +33,8 @@ function ProfilePage() {
         <div className="profilepage">
             <div className='profilebanner'>
                 <div className='artistide'>
-                    <img src={userProfile.profilePicture} alt={userProfile.username} />
-                    <p>{userProfile.username}</p>
+                    <img src={artistInfo?.profilePicture} alt={artistInfo?.username} />
+                    <p>{artistInfo?.username}</p>
                 </div>
                 <div className='d-flex justify-content-end'>
                     <button>Share</button>
@@ -46,7 +44,7 @@ function ProfilePage() {
             <div className='profilecontent'>
                 <h3>Your Songs</h3>
                 <div className='artistsong'>
-                    {userProfile.Songs.map(song => {
+                {artistInfo?.Songs?.map(song => {
                         return (
                             <div className='singsongInfo'>
                                 <div className='songImg'>
@@ -63,9 +61,6 @@ function ProfilePage() {
                     })}
 
                 </div>
-
-
-
             </div>
         </div>
     )

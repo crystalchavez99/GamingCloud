@@ -17,7 +17,11 @@ function LoginFormPage() {
   if (sessionUser) return (
     <Redirect to="/" />
   );
-
+  const demo = () =>{
+    setCredential('Demo-lition');
+    setPassword('password');
+    return;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -28,11 +32,7 @@ function LoginFormPage() {
       });
   }
 
-  const demo = () =>{
-    setCredential('Demo-lition');
-    setPassword('password');
-    return;
-  }
+
 
   return (
     <div id='login' className="p-5">

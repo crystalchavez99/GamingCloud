@@ -40,15 +40,13 @@ export const signup = (user) => async (dispatch) => {
     },
     body: formData,
   });
-  console.log("SIGN UP RES", response)
   const data = await response.json();
-  console.log("DATA BEFORE DISPATCH", data, data.user)
   dispatch(setUser(data.user));
-  console.log("SIGN UP DATA", data)
   //return response;
 };
 
 export const login = (user) => async (dispatch) => {
+  console.log(`LOGIN THUNK`, user)
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
     method: 'POST',
@@ -57,8 +55,10 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
+  console.log(`RESPONSE LOGIN THUNK`, response)
   const data = await response.json();
-  dispatch(setUser(data.user));
+  console.log(`DATA LOGIN THUNK`, data)
+  dispatch(setUser(data));
   return response;
 };
 
@@ -86,7 +86,6 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       newState = {...state}
-      console.log("SET USER THUNK", newState)
       return {user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state);
