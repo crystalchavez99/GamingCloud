@@ -15,9 +15,7 @@ function ProfilePage() {
 
     let artistInfo = useSelector(state => state?.user?.profileUser)
 
-    console.log(`PP`, artistInfo)
-
-    if (!artistInfo.username === userName) {
+    if (artistInfo.username !== userName) {
         return null;
     }
 
