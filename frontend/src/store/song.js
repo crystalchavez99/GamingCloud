@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOADSONGS = 'songs/LOADSONGS';
 const ADDONESONG = 'songs/ADDONESONG';
+const LOADONESONG = 'songs/LOADONESONG';
 const REMOVESONG = 'songs/REMOVESONG';
 const PLAYINGSONG = 'songs/PLAYINGSONG'
 const addOneSong = song => {
@@ -130,6 +131,10 @@ const songReducer = (state = [], action) => {
 
             newState = {...state,[action.song.id]: action.song}
             return newState;
+        // case LOADONESONG:
+
+            // newState = {...state,[action.song.id]: action.song}
+            // return newState;
         case REMOVESONG:
             newState = { ...state };
             delete newState[action.song.id]

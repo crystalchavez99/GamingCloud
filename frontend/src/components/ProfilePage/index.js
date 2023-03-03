@@ -15,17 +15,17 @@ function ProfilePage() {
 
     let artistInfo = useSelector(state => state?.user?.profileUser)
 
-    if (artistInfo.username !== userName) {
-        return null;
-    }
+    // if (artistInfo.username !== userName) {
+    //     return null;
+    // }
 
-    if (!userName) {
-        return null;
-    }
+    // if (!userName) {
+    //     return null;
+    // }
 
     return (
         <div>
-            {artistInfo  && (
+            {artistInfo  && artistInfo.username === userName && (
                 <div className="profilepage">
                     <div className='profilebanner'>
                         <div className='artistide'>
