@@ -46,7 +46,6 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const login = (user) => async (dispatch) => {
-  console.log(`LOGIN THUNK`, user)
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
     method: 'POST',
@@ -55,9 +54,7 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  console.log(`RESPONSE LOGIN THUNK`, response)
   const data = await response.json();
-  console.log(`DATA LOGIN THUNK`, data)
   dispatch(setUser(data));
   return response;
 };

@@ -13,56 +13,52 @@ function ProfilePage() {
         dispatch(getUser(userName))
     }, [dispatch, userName])
 
-    const artistInfo = useSelector(state => state?.user?.profileUser)
+    let artistInfo = useSelector(state => state?.user?.profileUser)
 
-    if (!artistInfo) {
+    console.log(`PP`, artistInfo)
+
+    if (!artistInfo.username === userName) {
         return null;
     }
-
-
-
-
-
-
 
     if (!userName) {
         return null;
     }
 
     return (
-        <div className="profilepage">
-            <div className='profilebanner'>
-                <div className='artistide'>
-                    <img src={artistInfo?.profilePicture} alt={artistInfo?.username} />
-                    <p>{artistInfo?.username}</p>
+        <div>
+            {artistInfo  && (
+                <div className="profilepage">
+                    <div className='profilebanner'>
+                        <div className='artistide'>
+                            <img src={artistInfo?.profilePicture} alt={artistInfo?.username} />
+                            <p>{artistInfo?.username}</p>
+                        </div>
+                    </div>
+                    <div className='profilecontent'>
+                        <h3>Your Songs</h3>
+                        <div className='artistsong'>
+                        {artistInfo?.Songs?.map(song => {
+                         return (
+                             <div className='singsongInfo'>
+                                 <div className='songImg'>
+                                     <img src={song.songCover} alt={song.title} />
+                                 </div>
+                                 <div className='songCatch'>
+                                     <NavLink to={`/songs/${song.id}`}>
+                                         <p>{`${song.title.toUpperCase()}`}</p>
+                                     </NavLink>
+                                 </div>
+                             </div>
+                         )
+                     })}
+                        </div>
+                    </div>
                 </div>
-                <div className='d-flex justify-content-end'>
-                    <button>Share</button>
-                    <button>Edit</button>
-                </div>
-            </div>
-            <div className='profilecontent'>
-                <h3>Your Songs</h3>
-                <div className='artistsong'>
-                {artistInfo?.Songs?.map(song => {
-                        return (
-                            <div className='singsongInfo'>
-                                <div className='songImg'>
-                                    <img src={song.songCover} alt={song.title} />
-                                </div>
-                                <div className='songCatch'>
-                                    <NavLink to={`/songs/${song.id}`}>
-                                        <p>{`${song.title.toUpperCase()}`}</p>
-                                    </NavLink>
-                                    {/* <ReactAudioPlayer controls src={song.url} /> */}
-                                </div>
-                            </div>
-                        )
-                    })}
 
-                </div>
-            </div>
+            )}
         </div>
+
     )
 }
 export default ProfilePage;

@@ -44,7 +44,7 @@ const userReducer = (state = initialState, action) => {
             return newState;
         }
         case LOADUSER: {
-            newState = {...state};
+            newState = {...state}
             newState.profileUser = action.payload;
             return newState;
         }
