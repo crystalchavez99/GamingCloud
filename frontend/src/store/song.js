@@ -116,7 +116,7 @@ export const getSong = songId => async dispatch => {
 }
 
 const songReducer = (state = [], action) => {
-    let newState;
+    let newState = {};
     switch (action.type) {
         case LOADSONGS: {
             newState = { ...state };

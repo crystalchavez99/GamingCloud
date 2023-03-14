@@ -46,23 +46,23 @@ function ListSongPage({ version }) {
     return (
         <div className='trackList'>
             {/* <h1 className='yoursongs'>All Songs</h1> */}
-            <div className='songList d-flex'>
+            <div className='songList d-flex '>
                 {!version && songs.map((song, index) => {
                     let sessionLinks;
-                    if (sessionUser) {
-                        if (sessionUser.id === song.userId) {
-                            sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
-                                <button className='delete'
-                                    onClick={async (e) => {
-                                        await dispatch(deleteSong(song))
-                                        // return history.push("/")
-                                    }
-                                    }
-                                >Delete</button></div>)
-                        }
-                    }
+                    // if (sessionUser) {
+                    //     if (sessionUser.id === song.userId) {
+                    //         sessionLinks = (<div className='editdelete'><NavLink key={index} to={`/songs/${song.id}/edit`} className="edit">Edit</NavLink>
+                    //             <button className='delete'
+                    //                 onClick={async (e) => {
+                    //                     await dispatch(deleteSong(song))
+                    //                     // return history.push("/")
+                    //                 }
+                    //                 }
+                    //             >Delete</button></div>)
+                    //     }
+                    // }
                     return (
-                        <div className='song border border-white'>
+                        <div className='song'>
                             <img className="songCover" src={song.songCover} alt={song.title} data-value={song.url} onClick={() =>change(song)} style={{width:"12.5rem", height:"12.5rem" }}/>
                             <div className='song-information'>
                             <NavLink to={`/songs/${song.id}`} key={index} className="text-decoration-none">
