@@ -36,10 +36,10 @@ function LoginFormPage() {
 
   return (
     <div id='login' className="p-5">
-      <form onSubmit={handleSubmit} id="form-login" className='text-center'>
+      <form onSubmit={handleSubmit} id="form-login" className='text-center d-flex flex-column justify-content-around'>
       <h1>Log In</h1>
         <div className='errors'>
-            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+            {errors.map((error, idx) => <div key={idx}><p style={{color:"red"}}>{error}</p></div>)}
         </div>
         <label>
           <input
@@ -58,7 +58,7 @@ function LoginFormPage() {
             placeholder="Your Password"
           />
         </label>
-        <div>
+        <div className='d-flex flex-column justify-content-center  align-items-center'>
         <button type="submit" className="demouserbutton" onClick={demo} style={{background: "#f50", color: "white", fontWeight: "bold"}}>Demo Login</button>
         <button type="submit" className='loginbutton' style={{background: "#f50", color: "white", fontWeight: "bold"}}>Log In</button>
         </div>
