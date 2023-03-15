@@ -14,11 +14,11 @@ const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3.js')
 
 const validateSignup = [
     check('email')
-      .exists({ checkFalsy: true })
+      .exists()
       .isEmail()
       .withMessage('Please provide a valid email.'),
     check('username')
-      .exists({ checkFalsy: true })
+      .exists()
       .isLength({ min: 4 })
       .withMessage('Please provide a username with at least 4 characters.'),
     check('username')
@@ -26,9 +26,11 @@ const validateSignup = [
       .isEmail()
       .withMessage('Username cannot be an email.'),
     check('password')
-      .exists({ checkFalsy: true })
+      .exists()
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
+    check('bio')
+      .isLength({max: 256}),
     handleValidationErrors
   ];
 
@@ -38,8 +40,9 @@ router.get('/',asyncHandler(async(req,res)=>{
     });
     return res.json({users});
 }));
-router.get('/:username',asyncHandler(async(req,res)=>{
-  const username = req.params.username;
+
+router.get('/:userName',asyncHandler(async(req,res)=>{
+  const username = req.params.userName;
     const user = await User.findOne({
       where: {username},
       include: [db.Song]
@@ -53,13 +56,13 @@ router.post(
     singleMulterUpload("image"),
     validateSignup,
     asyncHandler(async (req, res) => {
-      const { email, password, username } = req.body;
+      const { email, password, username, bio } = req.body;
       let profilePicture;
       if(req.file){
         profilePicture  = await singlePublicFileUpload(req.file)
       }
 
-      const user = await User.signup({ email, username, password, profilePicture});
+      const user = await User.signup({ email, username, password, profilePicture, bio});
 
       await setTokenCookie(res, user);
 
@@ -69,4 +72,17 @@ router.post(
     })
   );
 
+  // edit user
+  router.put('/:userName', asyncHandler(async (req, res) => {
+    const username = req.params.userName;
+    const user = await User.findOne({
+      where: {username},
+      include: [db.Song]
+    });
+    const {bio} = req.body;
+    user.update({bio})
+    await user.save();
+    return res.json({user})
+
+  }));
 module.exports = router;

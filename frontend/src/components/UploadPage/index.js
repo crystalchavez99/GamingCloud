@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './UploadPage.css';
 import { addSong } from '../../store/song';
+// import {LoginFormModal} from "../LoginFormPage/newIndex";
 
 function UploadPage({ user }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -30,12 +31,13 @@ function UploadPage({ user }) {
     //         //
     //     }
     // },[audio,image])
-    if (!sessionUser) {
+    if (!user) {
         return (
-            <>
-            <h1>MUST BE LOGGED IN TO UPLOAD</h1>
-
-            </>
+            // <div className="d-flex justify-content-center align-items-center border border-danger" style={{width: "auto", margin: "auto"}}>
+            // <h1>MUST BE LOGGED IN TO UPLOAD</h1>
+            // </div>
+            <Redirect exact to={"/login"}/>
+            //<LoginFormModal />
         );
     }
     //

@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import {  Redirect } from 'react-router-dom';
-import './LoginForm.css';
+import { Modal } from '../../context/Modal';
+// import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ function LoginFormPage() {
   if (sessionUser) return (
     <Redirect to="/" />
   );
-
+  const demo = () =>{
+    setCredential('Demo-lition');
+    setPassword('password');
+    return;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -27,20 +32,16 @@ function LoginFormPage() {
       });
   }
 
-  const demo = () =>{
-    setCredential('Demo-lition');
-    setPassword('password');
-    return;
-  }
+
 
   return (
-    <div id='login' className='auth'>
-      <form onSubmit={handleSubmit} id="form-login" >
+    <div id='login' className="p-5">
+      <form onSubmit={handleSubmit} id="form-login" className='text-center d-flex flex-column justify-content-around'>
       <h1>Log In</h1>
         <div className='errors'>
-            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+            {errors.map((error, idx) => <div key={idx}><p style={{color:"red", fontWeight: "bold"}}>{error}</p></div>)}
         </div>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="text"
             value={credential}
@@ -49,7 +50,7 @@ function LoginFormPage() {
 
           />
         </label>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="password"
             value={password}
@@ -57,11 +58,11 @@ function LoginFormPage() {
             placeholder="Your Password"
           />
         </label>
-        <div>
-        <button type="submit" className="demouserbutton" onClick={demo}>Demo Login</button>
-        <button type="submit" className='loginbutton'>Log In</button>
+        <div className='d-flex flex-column justify-content-center  align-items-center'>
+        <button type="submit" className="demouserbutton" onClick={demo} style={{background: "#f50", color: "white", fontWeight: "bold"}}>Demo Login</button>
+        <button type="submit" className='loginbutton' style={{background: "#f50", color: "white", fontWeight: "bold"}}>Log In</button>
         </div>
-        <p>Not a Gamingcloud Member? <a href="/signup">Sign up Here.</a></p>
+        <p>Not a Gamingcloud Member? <a href="/signup" className="text-decoration-none">Sign up Here.</a></p>
       </form>
     </div>
   );

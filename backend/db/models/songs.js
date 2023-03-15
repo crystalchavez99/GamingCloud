@@ -11,21 +11,33 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING,
     title: {
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        len: [1, 50]
       },
       type: DataTypes.STRING(50)
     },
     genre: {
       validate: {
-        notEmpty: true
-    },
+        notEmpty: true,
+        len: [1, 50]
+      },
       type: DataTypes.STRING(50)
     },
-  }, {});
-  Song.associate = function(models) {
+  }, {
+    defaultScope: {
+      attributes: {
+        exclude: ['updatedAt']
+      }
+    }
+  });
+  Song.prototype.toSageObject = function () {
+    const { id, userId, songCover, url, title, genre } = this;
+    return { id, userId, songCover, url, title, genre };
+  }
+  Song.associate = function (models) {
     // associations can be defined here
-    Song.belongsTo(models.User, {foreignKey: 'userId'});
-    Song.hasMany(models.Comment, {foreignKey: 'songId', onDelete: 'cascade',hooks:true})
+    Song.belongsTo(models.User, { foreignKey: 'userId' });
+    Song.hasMany(models.Comment, { foreignKey: 'songId', onDelete: 'cascade', hooks: true })
   };
   return Song;
 };

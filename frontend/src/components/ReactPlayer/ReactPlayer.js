@@ -6,24 +6,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { playSong } from '../../store/song';
 function ReactPlayer() {
     const audioPlayer = useRef();
-    const playSongs = useSelector(state => state?.song?.playingSong)
-    //const [songs,setSong] = useState(playSongs?.url)
-    let current = playSongs?.url;
-
+    const playSongs = useSelector(state => state.song)
+    //const [songs,setSong] = useState(playSongs.url)
+    let current = playSongs.url;
     const dispatch = useDispatch()
     //   useEffect(() => {
-    //       dispatch(playSong(playSongs?.id))
+    //       dispatch(playSong(playSongs.id))
     //   },[])
-
     return (
-        <div id="audio-footer">
-            <div id="audio-container">
+        <div id="audio-footer" className='fixed-bottom'>
+            <div id="audio-container" >
                 <AudioPlayer
                    controlsList
                     src={current}
                     controls
                     ref={audioPlayer}
                     autoPlay
+                    style={{background:" #f2f2f2"}}
                     // onChange={TrackChange(current)}
                 />
             </div>

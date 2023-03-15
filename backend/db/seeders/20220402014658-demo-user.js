@@ -8,6 +8,7 @@ module.exports = {
         email: 'demo@user.io',
         username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password'),
+        bio: "Demo-lition in the house",
         profilePicture: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png'
       },
       {
@@ -20,6 +21,7 @@ module.exports = {
       {
         email: 'user2@user.io',
         username: 'FakeUser2',
+        bio: "Retro is in.",
         hashedPassword: bcrypt.hashSync('password3'),
         profilePicture: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png'
 

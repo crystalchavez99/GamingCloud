@@ -25,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicture: {
       type: DataTypes.STRING,
+      allowNull: false,
       defaultValue: 'https://res.cloudinary.com/dreambssd/image/upload/v1654876274/143086968_2856368904622192_1959732218791162458_n.png_x7ofl2.png',
+    },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [0, 256]
+      }
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
@@ -43,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword'] }
+        attributes: { exclude: ['hashedPassword', 'updatedAt'] }
       },
       loginUser: {
         attributes: {}
@@ -52,16 +60,16 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email,profilePicture } = this; // context will be the User instance
-    return { id, username, email, profilePicture};
+    const { id, username, email,profilePicture, bio } = this; // context will be the User instance
+    return { id, username, email, profilePicture, bio};
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
    };
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Song, {foreignKey: 'userId'});
-    User.hasMany(models.Comment, {foreignKey: 'userId'});
+    User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'cascade',hooks:true});
+    User.hasMany(models.Comment, {foreignKey: 'userId', onDelete: 'cascade',hooks:true});
   };
   User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
@@ -80,13 +88,14 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  User.signup = async function ({ username, email, password, profilePicture }) {
+  User.signup = async function ({ username, email, password, profilePicture, bio}) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
-      profilePicture
+      profilePicture,
+      bio
 
     });
     return await User.scope('currentUser').findByPk(user.id);

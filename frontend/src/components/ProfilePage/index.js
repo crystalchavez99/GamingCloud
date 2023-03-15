@@ -4,59 +4,62 @@ import { NavLink } from 'react-router-dom';
 import './ProfilePage.css';
 import { useEffect } from 'react';
 import { getUser } from '../../store/users';
+import React from 'react';
 function ProfilePage() {
     const dispatch = useDispatch();
-    const artist = useParams();
-    const artistInfo = useSelector(state => Object.values(state?.user))
-    const userProfile = artistInfo[0];
+    const { userName } = useParams();
+
     useEffect(() => {
-        dispatch(getUser(artist.userName))
-    }, [dispatch, artist])
+        dispatch(getUser(userName))
+    }, [dispatch, userName])
 
-    if (!artistInfo) {
-        return null;
-    }
-    if (!artist) {
-        return null;
-    }
+    let artistInfo = useSelector(state => state?.user?.profileUser)
 
+    // if(artistInfo.username === userName){
+    //     artistInfo = userName;
+    // }
+    // if (artistInfo.username !== userName) {
+    //     return null;
+    // }
 
+    // if (!userName) {
+    //     return null;
+    // }
 
     return (
-        <div className="profilepage">
-            <div className='profilebanner'>
-                <div className='artistide'>
-                    <img src={userProfile?.profilePicture} alt={userProfile?.username} />
-                    <p>{userProfile?.username}</p>
-                </div>
-            </div>
-            <div className='profilecontent'>
-                <h3>Your Songs</h3>
-                        <div className='artistsong'>
-                            {userProfile?.Songs?.map(song => {
-                                    return (
-                                        <div className='singsongInfo'>
-                                            <div className='songImg'>
-                                                <img src={song.songCover} alt={song?.title}/>
-                                            </div>
-                                            <div className='songCatch'>
-                                                <NavLink to={`/songs/${song.id}`}>
-                                                    <p>{`${song.title.toUpperCase()}`}</p>
-                                                </NavLink>
-                                                {/* <ReactAudioPlayer controls src={song.url} /> */}
-                                            </div>
-                                        </div>
-
-                                    )
-
-
-                            })}
+        <div>
+            {artistInfo  && artistInfo?.username === userName && (
+                <div className="profilepage">
+                    <div className='profilebanner'>
+                        <div className='artistide'>
+                            <img src={artistInfo?.profilePicture} alt={artistInfo?.username} />
+                            <p>{artistInfo?.username}</p>
                         </div>
+                    </div>
+                    <div className='profilecontent'>
+                        <h3>Your Songs</h3>
+                        <div className='artistsong'>
+                        {artistInfo?.Songs?.map(song => {
+                         return (
+                             <div className='singsongInfo'>
+                                 <div className='songImg'>
+                                     <img src={song.songCover} alt={song.title} />
+                                 </div>
+                                 <div className='songCatch'>
+                                     <NavLink to={`/songs/${song.id}`}>
+                                         <p>{`${song.title.toUpperCase()}`}</p>
+                                     </NavLink>
+                                 </div>
+                             </div>
+                         )
+                     })}
+                        </div>
+                    </div>
+                </div>
 
-
-
-            </div>
+            )}
         </div>
+
     )
 }
 export default ProfilePage;

@@ -17,23 +17,21 @@ export const getAllUsers = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        //
         dispatch(addUsers(data.users));
-        return data
     }
     return response;
 }
 
-export const getUser = user => async dispatch =>{
-    const response = await fetch(`/api/users/${user}`);
+export const getUser = (userName) => async dispatch =>{
+    const response = await fetch(`/api/users/${userName}`);
     if(response.ok){
         const user = await response.json();
         dispatch(loadUser(user.user))
-        return user
+        //return user
     }
     return response
 }
-const initialState = {};
+const initialState = {allUsers : [], profileUser : {}};
 
 const userReducer = (state = initialState, action) => {
     let newState;
@@ -41,13 +39,13 @@ const userReducer = (state = initialState, action) => {
         case GETALLUSERS: {
             newState = {...state};
             action.payload.forEach(user => {
-                newState[user.id] = user;
+                newState.allUsers[user.id] = user;
             });
-            return { ...newState};
+            return newState;
         }
         case LOADUSER: {
-            newState = {};
-            newState[action.payload.id] = action.payload;
+            newState = {...state}
+            newState.profileUser = action.payload;
             return newState;
         }
         default:

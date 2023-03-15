@@ -1,4 +1,4 @@
-#login{
+/* #login{
     display: flex;
     justify-content: center;
 }
@@ -9,11 +9,6 @@
   transform: translate(-50%, -50%);
 }
 #form-login{
-    /* border: 1px solid #44d62c;
-    box-sizing: border-box;
-    width:250px;
-    text-align: center;
-    padding: 1rem; */
     border: 1px solid #44d62c;
     border-radius: 1rem;
     display: flex;
@@ -66,4 +61,4 @@
 #login a:hover{
     opacity: 1;
     color: #999;
-}
+} */

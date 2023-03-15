@@ -7,6 +7,8 @@ import './SongDetail.css';
 import { deleteComment, getAllComments } from "../../store/comments";
 import CommentForm from "../CommentFormPage";
 import { restoreUser } from "../../store/session";
+import React from 'react';
+
 
 
 function SongDetail() {
@@ -71,7 +73,7 @@ function SongDetail() {
                                                 <div id="row-comment">
                                                     <div>
                                                     <p>{comment.body}</p>
-                                                    <p id="user-comment">{comment?.User?.username}</p>
+                                                    <p id="user-comment">{comment.User.username}</p>
                                                     </div>
                                                     <div>
                                                     <p>{new Date(comment.createdAt).toDateString()}</p>

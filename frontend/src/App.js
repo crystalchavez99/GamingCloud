@@ -14,6 +14,7 @@ import EditPage from "./components/EditPage";
 import ProfilePage from "./components/ProfilePage";
 import ErrorPage from "./components/404Page";
 import ReactPlayer from "./components/ReactPlayer/ReactPlayer";
+import Feed from "./components/FeedPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function App() {
   }, [dispatch]);
   const sessionUser = useSelector(state => state.session.user);
   return (
-    <>
+    <div className="mb-5">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -53,13 +54,16 @@ function App() {
           <Route exact path="/profile/:userName">
             <ProfilePage />
           </Route>
+          <Route exact path="/feed">
+            <Feed />
+          </Route>
           <Route>
             <ErrorPage />
           </Route>
         </Switch>
       )}
   <ReactPlayer/>
-    </>
+    </div>
   );
 }
 
