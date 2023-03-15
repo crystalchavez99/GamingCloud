@@ -14,11 +14,11 @@ const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3.js')
 
 const validateSignup = [
     check('email')
-      .exists({ checkFalsy: true })
+      .exists()
       .isEmail()
       .withMessage('Please provide a valid email.'),
     check('username')
-      .exists({ checkFalsy: true })
+      .exists()
       .isLength({ min: 4 })
       .withMessage('Please provide a username with at least 4 characters.'),
     check('username')
@@ -26,7 +26,7 @@ const validateSignup = [
       .isEmail()
       .withMessage('Username cannot be an email.'),
     check('password')
-      .exists({ checkFalsy: true })
+      .exists()
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
     check('bio')

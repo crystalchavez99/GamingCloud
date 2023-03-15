@@ -36,13 +36,13 @@ function SignupFormPage() {
     if (file) setImage(file);
   };
   return (
-    <div id='signup' className='auth'>
-      <form onSubmit={handleSubmit} id="form-signup">
+    <div id='signup' className="p-5">
+      <form onSubmit={handleSubmit} id="form-signup" className='text-center d-flex flex-column justify-content-around'>
         <h1>Sign Up</h1>
         <div className='errors'>
-            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+        {errors.map((error, idx) => <div key={idx}><p style={{color:"red", fontWeight: "bold"}}>{error}</p></div>)}
         </div>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="text"
             value={email}
@@ -50,7 +50,7 @@ function SignupFormPage() {
             placeholder="Email"
           />
         </label>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="text"
             value={username}
@@ -58,11 +58,11 @@ function SignupFormPage() {
             placeholder="Username"
           />
         </label>
-        <label id="upload-profile">
+        <label id="upload-profile" className='d-flex justify-content-center align-items-center'>
           <p>Profile Picture</p>
-        <input className="url-input" type="file" onChange={updateFile} placeholder="Profile Picture"/>
+        <input className="url-input" type="file" onChange={updateFile} placeholder="Profile Picture" />
         </label>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="password"
             value={password}
@@ -70,7 +70,7 @@ function SignupFormPage() {
             placeholder="Your Password"
           />
         </label>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="password"
             value={confirmPassword}
@@ -78,7 +78,7 @@ function SignupFormPage() {
             placeholder="Repeat Password"
           />
         </label>
-        <button type="submit" className="signupbutton">Sign Up</button>
+        <button type="submit" className="signupbutton" style={{background: "#f50", color: "white", fontWeight: "bold"}}>Sign Up</button>
         <p>Already a Gamingcloud Member? <a href="/login">Log In Here.</a></p>
       </form>
     </div>

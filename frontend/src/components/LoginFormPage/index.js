@@ -39,9 +39,9 @@ function LoginFormPage() {
       <form onSubmit={handleSubmit} id="form-login" className='text-center d-flex flex-column justify-content-around'>
       <h1>Log In</h1>
         <div className='errors'>
-            {errors.map((error, idx) => <div key={idx}><p style={{color:"red"}}>{error}</p></div>)}
+            {errors.map((error, idx) => <div key={idx}><p style={{color:"red", fontWeight: "bold"}}>{error}</p></div>)}
         </div>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="text"
             value={credential}
@@ -50,7 +50,7 @@ function LoginFormPage() {
 
           />
         </label>
-        <label>
+        <label className='d-flex justify-content-center align-items-center'>
           <input
             type="password"
             value={password}
