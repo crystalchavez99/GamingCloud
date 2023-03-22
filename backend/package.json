@@ -35,7 +35,7 @@
     "react-audio-player": "^0.17.0",
     "react-player": "^2.10.0",
     "sequelize": "^5.22.5",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^6.6.0"
   },
   "devDependencies": {
     "dotenv-cli": "^5.1.0",
